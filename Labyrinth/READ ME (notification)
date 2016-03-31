@@ -1,0 +1,12 @@
+<Few Things to Note>
+1. PULL often, COMMIT often.
+
+2. Don't work on same class at same time.
+
+3. Notify if you want to work on a class out of meeting hours.
+
+4. JavaDoc format:  --> easy and fast to see definition of class and of method.
+	/**       // "**"
+	*
+	*
+	*/
