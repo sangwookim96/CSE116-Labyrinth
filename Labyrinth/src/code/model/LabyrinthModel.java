@@ -9,7 +9,7 @@ import java.util.Random;
 import code.Stickers.Player;
 import code.Tile.Tile;
 
-// Sangwoo adds comment.
+// Sangwoo adds comment. again.
 public class LabyrinthModel implements Runnable {
 
 	
