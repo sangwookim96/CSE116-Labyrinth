@@ -9,9 +9,8 @@ public class Path extends LabyrinthModel {
 	private Tile[][] _board;
 	
 	/**
-	 * move method defines the method
-	 * has the specifications for legal 
-	 * movements. 
+	 * push method defines column or row shifting when pushing a freeTile. 
+	 * @param position the point location where freeTile be inserted to board.
 	 */
 
 	private void push(int position){           //This method checks for legal moves   
