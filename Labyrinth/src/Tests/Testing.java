@@ -34,7 +34,7 @@ public class Testing {
 
 	private void commonTest2(int side,int expected){
 		rotateTiles r = new rotateTiles();
-		int actual2 = r.rotateTiles(side);
+		int actual2 = r.rotateClockwiseTiles(side);
 		assertTrue("I thought that the side "+side+" would turn into "+expected+"but it turned into" +actual2+".",actual2==expected);
 	}
 

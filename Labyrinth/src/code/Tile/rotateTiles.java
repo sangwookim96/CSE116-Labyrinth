@@ -28,7 +28,7 @@ public class rotateTiles {
 	private int _east;
 	private int _west;
 	
-	public int rotateTiles(int side){
+	public int rotateClockwiseTiles(int side){   
 	
 		_north = 1; 
 		_east=0;
