@@ -35,8 +35,8 @@ public class LabyrinthModel implements Runnable {
 	/**This is the temporary variable that after initialization is the tile that is used for the first move.
 	 * 
 	 */
-		Tile _temp1;  		// freeTile 1
-		Tile _temp2=null;   // 
+		Tile _temp1;  		// freeTile pushing in.
+		Tile _temp2=null;   // deadTile, become freeTile later.
 		
 	/** a representation of the board (non-graphical)
 	 * 

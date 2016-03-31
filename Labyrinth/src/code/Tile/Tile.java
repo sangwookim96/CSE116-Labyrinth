@@ -23,7 +23,7 @@ public  class Tile {
     private Character _char;
 		
 		public Tile() {			
-			_char = ' ';   // why "space"???
+			_char = ' ';   // explicitly change Character to char type.
 		}
 		
 		public Character getCharacter() {

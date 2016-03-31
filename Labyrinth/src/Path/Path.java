@@ -14,7 +14,7 @@ public class Path extends LabyrinthModel {
 	 * movements. 
 	 */
 
-	private void move(int position){           //This method checks for legal moves   
+	private void push(int position){           //This method checks for legal moves   
 		Tile temp1=null;
 		Tile temp2;
 		
