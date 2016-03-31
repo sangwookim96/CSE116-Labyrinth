@@ -13,7 +13,7 @@ character to set that shaped path onto the tile.
 
 @param get character which obtains a character at a given position
 @param set character places that character onto a tile. 
-@author Himayet Chowdhury @author Aditya Kishan Ankaraboyana
+@author Himayet Chowdhury, Aditya Kishan Ankaraboyana
 */
 
 public  class Tile {
