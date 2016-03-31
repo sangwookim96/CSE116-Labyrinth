@@ -23,7 +23,7 @@ public  class Tile {
     private Character _char;
 		
 		public Tile() {			
-			_char = ' ';
+			_char = ' ';   // why "space"???
 		}
 		
 		public Character getCharacter() {

@@ -25,14 +25,18 @@ public class LabyrinthModel implements Runnable {
 	 * 
 	 */
 		public static final int ROWS = COLS; 
+		
+		/**
+		 * ArrayList storing 34 moving tiles.
+		 */
 		ArrayList<Character>movetiles= new ArrayList<Character>();
 		int _size=34;
 		
 	/**This is the temporary variable that after initialization is the tile that is used for the first move.
 	 * 
 	 */
-		Tile _temp1;  		
-		Tile _temp2=null;
+		Tile _temp1;  		// freeTile 1
+		Tile _temp2=null;   // 
 		
 	/** a representation of the board (non-graphical)
 	 * 
@@ -112,6 +116,7 @@ public class LabyrinthModel implements Runnable {
 				} 
 			}
 			
+			// This for loop is just for testing.
 			ss= "";
 			for(int r=0;r<7;r++){
 				for(int c=0;c<7;c++){
@@ -131,7 +136,7 @@ public class LabyrinthModel implements Runnable {
 	   public char randomCharacter() {			
 			String s = "";
 			Random x=new Random();
-			if(movetiles.size()!=1){
+			if(movetiles.size()!=1){ // when size()==1, it means the board is full (49 tiles), and 1 freeTile left.
 				int i=x.nextInt(_size);
 				
 				char c=movetiles.get(i);
