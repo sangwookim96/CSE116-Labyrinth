@@ -8,6 +8,8 @@ import java.util.Random;
 
 import code.Stickers.Player;
 import code.Tile.Tile;
+
+// Sangwoo adds comment.
 public class LabyrinthModel implements Runnable {
 
 	
