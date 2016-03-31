@@ -8,10 +8,8 @@ import java.util.Random;
 
 import code.Stickers.Player;
 import code.Tile.Tile;
-
-// Sangwoo adds comment. again.
 public class LabyrinthModel implements Runnable {
-
+//This is the change I made.
 	
 	/* This is our main model class that is basically a hub for methods and connections between all other classes
 	 * in the model.
