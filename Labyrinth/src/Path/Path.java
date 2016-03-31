@@ -8,7 +8,7 @@ public class Path extends LabyrinthModel {
 	private char c;
 	private Tile[][] _board;
 	
-	/* 
+	/**
 	 * move method defines the method
 	 * has the specifications for legal 
 	 * movements. 

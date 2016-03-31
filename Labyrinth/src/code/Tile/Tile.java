@@ -2,10 +2,7 @@ package code.Tile;
 
 import java.nio.file.Path;
 
-
-public  class Tile {
-
-	/* /* This class is the tile class which basically states the methods 
+/** This class is the tile class which basically states the methods 
 that are used to populate the board based on the tile path shape
 and is defined in the Labyrinth Model class. We use the instance 
 variable _char in order to use character representations when we 
@@ -18,11 +15,14 @@ character to set that shaped path onto the tile.
 @param set character places that character onto a tile. 
 @author Himayet Chowdhury @author Aditya Kishan Ankaraboyana
 */
+
+public  class Tile {
+
+	
     private Path _path;
     private Character _char;
 		
-		public Tile() {
-			
+		public Tile() {			
 			_char = ' ';
 		}
 		

@@ -1,6 +1,27 @@
 package code.Tile;
 
+/**
+ * This class is written to 
+ * create a rotation effect 
+ * on the tiles that are to 
+ * be populated when the 
+ * board is initialized.
+ * the instance variables 
+ * _north;
+ * _south;
+ * _east;
+ * _west;
+ * represent the section of a 
+ * tile and our method sets the 
+ * positions equal to the 
+ * position to its right.
+ * 
+ * @param rotation rotates the 
+ * tile to the right
+ * 
+ */
 public class rotateTiles {
+	
 
 	private int _north;
 	private int _south;
@@ -21,23 +42,5 @@ public class rotateTiles {
 		
 		return 0;
 	}
-	/*This class is written to 
-	 * create a rotation effect 
-	 * on the tiles that are to 
-	 * be populated when the 
-	 * board is initialized.
-	 * the instance variables 
-	 * _north;
-	 * _south;
-	 * _east;
-	 * _west;
-	 * represent the section of a 
-	 * tile and our method sets the 
-	 * positions equal to the 
-	 * position to its right.
-	 * 
-	 * @param rotation rotates the 
-	 * tile to the right
-	 * 
-	 */
+	
 }

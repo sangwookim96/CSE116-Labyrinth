@@ -9,31 +9,47 @@ import java.util.Random;
 import code.Stickers.Player;
 import code.Tile.Tile;
 public class LabyrinthModel implements Runnable {
-//This is the change I made.
+
 	
 	/* This is our main model class that is basically a hub for methods and connections between all other classes
 	 * in the model.
 	 */
 			
-		public static final int COLS = 7;   //Defining the Rows and Columns to be used in other method to populate the board.
-		public static final int ROWS = COLS; // These are static variables because their values do not change throughout the program.
+	/**
+	 * Defining the Rows and Columns to be used in other method to populate the board.
+	 * 
+	 */
+		public static final int COLS = 7;   
+		
+	/** These are static variables because their values do not change throughout the program.
+	 * 
+	 */
+		public static final int ROWS = COLS; 
 		ArrayList<Character>movetiles= new ArrayList<Character>();
 		int _size=34;
-		Tile _temp1;  //This is the temporary variable that after initialization is the tile that is used for the first move.		
+		
+	/**This is the temporary variable that after initialization is the tile that is used for the first move.
+	 * 
+	 */
+		Tile _temp1;  		
 		Tile _temp2=null;
 		
-	
-		private Tile[][] _board; // a representation of the board (non-graphical)
+	/** a representation of the board (non-graphical)
+	 * 
+	 */
+		private Tile[][] _board; 
+	/** a representation of the board (non-graphical)
+	 * 
+	 */
 		private String ss;       // 
 	
-		/*
-		 * The following constructor does the job of initializing the Tile array to a 7 by 7 board.
-		 * The set of for loops add 34 I, L and T tiles to an array list from which characters are randomly drawn.
-		 * From having a look at the spare tiles, it was discovered that there are 10 I tiles and 12 L and T tiles.
-		 * @author Aditya Kishan Ankaraboyana
-		 */
-		public LabyrinthModel() {
-			
+	/**
+	 * The following constructor does the job of initializing the Tile array to a 7 by 7 board.
+	 * The set of for loops add 34 I, L and T tiles to an array list from which characters are randomly drawn.
+	 * From having a look at the spare tiles, it was discovered that there are 10 I tiles and 12 L and T tiles.
+	 * @author Aditya Kishan Ankaraboyana
+	 */
+		public LabyrinthModel() {			
 			_board=new Tile[7][7];
 			for(int i=0;i<10;i++){     
 				movetiles.add('I');
@@ -43,13 +59,12 @@ public class LabyrinthModel implements Runnable {
 			}
 			for(int k=0;k<12;k++){
 				movetiles.add('L');
-			}
-			
-			}
+			}			
+		}
 		
 
 	
-   /*
+   /**
     * This method has a simple function of initializing the board as the name suggests.
     * The first for conditions manually set the corners as L Tiles
     * The fifth conditional statement assigns T's to the other 12 static tiles.
@@ -109,27 +124,29 @@ public class LabyrinthModel implements Runnable {
 			System.out.println(ss);
 			
 			return Stringlength;
-			}
+		}
 
 		
 
-	   public char randomCharacter() {
-			
-			
+	   public char randomCharacter() {			
 			String s = "";
 			Random x=new Random();
 			if(movetiles.size()!=1){
-			int i=x.nextInt(_size);
-			char c=movetiles.get(i);
-			movetiles.remove(i);
-			_size=_size-1;
-			return c;
+				int i=x.nextInt(_size);
+				
+				char c=movetiles.get(i);
+				
+				movetiles.remove(i);
+				_size=_size-1;
+				
+				return c;
 			}
 			else{
 			    char c=movetiles.get(0);
 			    _temp1.setCharacter(c);
 			    ss=ss+c;
-			    }System.out.println(ss);
+		    }
+			System.out.println(ss);
 			
 			
 			return 0;			
