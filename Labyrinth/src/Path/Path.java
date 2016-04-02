@@ -13,7 +13,8 @@ public class Path extends LabyrinthModel {
 	 * @param position the point location where freeTile be inserted to board.
 	 */
 
-	public void push(int position){           //This method checks for legal moves   
+	public void push(int position){           //This method checks for legal moves  
+		// We need a method that translates Array point to int. 
 		Tile temp1=null;
 		Tile temp2;
 		
