@@ -97,7 +97,6 @@ public class LabyrinthModel implements Runnable {
     * @author Aditya Kishan Ankaraboyana
     */
 		public int initializeBoard() {
-			
 			for(int r=0;r<7;r++){
 				for(int c=0;c<7;c++){
 					if(r==0&&c==0){
@@ -116,9 +115,21 @@ public class LabyrinthModel implements Runnable {
 						_board[r][c]=new Tile();
 						_board[r][c].setCharacter('L');
 					}
-					else if((r==0&&c==2)||(r==0&&c==4)||(r==2&&c==2)||(r==2&&c==4)||(r==4&&c==2)||(r==4&&c==4)||(r==2&&c==6)||(r==4&&c==6)||(r==6&&c==2)||(r==6&&c==4)||(r==2&&c==0)||(r==4&&c==0)){
+					else if((r==0&&c==2)||(r==0&&c==4)||(r==2&&c==4)){
 						_board[r][c]=new Tile();
 						_board[r][c].setCharacter('T');
+					}
+					else if((r==2&&c==0)||(r==4&&c==0)||(r==2&&c==2)){
+						_board[r][c]=new Tile();
+						_board[r][c].setCharacter('$');
+					}
+					else if((r==2&&c==6)||(r==4&&c==6)||(r==4&&c==2)){
+						_board[r][c]=new Tile();
+						_board[r][c].setCharacter('%');
+					}
+					else if((r==6&&c==2)||(r==6&&c==4)||(r==4&&c==4)){
+						_board[r][c]=new Tile();
+						_board[r][c].setCharacter('^');
 					}
 					else{
 						_board[r][c]=new Tile();
