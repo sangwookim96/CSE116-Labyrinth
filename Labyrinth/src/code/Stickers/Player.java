@@ -17,6 +17,16 @@ public class Player extends Tile{
 		_playertile.getposition;
 	}
 	
+	
+	/*
+	 * Methods required:
+	 * Location()
+	 * Score()
+	 * Tokens()
+	 * PawnColor()
+	 * 
+	 */
+	
 }
 	   
 	
