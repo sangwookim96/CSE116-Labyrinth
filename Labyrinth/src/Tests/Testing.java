@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import code.Stickers.Player;
-import code.Tile.rotateTiles;
 import code.model.LabyrinthModel;
 
 public class Testing {
@@ -31,16 +30,8 @@ public class Testing {
 	}
 	
 	@Test public void Test5(){commonTest1(4,4);}
+}
 
-	private void commonTest2(int side,int expected){
-		rotateTiles r = new rotateTiles();
-		int actual2 = r.rotateClockwiseTiles(side);
-		assertTrue("I thought that the side "+side+" would turn into "+expected+"but it turned into" +actual2+".",actual2==expected);
-	}
-
-	@Test public void Test6(){commonTest2(1,0);}
-
-		
-	}
+	
 
 

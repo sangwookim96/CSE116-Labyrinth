@@ -43,10 +43,6 @@ public  class Tile {
 			_char=c;
 		}
 		
-		public void rotateTiles() {
-			rotateTiles rt = new rotateTiles();
-		}
-		
 		public boolean Tiledirection(char type){
 			if(type=='L'){
 				_north=true;

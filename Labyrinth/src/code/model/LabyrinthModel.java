@@ -82,7 +82,6 @@ public class LabyrinthModel implements Runnable {
 					if(r==0&&c==0){
 						_board[r][c]=new Tile();
 						_board[r][c].setCharacter('L');
-						
 					}
 					else if(r==6&&c==6){
 						_board[r][c]=new Tile();
