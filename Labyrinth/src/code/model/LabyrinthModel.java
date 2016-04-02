@@ -53,15 +53,36 @@ public class LabyrinthModel implements Runnable {
 			Tile t = new Tile();
 			t.token();		
 			_board=new Tile[7][7];
-			for(int i=0;i<10;i++){     
+			for(int i=0;i<5;i++){     
 				movetiles.add('I');
 			}
-			for(int j=0;j<12;j++){
+			for(int i=0;i<5;i++){     
+				movetiles.add('&');
+			}
+			for(int j=0;j<3;j++){
 				movetiles.add('T');
 			}
-			for(int k=0;k<12;k++){
+			for(int j=0;j<3;j++){
+				movetiles.add('$');
+			}
+			for(int j=0;j<3;j++){
+				movetiles.add('%');
+			}
+			for(int j=0;j<3;j++){
+				movetiles.add('^');
+			}
+			for(int k=0;k<3;k++){
 				movetiles.add('L');
-			}			
+			}	
+			for(int k=0;k<3;k++){
+				movetiles.add('#');
+			}	
+			for(int k=0;k<3;k++){
+				movetiles.add('@');
+			}	
+			for(int k=0;k<3;k++){
+				movetiles.add('!');
+			}		
 		}
 		
 
