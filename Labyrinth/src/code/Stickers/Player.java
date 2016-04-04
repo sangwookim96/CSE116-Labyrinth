@@ -29,7 +29,7 @@ public class Player {
 	private void magicCard() {
 		int shuffle = 0;
 		for(int i = 0; i < 3; i++){
-			shuffle = (int)Math.random()*21;
+			shuffle = (int)(Math.random()*21);
 			if(shuffle ==0){
 				shuffle =25;
 			}
@@ -53,7 +53,7 @@ public class Player {
 		_tokens.add(a);
 	}
 	
-	public int Totalscore(){
+	public int TotalScore(){
 		_score = 0;
 		for(int i = 0; i < _tokens.size();i++){
 			_score = _score + _tokens.get(i);
@@ -91,7 +91,7 @@ public class Player {
 	}
 	
 	public boolean position(Tile tTile){
-		if(tTile == null && _cTile == null){
+		if(tTile == null || _cTile == null){
 			return false;
 		}
 		else if((_cTile.getX()==tTile.getX()) &&(_cTile.getY() == tTile.getY()+1)){

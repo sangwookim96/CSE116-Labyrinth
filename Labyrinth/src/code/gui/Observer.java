@@ -1,4 +1,4 @@
-package code.model;
+package code.gui;
 
 public class Observer {
 

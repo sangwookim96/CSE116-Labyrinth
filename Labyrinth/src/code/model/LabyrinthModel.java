@@ -8,7 +8,7 @@ import java.util.Random;
 
 import code.Stickers.Player;
 import code.Tile.Tile;
-public class LabyrinthModel implements Runnable {
+public class LabyrinthModel {
 
 	
 	/* This is our main model class that is basically a hub for methods and connections between all other classes
@@ -52,7 +52,7 @@ public class LabyrinthModel implements Runnable {
 	 */
 		public LabyrinthModel() {
 			Tile t = new Tile();
-			t.token();		
+			t.createToken();		
 			_board=new Tile[7][7];
 			setupTile();
 			initializeBoard();
@@ -89,7 +89,8 @@ public class LabyrinthModel implements Runnable {
 			}	
 			for(int k=0;k<3;k++){
 				movetiles.add('!');
-			}				
+			}
+
 		}
 		
 
@@ -145,7 +146,7 @@ public class LabyrinthModel implements Runnable {
 							break;
 						}
 						else if((0 < r && r < 6 )&&(0 < c && c < 6 )&&(!check(r,c))){
-							_board[r][c].settokens();
+							_board[r][c].setTokens();
 						}
 						else{
 							_board[r][c].setCharacter(check);
@@ -216,9 +217,4 @@ public class LabyrinthModel implements Runnable {
 
 
 
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			initializeBoard();
-		}
 	}

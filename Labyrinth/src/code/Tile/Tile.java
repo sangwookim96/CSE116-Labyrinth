@@ -30,6 +30,7 @@ public  class Tile {
 	private int _x;
 	private int _y;
 	static ArrayList<Integer>_points=new ArrayList<Integer>();
+	private int _token;
 
 
 	public Tile() {			
@@ -110,7 +111,7 @@ public  class Tile {
 	 * This method adds 21 values to the ArrayList named _points. 
 	 * The value range from 1 to 20 and 25.
 	 */
-	public void token(){
+	public void createToken(){
 		for(int i=1;i<21;i++){
 			_points.add(i);
 		}
@@ -123,21 +124,52 @@ public  class Tile {
 	 * one out of 21 tokens from the ArrayList _points and put it on the board.
 	 * We repeat this until the whole ArrayList is empty.
 	 */
-	public void settokens(){
+	public void setTokens(){
 
 		if(_points.isEmpty()==false){
 
-			_points.remove(Math. random() * _points.size());
-
+			_token = _points.remove((int)(Math. random() * _points.size()));
 		}
 
 	}
+	/**
+	 * return the current value of token that on the  tile
+	 * @return the value of the token
+	 */
+	public int pickUpToken(){
+		return _token;
+	}
+	
+	/**
+	 * check if the tile has a token
+	 * @return true if token value is not equal zero
+	 */
+	public boolean hasToken(){
+		return _token!=0;
+	}
+	
+
+	public void setValueOfToken(int i){
+		_token = 0;
+	}
+	
+	/**
+	 * get the  x position of that tile
+	 * @return the value of current x position
+	 */
 	public int getX(){
 		return _x;
 	}
+	/**
+	 * get the  y position of that tile
+	 * @return the value of current y position
+	 */
 	public int getY(){
 		return _y;
 	}
+	
+	
+	
 	public boolean getNorth(){
 		return _north;
 	}
@@ -150,9 +182,12 @@ public  class Tile {
 	public boolean getEast(){
 		return _east;
 	}
+	
+
 	public void setX(int x){
 		_x = x;
 	}
+
 	public void setY(int y){
 		_y = y;
 	}
