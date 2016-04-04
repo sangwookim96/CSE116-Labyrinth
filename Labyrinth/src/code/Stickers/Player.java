@@ -49,6 +49,10 @@ public class Player {
 		return false;
 	}
 	
+	/**
+	 * Picking up the token.
+	 * @param a the point of a token
+	 */
 	public void getToken(int a){
 		_tokens.add(a);
 	}
@@ -65,6 +69,14 @@ public class Player {
 		return _score;
 	}
 	
+	
+	/**
+	 * The location tile where player is standing. 
+	 * @param p Tile
+	 * @param x x value of Tile pointer
+	 * @param y y value of Tile pointer
+	 * @return the point on the board where the player is standing.
+	 */
 	public Tile playerTile(Tile[][] p,int x,int y ){
 		if(x<p.length && y<p[0].length){
 			return p[x][y];
@@ -90,6 +102,15 @@ public class Player {
 		return _cTile;
 	}
 	
+	
+	/**
+	 * Player (Pawn) can move to an adjacent tile one by one.
+	 * (we're not going to set the final destination of player. And ending the player's turn
+	 * by player's choice.)
+	 * 
+	 * @param tTile the adjacent tile where player want to move.
+	 * @return true if the player successfully moves to the adjacent tile.
+	 */
 	public boolean position(Tile tTile){
 		if(tTile == null || _cTile == null){
 			return false;
@@ -128,9 +149,9 @@ public class Player {
 	
 	/*
 	 * Methods required:
-	 * Location()
-	 * Score()
-	 * Tokens()
+	 * Location() --> position(Tile tTile)
+	 * Score()  --> TotalScore()
+	 * Tokens()  --> ArrayList<Int> _token; getToken(int a);
 	 * PawnColor()
 	 * 
 	 */
