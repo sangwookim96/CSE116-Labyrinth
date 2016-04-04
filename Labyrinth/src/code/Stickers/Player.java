@@ -146,13 +146,25 @@ public class Player {
 		return false;
 	}
 	
+	public void PlayerColor(int color){
+		if(color==0){
+			// set player color to Red
+		} else if(color==1){
+			// set player color to Blue
+		} else if(color==2){
+			// set player color to Yellow
+		} else if(color==3){
+			// set player color to Green
+		}		
+	}
+	
 	
 	/*
 	 * Methods required:
 	 * Location() --> position(Tile tTile)
 	 * Score()  --> TotalScore()
 	 * Tokens()  --> ArrayList<Int> _token; getToken(int a);
-	 * PawnColor()
+	 * PawnColor() --> void PlayerColor(int color); // setColor method required on gui.
 	 * 
 	 */
 	
