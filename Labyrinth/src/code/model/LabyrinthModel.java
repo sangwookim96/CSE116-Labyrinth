@@ -2,12 +2,11 @@ package code.model;
 
 import java.util.ArrayList;
 
-
-import java.util.Observer;
+import code.model.Observer;
 import java.util.Random;
-
 import code.Player.Player;
 import code.Tile.Tile;
+import code.gui.GUI;
 public class LabyrinthModel {
 
 	
@@ -43,6 +42,7 @@ public class LabyrinthModel {
 	 */
 		private String ss;       // 
 		private ArrayList<Player> _player = new ArrayList<Player>();
+		private Observer _observer;
 	
 	/**
 	 * The following constructor does the job of initializing the Tile array to a 7 by 7 board.
@@ -51,6 +51,7 @@ public class LabyrinthModel {
 	 * @author Aditya Kishan Ankaraboyana
 	 */
 		public LabyrinthModel() {
+			_observer = null;
 			Tile t = new Tile();
 			t.createToken();		
 			_board=new Tile[7][7];
@@ -213,6 +214,17 @@ public class LabyrinthModel {
 			
 			return 0;			
 		}
+
+	public void setObserver(Observer ob) {
+		// TODO Auto-generated method stub
+		_observer = ob;
+	}
+	
+	public void gameUpdate() {
+		if (_observer != null) {
+			_observer.update();
+		}
+	}
 
 
 
