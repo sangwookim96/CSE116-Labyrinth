@@ -21,114 +21,140 @@ character to set that shaped path onto the tile.
 public  class Tile {
 
 	int token;
-    private Path _path;
-    private Character _char;
-    private boolean _east=false;
-    private boolean _north=false;
-    private boolean _south=false;
-    private boolean _west=false;
-    static ArrayList<Integer>_points=new ArrayList<Integer>();
-    
-		
-		public Tile() {			
-			_char = ' ';
-			
-		}
-		
-		public Character getCharacter() {
-			return _char;
-		}
-	
-		public void setCharacter(char c) {
-			_char=c;
-		}
-		
-		public boolean Tiledirection(char type){
-			if(type=='L'){
-				_north=true;
-				_east=true;
-				return true;
-			}
-			if(type=='#'){
-				_north=true;
-				_west=true;
-				return true;
-			}
-			if(type=='@'){
-				_south=true;
-				_west=true;
-				return true;
-			}
-			if(type=='!'){
-				_south=true;
-				_east=true;
-				return true;
-			}
-			
-			if(type=='T'){
-				_south=true;
-				_east=true;
-				_west=true;
-				return true;
-			}
-			if(type=='$'){
-				_north=true;
-				_east=true;
-				_south=true;
-				return true;
-			}
-			if(type=='%'){
-				_west=true;
-				_east=true;
-				_north=true;
-				return true;
-			}
-			if(type=='^'){
-				_west=true;
-				_north=true;
-				_south=true;
-				return true;
-			}
-			if(type=='I'){
-				_north=true;
-				_south=true;
-				return true;
-			}
-			if (type=='&'){
-				_east=true;
-				_west=true;
-				return true;
-			}
-		
-			return false;
-			
-		}
-		
-		/**
-		 * This method adds 21 values to the ArrayList named _points. 
-		 * The value range from 1 to 20 and 25.
-		 */
-		public void token(){
-			for(int i=1;i<21;i++){
-				_points.add(i);
-			}
-			_points.add(25);
-			
-		}
+	private Path _path;
+	private Character _char;
+	private boolean _east=false;
+	private boolean _north=false;
+	private boolean _south=false;
+	private boolean _west=false;
+	private int _x;
+	private int _y;
+	static ArrayList<Integer>_points=new ArrayList<Integer>();
 
-		/**
-		 * This method sets the tokens on the board. The basic principle is to remove 
-		 * one out of 21 tokens from the ArrayList _points and put it on the board.
-		 * We repeat this until the whole ArrayList is empty.
-		 */
-        public void settokens(){
-        
-        	if(_points.isEmpty()==false){
-        		
-				_points.remove(Math. random() * _points.size());
-				
-        	}
-        	
-        }
+
+	public Tile() {			
+		_char = ' ';
 
 	}
+
+	public Character getCharacter() {
+		return _char;
+	}
+
+	public void setCharacter(char c) {
+		_char=c;
+	}
+
+	public boolean Tiledirection(char type){
+		if(type=='L'){
+			_north=true;
+			_east=true;
+			return true;
+		}
+		if(type=='#'){
+			_north=true;
+			_west=true;
+			return true;
+		}
+		if(type=='@'){
+			_south=true;
+			_west=true;
+			return true;
+		}
+		if(type=='!'){
+			_south=true;
+			_east=true;
+			return true;
+		}
+
+		if(type=='T'){
+			_south=true;
+			_east=true;
+			_west=true;
+			return true;
+		}
+		if(type=='$'){
+			_north=true;
+			_east=true;
+			_south=true;
+			return true;
+		}
+		if(type=='%'){
+			_west=true;
+			_east=true;
+			_north=true;
+			return true;
+		}
+		if(type=='^'){
+			_west=true;
+			_north=true;
+			_south=true;
+			return true;
+		}
+		if(type=='I'){
+			_north=true;
+			_south=true;
+			return true;
+		}
+		if (type=='&'){
+			_east=true;
+			_west=true;
+			return true;
+		}
+
+		return false;
+
+	}
+
+	/**
+	 * This method adds 21 values to the ArrayList named _points. 
+	 * The value range from 1 to 20 and 25.
+	 */
+	public void token(){
+		for(int i=1;i<21;i++){
+			_points.add(i);
+		}
+		_points.add(25);
+
+	}
+
+	/**
+	 * This method sets the tokens on the board. The basic principle is to remove 
+	 * one out of 21 tokens from the ArrayList _points and put it on the board.
+	 * We repeat this until the whole ArrayList is empty.
+	 */
+	public void settokens(){
+
+		if(_points.isEmpty()==false){
+
+			_points.remove(Math. random() * _points.size());
+
+		}
+
+	}
+	public int getX(){
+		return _x;
+	}
+	public int getY(){
+		return _y;
+	}
+	public boolean getNorth(){
+		return _north;
+	}
+	public boolean getSouth(){
+		return _south;
+	}
+	public boolean getWest(){
+		return _west;
+	}
+	public boolean getEast(){
+		return _east;
+	}
+	public void setX(int x){
+		_x = x;
+	}
+	public void setY(int y){
+		_y = y;
+	}
+
+}

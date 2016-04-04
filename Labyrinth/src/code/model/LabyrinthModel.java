@@ -25,7 +25,7 @@ public class LabyrinthModel implements Runnable {
 	 * 
 	 */
 		public static final int ROWS = COLS; 
-		ArrayList<Character>movetiles= new ArrayList<Character>();
+		ArrayList<Character> movetiles = new ArrayList<Character>();
 		int _size=34;
 		
 	/**This is the temporary variable that after initialization is the tile that is used for the first move.
@@ -42,6 +42,7 @@ public class LabyrinthModel implements Runnable {
 	 * 
 	 */
 		private String ss;       // 
+		private ArrayList<Player> _player = new ArrayList<Player>();
 	
 	/**
 	 * The following constructor does the job of initializing the Tile array to a 7 by 7 board.
@@ -53,6 +54,12 @@ public class LabyrinthModel implements Runnable {
 			Tile t = new Tile();
 			t.token();		
 			_board=new Tile[7][7];
+			setupTile();
+			initializeBoard();
+			
+		}
+		
+		public void setupTile(){
 			for(int i=0;i<5;i++){     
 				movetiles.add('I');
 			}
@@ -82,7 +89,7 @@ public class LabyrinthModel implements Runnable {
 			}	
 			for(int k=0;k<3;k++){
 				movetiles.add('!');
-			}		
+			}				
 		}
 		
 
@@ -96,7 +103,7 @@ public class LabyrinthModel implements Runnable {
     * To check this we used an output of integer which holds the size 
     * @author Aditya Kishan Ankaraboyana
     */
-		public int initializeBoard() {
+		public void initializeBoard() {
 			for(int r=0;r<7;r++){
 				for(int c=0;c<7;c++){
 					if(r==0&&c==0){
@@ -137,27 +144,47 @@ public class LabyrinthModel implements Runnable {
 						if(check=='0'){
 							break;
 						}
-						else{
-						_board[r][c].setCharacter(check);
+						else if((0 < r && r < 6 )&&(0 < c && c < 6 )&&(!check(r,c))){
+							_board[r][c].settokens();
 						}
+						else{
+							_board[r][c].setCharacter(check);
+							_player.add(new Player(_board,r,c));
 
+						}
 					}
 					
 				} 
 			}
 			
-			ss= "";
-			for(int r=0;r<7;r++){
-				for(int c=0;c<7;c++){
-					char c1 = _board[r][c].getCharacter();
-					ss=ss+c1;
-				}
+//			ss= "";
+//			for(int r=0;r<7;r++){
+//				for(int c=0;c<7;c++){
+//					char c1 = _board[r][c].getCharacter();
+//					ss=ss+c1;
+//				}
+//			}
+//			
+//			int Stringlength = ss.length();
+//			System.out.println(ss);
+//			
+//			return Stringlength;
+		}
+		
+		public boolean check(int x,int y){
+			if(x==2 && y==2){
+				return true;
 			}
-			
-			int Stringlength = ss.length();
-			System.out.println(ss);
-			
-			return Stringlength;
+			if(x==2 && y==4){
+				return true;
+			}
+			if(x==4 && y==2){
+				return true;
+			}
+			if(x==4 && y==4){
+				return true;
+			}
+			return false;
 		}
 
 		
