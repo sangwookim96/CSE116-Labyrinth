@@ -54,8 +54,12 @@ public class TestingPlayer {
 	@Test public void playerPositionTest(){
 		
 	}
-	public void commonPositionTest(int xCurrent, int yCurrent, int xTo, int yTo){
-		Tile tile = new Tile();
+	public void commonPositionTest(int xCurrent, int yCurrent, int xTo, int yTo, char cCurrent, char cTo){
+		Tile currentTile = new Tile(); Tile toTile = new Tile();
+		currentTile.setX(xCurrent); currentTile.setY(yCurrent);
+		toTile.setX(xTo); toTile.setY(yTo);
+		// requires type of tile (char)
+		// run ...player.position(Tile tTile)
 		
 		boolean expect;
 		boolean actual;
