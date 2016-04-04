@@ -48,4 +48,21 @@ public class TestingPlayer {
 		assertTrue("Expected location: "+"\""+expect+"\""+", Actual location: "+"\""+actual+"\"",
 				expect==actual);
 	}
+	
+	
+	// Testing Player's movement to adjacent tile.
+	@Test public void playerPositionTest(){
+		
+	}
+	public void commonPositionTest(int xCurrent, int yCurrent, int xTo, int yTo){
+		Tile tile = new Tile();
+		
+		boolean expect;
+		boolean actual;
+		
+		assertTrue("",false);
+	}
+	
+	
+	
 }
