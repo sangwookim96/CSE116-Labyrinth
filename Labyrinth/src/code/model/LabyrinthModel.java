@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Observer;
 import java.util.Random;
 
-import code.Stickers.Player;
+import code.Player.Player;
 import code.Tile.Tile;
 public class LabyrinthModel {
 

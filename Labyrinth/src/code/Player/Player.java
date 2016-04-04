@@ -1,4 +1,4 @@
-package code.Stickers;
+package code.Player;
 
 import java.util.ArrayList;
 

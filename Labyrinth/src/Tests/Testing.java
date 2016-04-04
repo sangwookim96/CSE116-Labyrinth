@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import code.Stickers.Player;
+import code.Player.Player;
 import code.model.LabyrinthModel;
 
 public class Testing {
