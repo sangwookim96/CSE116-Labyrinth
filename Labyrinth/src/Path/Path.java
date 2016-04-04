@@ -114,6 +114,13 @@ public class Path extends LabyrinthModel {
 	
 	}
 	
+	
+	/**
+	 * Translating point of board to the integer (pushable) position which we named.
+	 * @param x x value of point
+	 * @param y y value of pint
+	 * @return Position that we named by integer numbers.
+	 */
 	public int Point2Position(int x, int y){
 		Tile location = _board[x][y];
 		if(location==_board[1][6]){
