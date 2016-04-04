@@ -30,4 +30,18 @@ public class TestingPlayer {
 //		System.out.println("the x is " + p.getX() + " the y is " + p.getY());
 //		assertTrue("Expected result will be " + expected + " but the actual result is " + result, expected == result);
 //	}
+	
+	//Testing Player's location (standing, not where to move)
+	@Test public void playerLocationTest00(){
+		commonLocationTest(0,0);
+	}
+	public void commonLocationTest(int x, int y){
+		Player player = new Player(new Tile[7][7],x,y);
+		Tile[][] p = new Tile[7][7];
+		Tile expect = p[x][y];
+		Tile actual = player.playerTile(p, x, y);
+		
+		assertTrue("Expected location: "+"\""+expect+"\""+", Actual location: "+"\""+actual+"\"",
+				expect.equals(actual));
+	}
 }
