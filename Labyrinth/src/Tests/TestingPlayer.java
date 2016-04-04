@@ -35,6 +35,10 @@ public class TestingPlayer {
 	@Test public void playerLocationTest00(){
 		commonLocationTest(0,0);
 	}
+	@Test public void playerLocationTest01(){
+		commonLocationTest(6,6);
+	}
+	
 	public void commonLocationTest(int x, int y){
 		Player player = new Player(new Tile[7][7],x,y);
 		Tile[][] p = new Tile[7][7];
@@ -42,6 +46,6 @@ public class TestingPlayer {
 		Tile actual = player.playerTile(p, x, y);
 		
 		assertTrue("Expected location: "+"\""+expect+"\""+", Actual location: "+"\""+actual+"\"",
-				expect.equals(actual));
+				expect==actual);
 	}
 }
