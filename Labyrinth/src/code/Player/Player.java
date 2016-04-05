@@ -17,13 +17,16 @@ public class Player {
 	private Tile _cTile;
 	
 	
-	public Player(Tile[][] p,int x,int y){
+	public Player(Tile p,int x,int y){
 		magicCard();
 		_x = x;
 		_y = y;
 		_cTile = playerTile(p,_x,_y);
+		_cTile.setX(x);
+		_cTile.setY(y);
+
+
 		
-			
 	}
 	
 	private void magicCard() {
@@ -32,12 +35,13 @@ public class Player {
 			shuffle = (int)(Math.random()*21);
 			if(shuffle ==0){
 				shuffle =25;
+			}for(int x = 0; x < _magicCard.size(); x++){
+				if(_magicCard.contains(shuffle)){
+					_magicCard.remove(x);
+					i--;
+				}
+				_magicCard.add(shuffle);
 			}
-			if(_magicCard.contains(shuffle)){
-				_magicCard.remove(shuffle);
-				i--;
-			}
-			_magicCard.add(shuffle);
 		}
 		
 	}
@@ -77,9 +81,9 @@ public class Player {
 	 * @param y y value of Tile pointer
 	 * @return the point on the board where the player is standing.
 	 */
-	public Tile playerTile(Tile[][] p,int x,int y ){
-		if(x<p.length && y<p[0].length){
-			return p[x][y];
+	public Tile playerTile(Tile p,int x,int y ){
+		if(x<7 && y<7){
+			return p;
 		}
 		return null;
 	}
@@ -112,36 +116,37 @@ public class Player {
 	 * @return true if the player successfully moves to the adjacent tile.
 	 */
 	public boolean position(Tile tTile){
+//		System.out.println(_cTile.getX());
+//		System.out.println(_cTile.getY());
+//		System.out.println(tTile.getX());
+//		System.out.println(tTile.getY());
 		if(tTile == null || _cTile == null){
 			return false;
 		}
-		else if((_cTile.getX()==tTile.getX()) &&(_cTile.getY() == tTile.getY()+1)){
-			if(_cTile.getNorth()==true&& tTile.getSouth()==true){
-				_cTile.setY(tTile.getY()+1);
+		else if( (_cTile.getX()==tTile.getX()) && (_cTile.getY() == (tTile.getY()+1)) ){
+			if(_cTile.getWest()==true && tTile.getEast()==true){
+				_cTile.setY(tTile.getY());
 				return true;
 			}
-			return false;
 		}
-		else if((_cTile.getX()==tTile.getX()) &&(_cTile.getY() == tTile.getY()-1)){
-			if(_cTile.getSouth()==true&& tTile.getNorth()==true){
-				_cTile.setY(tTile.getY()-1);
+		else if( (_cTile.getX()==tTile.getX()) && (_cTile.getY() == (tTile.getY()-1)) ){
+			if(_cTile.getEast()==true && tTile.getWest()==true){
+				_cTile.setY(tTile.getY());
 				return true;
 			}
-			return false;
 		}		
-		else if((_cTile.getX()==tTile.getX()+1) &&(_cTile.getY() == tTile.getY())){
-			if(_cTile.getEast()==true&& tTile.getWest()==true){
-				_cTile.setX(tTile.getX()+1);
+		else if( (_cTile.getX()==(tTile.getX()+1) ) && (_cTile.getY() == tTile.getY()) ){
+
+			if(_cTile.getNorth()==true && tTile.getSouth()==true){
+				_cTile.setX(tTile.getX());
 				return true;
 			}
-			return false;
 		}		
-		else if((_cTile.getX()==tTile.getX()-1) &&(_cTile.getY() == tTile.getY())){
-			if(_cTile.getWest()==true&& tTile.getEast()==true){
-				_cTile.setX(tTile.getX()-1);
+		else if( (_cTile.getX()==(tTile.getX()-1)) && (_cTile.getY() == tTile.getY()) ){
+			if(_cTile.getSouth()==true && tTile.getNorth()==true){
+				_cTile.setX(tTile.getX());
 				return true;
 			}
-			return false;
 		}
 		return false;
 	}

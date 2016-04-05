@@ -30,7 +30,7 @@ public class LabyrinthModel {
 	/**This is the temporary variable that after initialization is the tile that is used for the first move.
 	 * 
 	 */
-		Tile _temp1;  		// temp variable for FreeTile
+		Tile _temp1 = new Tile();  		// temp variable for FreeTile
 		Tile _temp2=null;
 		
 	/** a representation of the board (non-graphical)
@@ -110,54 +110,64 @@ public class LabyrinthModel {
 				for(int c=0;c<7;c++){
 					if(r==0&&c==0){
 						_board[r][c]=new Tile();
-						_board[r][c].setCharacter('L');
+						_board[r][c].Tiledirection('!');
 					}
 					else if(r==6&&c==6){
 						_board[r][c]=new Tile();
-						_board[r][c].setCharacter('L');
-					}
-					else if(r==0&&c==6){
-						_board[r][c]=new Tile();
-						_board[r][c].setCharacter('L');
+						_board[r][c].Tiledirection('#');
 					}
 					else if(r==6&&c==0){
 						_board[r][c]=new Tile();
-						_board[r][c].setCharacter('L');
+						_board[r][c].Tiledirection('L');
 					}
-					else if((r==0&&c==2)||(r==0&&c==4)||(r==2&&c==4)){
+					else if(r==0&&c==6){
 						_board[r][c]=new Tile();
-						_board[r][c].setCharacter('T');
+						_board[r][c].Tiledirection('@');
 					}
-					else if((r==2&&c==0)||(r==4&&c==0)||(r==2&&c==2)){
+					else if((r==0&&c==2)||(r==2&&c==4)||(r==0&&c==4)){
 						_board[r][c]=new Tile();
-						_board[r][c].setCharacter('$');
+						_board[r][c].Tiledirection('T');
+						if(checkPlayer(r,c)){
+							_player.add(new Player(_board[r][c],r,c));
+						}
 					}
-					else if((r==2&&c==6)||(r==4&&c==6)||(r==4&&c==2)){
+					else if((r==2&&c==0)||(r==2&&c==2)||(r==4&&c==0)){
 						_board[r][c]=new Tile();
-						_board[r][c].setCharacter('%');
+						_board[r][c].Tiledirection('$');
+						if(checkPlayer(r,c)){
+							_player.add(new Player(_board[r][c],r,c));
+						}
 					}
-					else if((r==6&&c==2)||(r==6&&c==4)||(r==4&&c==4)){
+					else if((r==6&&c==2)||(r==4&&c==2)||(r==6&&c==4)){
 						_board[r][c]=new Tile();
-						_board[r][c].setCharacter('^');
+						_board[r][c].Tiledirection('%');
+						if(checkPlayer(r,c)){
+							_player.add(new Player(_board[r][c],r,c));
+						}
+					}
+					else if((r==2&&c==6)||(r==4&&c==6)||(r==4&&c==4)){
+						_board[r][c]=new Tile();
+						_board[r][c].Tiledirection('^');
+						if(checkPlayer(r,c)){
+							_player.add(new Player(_board[r][c],r,c));
+						}
 					}
 					else{
 						_board[r][c]=new Tile();
 						char check=randomCharacter();
-						if(check=='0'){
-							break;
-						}
-						else if((0 < r && r < 6 )&&(0 < c && c < 6 )&&(!check(r,c))){
-							_board[r][c].setTokens();
-						}
-						else{
-							_board[r][c].setCharacter(check);
-							_player.add(new Player(_board,r,c));
-
+//						if(check=='0'){
+//							System.out.println("fuck");
+//							break;
+//						}							
+							_board[r][c].Tiledirection(check);
+							if((0 < r && r < 6 )&&(0 < c && c < 6 )&&(!checkPlayer(r,c))){
+								_board[r][c].setTokens();
 						}
 					}
-					
+
 				} 
 			}
+			randomCharacter();
 			
 //			ss= "";
 //			for(int r=0;r<7;r++){
@@ -173,7 +183,7 @@ public class LabyrinthModel {
 //			return Stringlength;
 		}
 		
-		public boolean check(int x,int y){
+		public boolean checkPlayer(int x,int y){
 			if(x==2 && y==2){
 				return true;
 			}
@@ -188,32 +198,40 @@ public class LabyrinthModel {
 			}
 			return false;
 		}
+		
+		public ArrayList<Player> getPlayer(){
+			return _player;
+		}
+		
+		public Tile getTile(int x,int y){
+			return _board[x][y];
+		}
 
 		
 
-	   public char randomCharacter() {			
-			String s = "";
-			Random x=new Random();
-			if(movetiles.size()!=1){
-				int i=x.nextInt(_size);
+		   public char randomCharacter() {			
+				String s = "";
+				Random x=new Random();
+				if(movetiles.size()!=1){
+					int i=x.nextInt(_size);
+					
+					char c=movetiles.get(i);
+					
+					movetiles.remove(i);
+					_size=_size-1;
+					
+					return c;
+				}
+				else{
+				    char c=movetiles.get(0);
+				    _temp1.setCharacter(c);
+				    ss=s+c;
+			    }
+//				System.out.println(ss);
 				
-				char c=movetiles.get(i);
 				
-				movetiles.remove(i);
-				_size=_size-1;
-				
-				return c;
+				return '0';			
 			}
-			else{
-			    char c=movetiles.get(0);
-			    _temp1.setCharacter(c);
-			    ss=ss+c;
-		    }
-			System.out.println(ss);
-			
-			
-			return 0;			
-		}
 
 	public void setObserver(Observer ob) {
 		// TODO Auto-generated method stub
