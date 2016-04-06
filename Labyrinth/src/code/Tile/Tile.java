@@ -4,6 +4,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Random;
 
+import code.Player.Player;
+
 /** This class is the tile class which basically states the methods 
 that are used to populate the board based on the tile path shape
 and is defined in the Labyrinth Model class. We use the instance 
@@ -21,7 +23,6 @@ character to set that shaped path onto the tile.
 public  class Tile {
 
 	int token;
-	private Path _path;
 	private Character _char;
 	private boolean _east=false;
 	private boolean _north=false;
@@ -126,8 +127,7 @@ public  class Tile {
 	 */
 	public void setTokens(){
 
-		if(_points.isEmpty()==false){
-
+		if(!_points.isEmpty()){
 			_token = _points.remove((int)(Math. random() * _points.size()));
 		}
 
@@ -150,7 +150,11 @@ public  class Tile {
 	
 
 	public void setValueOfToken(int i){
-		_token = 0;
+		_token = i;
+	}
+	
+	public int getToken(){
+		return _token;
 	}
 	
 	/**
@@ -191,5 +195,26 @@ public  class Tile {
 	public void setY(int y){
 		_y = y;
 	}
+	//check if there is player standing on the tile
+	public boolean hasPlayer(ArrayList<Player> player){
+		for(int i = 0; i < player.size(); i++ ){
+			if(player.get(i).getTile().getX()==_x && player.get(i).getTile().getY() == _y){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	//change all the players that in current tile to tile t
+	public void changingPlayerPosition(ArrayList<Player> player, Tile t){
+		for(int i = 0; i < player.size(); i++ ){
+			if(player.get(i).getTile().getX()==_x && player.get(i).getTile().getY() == _y){
+				player.get(i).setTile(t);
+			}
+		}
+	}
+
+	
+
 
 }

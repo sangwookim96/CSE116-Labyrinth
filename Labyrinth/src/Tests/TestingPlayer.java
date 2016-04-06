@@ -62,13 +62,11 @@ public class TestingPlayer {
 		ArrayList<Player> p = new ArrayList<Player>();
 		p = b.getPlayer();
 		Tile t = new Tile();
-		t.Tiledirection('^');
-		t.setX(2);
-		t.setY(3);
+		t.Tiledirection('L');
+		t.setX(3);
+		t.setY(2);
 		boolean result = p.get(0).position(t);
 		boolean expected = true;
-		System.out.print(p.get(0).getTile().getX());
-		System.out.println(p.get(0).getTile().getY());
 		assertTrue("Expected result will be " + expected + " but the actual result is " + result, expected == result);
 	}
 	

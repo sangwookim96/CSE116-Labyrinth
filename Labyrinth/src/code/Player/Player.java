@@ -88,6 +88,10 @@ public class Player {
 		return null;
 	}
 	
+	
+	public Tile setTile(Tile t){
+		return _cTile = t;
+	}
 
 	
 	public int getX(){
@@ -116,10 +120,10 @@ public class Player {
 	 * @return true if the player successfully moves to the adjacent tile.
 	 */
 	public boolean position(Tile tTile){
-//		System.out.println(_cTile.getX());
-//		System.out.println(_cTile.getY());
-//		System.out.println(tTile.getX());
-//		System.out.println(tTile.getY());
+		//		System.out.println(_cTile.getX());
+		//		System.out.println(_cTile.getY());
+		//		System.out.println(tTile.getX());
+		//		System.out.println(tTile.getY());
 		if(tTile == null || _cTile == null){
 			return false;
 		}
