@@ -24,6 +24,8 @@ public class GUI implements Runnable,Observer {
 	private Tile _tile;
 	private Player _p;
 	private JLabel _jl;
+	private ArrayList<Character> _list;
+	private String s;
 	
 	
 	public GUI(LabyrinthModel lm){
@@ -44,10 +46,11 @@ public class GUI implements Runnable,Observer {
 		_jp.setFocusable(true);
 		_jp.setLayout(new GridLayout(LabyrinthModel.ROWS, LabyrinthModel.COLS));
 		
+		int c=0;
+		
 		for(int i=0;i<LabyrinthModel.COLS;i++){
 			for(int ii=0;ii<LabyrinthModel.ROWS;ii++){
 				JButton b = new JButton();
-				b.setName(_jl.getText());
 				b.setOpaque(true);
 				b.setFocusable(false);
 				b.setPreferredSize(new Dimension(100, 100));  // so board stays same size regardless of letters

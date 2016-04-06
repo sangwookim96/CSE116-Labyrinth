@@ -1,5 +1,6 @@
 package code.model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import code.model.Observer;
@@ -40,8 +41,9 @@ public class LabyrinthModel {
 	/** a representation of the board (non-graphical)
 	 * 
 	 */
-	private String ss;       // 
+	private String s;       // 
 	private ArrayList<Player> _player = new ArrayList<Player>();
+	private ArrayList<String> _list;
 	private Observer _observer;
 
 	/**
@@ -190,24 +192,28 @@ public class LabyrinthModel {
 //						System.out.println(_board[r][c].getToken());
 					}
 				}
-
 			} 
 		}
 		randomCharacter();
-//
-//					ss= "";
-//					for(int r=0;r<7;r++){
-//						for(int c=0;c<7;c++){
-//							char c1 = _board[r][c].getCharacter();
-//							ss=ss+c1;
-//						}
-//					}
-//					
-//					int Stringlength = ss.length();
-//					System.out.println(ss);
-//					
-//					return Stringlength;
 	}
+	public String Characters() {
+		s = "";
+		String ss= "";
+		String characters = "";
+		Array[] Array = new Array[49];
+		_list = new ArrayList<String>();
+		for(int r=0;r<7;r++){
+			for(int c=0;c<7;c++){
+				char c1 = _board[r][c].getCharacter();
+				s+=c1;
+				_list.add(s);
+				characters+=s;
+				s=ss;
+			}
+		}System.out.println(characters);
+		
+		return characters;
+	} 
 
 	//check the initial player position
 	public boolean checkPlayer(int x,int y){
@@ -236,6 +242,8 @@ public class LabyrinthModel {
 		for (int x = 0; x < 7; x++){
 			for(int y = 0; y < 7; y++){
 				a.add(getTile(x,y).getCharacter());
+				System.out.print(a);
+
 			}
 		}
 		return a;
@@ -263,7 +271,7 @@ public class LabyrinthModel {
 		else{
 			char c=movetiles.get(0);
 			_temp1.Tiledirection(c);
-			ss=s+c;
+//			s=s+c;
 		}
 //						System.out.println(ss);
 
@@ -519,6 +527,10 @@ public class LabyrinthModel {
 			}
 		return 0;
 	} 
+	
+	public Tile extraTile(){
+		return _temp1;
+	}
 
 	public void setObserver(Observer ob) {
 		// TODO Auto-generated method stub
