@@ -243,7 +243,6 @@ public class LabyrinthModel {
 			for(int y = 0; y < 7; y++){
 				a.add(getTile(x,y).getCharacter());
 				System.out.print(a);
-
 			}
 		}
 		return a;
