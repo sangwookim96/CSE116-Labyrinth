@@ -4,6 +4,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+
 import code.Player.Player;
 
 /** This class is the tile class which basically states the methods 
@@ -32,6 +34,7 @@ public  class Tile {
 	private int _y;
 	static ArrayList<Integer>_points=new ArrayList<Integer>();
 	private int _token;
+	private ImageIcon _img;
 
 
 	public Tile() {			
@@ -212,6 +215,13 @@ public  class Tile {
 				player.get(i).setTile(t);
 			}
 		}
+	}
+
+	public ImageIcon setIcon(ImageIcon img) {
+		_img=img;
+		return _img;
+		// TODO Auto-generated method stub
+		
 	}
 
 	
