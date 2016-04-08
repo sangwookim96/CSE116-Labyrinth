@@ -1,10 +1,16 @@
 package code.model;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import code.model.Observer;
+
 import java.util.Random;
+
+import javax.imageio.ImageIO;
+
 import code.Player.Player;
 import code.Tile.Tile;
 import code.gui.GUI;
@@ -117,14 +123,16 @@ public class LabyrinthModel {
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
 					_board[r][c].Tiledirection('!');
-					_board[r][c].setCharacter('!');;
+					_board[r][c].setCharacter('!');
+				
+					
 				}
 				else if(r==6&&c==6){
 					_board[r][c]=new Tile();
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
 					_board[r][c].Tiledirection('#');
-					_board[r][c].setCharacter('#');;
+					_board[r][c].setCharacter('#');
 				}
 				else if(r==6&&c==0){
 					_board[r][c]=new Tile();
@@ -138,14 +146,14 @@ public class LabyrinthModel {
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
 					_board[r][c].Tiledirection('@');
-					_board[r][c].setCharacter('@');;
+					_board[r][c].setCharacter('@');
 				}
 				else if((r==0&&c==2)||(r==2&&c==4)||(r==0&&c==4)){
 					_board[r][c]=new Tile();
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
 					_board[r][c].Tiledirection('T');
-					_board[r][c].setCharacter('T');;
+					_board[r][c].setCharacter('T');
 					if(checkPlayer(r,c)){
 						_player.add(new Player(_board[r][c],r,c));
 					}
@@ -155,7 +163,7 @@ public class LabyrinthModel {
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
 					_board[r][c].Tiledirection('$');
-					_board[r][c].setCharacter('$');;
+					_board[r][c].setCharacter('$');
 					if(checkPlayer(r,c)){
 						_player.add(new Player(_board[r][c],r,c));
 					}
@@ -165,7 +173,7 @@ public class LabyrinthModel {
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
 					_board[r][c].Tiledirection('%');
-					_board[r][c].setCharacter('%');;
+					_board[r][c].setCharacter('%');
 					if(checkPlayer(r,c)){
 						_player.add(new Player(_board[r][c],r,c));
 					}
@@ -175,7 +183,7 @@ public class LabyrinthModel {
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
 					_board[r][c].Tiledirection('^');
-					_board[r][c].setCharacter('^');;
+					_board[r][c].setCharacter('^');
 					if(checkPlayer(r,c)){
 						_player.add(new Player(_board[r][c],r,c));
 					}
@@ -186,7 +194,7 @@ public class LabyrinthModel {
 					_board[r][c].setY(c);
 					char check=randomCharacter();						
 					_board[r][c].Tiledirection(check);
-					_board[r][c].setCharacter(check);;
+					_board[r][c].setCharacter(check);
 					if((0 < r && r < 6 )&&(0 < c && c < 6 )&&(!checkPlayer(r,c))){
 						_board[r][c].setTokens();
 //						System.out.println(_board[r][c].getToken());

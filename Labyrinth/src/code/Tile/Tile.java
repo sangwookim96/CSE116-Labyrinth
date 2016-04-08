@@ -1,12 +1,19 @@
 package code.Tile;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import code.Player.Player;
+import code.gui.GUI;
+import code.model.LabyrinthModel;
 
 /** This class is the tile class which basically states the methods 
 that are used to populate the board based on the tile path shape
@@ -34,12 +41,15 @@ public  class Tile {
 	private int _y;
 	static ArrayList<Integer>_points=new ArrayList<Integer>();
 	private int _token;
-	private ImageIcon _img;
+	public BufferedImage _img;
+	
+	private code.gui.GUI _gui;
+	
 
 
 	public Tile() {			
 		_char = ' ';
-
+		
 	}
 
 	public Character getCharacter() {
@@ -217,12 +227,37 @@ public  class Tile {
 		}
 	}
 
-	public ImageIcon setIcon(ImageIcon img) {
-		_img=img;
-		return _img;
+	public BufferedImage setIcon(File filename,char ch) {
+		Graphics g = null;
+		BufferedImage img;
+		try {
+			img=ImageIO.read(filename);
+			if(ch=='!'){
+				_img=img;
+				return img;	
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		paint(g,_img);
+		return null;
+		
 		// TODO Auto-generated method stub
 		
 	}
+
+	private void paint(Graphics g,BufferedImage img) {
+		g.drawImage(img, getX(), getY(), null);
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	// Image class
+	
+	
 
 	
 

@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,6 +21,7 @@ public class GUI implements Runnable,Observer {
 
 	private JFrame _window;
 	private LabyrinthModel _lm;
+	private JPanel _TilePanel;
 //	private Tile _tile;
 //	private Player _p;
 //	private JLabel _jl;
@@ -49,6 +51,7 @@ public class GUI implements Runnable,Observer {
 		
 		for(int i=0;i<_lm.ROWS;i++){
 			for(int a=0;a<_lm.COLS;a++){
+				ImageIcon img=new ImageIcon("C:/Users/AdityaKishan/git/team-125/Labyrinth/Labyrinth.png");
 				JButton b = new JButton();
 				b.setPreferredSize(new Dimension(100, 100));
 				jp.add(b);
@@ -107,6 +110,8 @@ public class GUI implements Runnable,Observer {
 //	
 	@Override
 	public void update() {
+		
+		JButton _TilePanel.getComponent()
 		// TODO Auto-generated method stub
 		
 		_window.repaint();
