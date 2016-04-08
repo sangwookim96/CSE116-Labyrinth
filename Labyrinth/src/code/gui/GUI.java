@@ -44,9 +44,11 @@ _lm = new LabyrinthModel();
 		jp.setLayout(new GridLayout(7,7));
 		jp.setFocusable(true);
 		
+		String s = "";
+		
 		for(int i=0;i<_lm.ROWS;i++){
 			for(int a=0;a<_lm.COLS;a++){
-				JButton b = new JButton();
+				JButton b = new JButton(s+_lm.getTile(i,a).getCharacter());
 				b.setPreferredSize(new Dimension(100, 100));
 				jp.add(b);
 			}
@@ -76,7 +78,7 @@ _lm = new LabyrinthModel();
 			}
 			else if(i==17){
 				int points = 0;
-				JLabel l1 = new JLabel("POINTS: "+points);
+				JLabel l1 = new JLabel("POINTS: "+ points);
 				l1.setPreferredSize(new Dimension(100, 100));
 				p.add(l1);
 			}
