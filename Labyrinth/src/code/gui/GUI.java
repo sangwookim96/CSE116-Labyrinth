@@ -70,14 +70,15 @@ _lm = new LabyrinthModel();
 				p.add(b1);
 			}
 			else if(i==7){
-				JButton b2 = new JButton("TOKEN");
-				b2.setPreferredSize(new Dimension(100, 100));
-				p.add(b2);
+				JLabel l = new JLabel("TOKEN: ");
+				l.setPreferredSize(new Dimension(100, 100));
+				p.add(l);
 			}
 			else if(i==17){
-				JButton b3 = new JButton("POINTS");
-				b3.setPreferredSize(new Dimension(100, 100));
-				p.add(b3);
+				int points = 0;
+				JLabel l1 = new JLabel("POINTS: "+points);
+				l1.setPreferredSize(new Dimension(100, 100));
+				p.add(l1);
 			}
 		}
 		_window.add(p);
