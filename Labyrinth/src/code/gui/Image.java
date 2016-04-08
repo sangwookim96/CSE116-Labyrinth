@@ -26,28 +26,43 @@ public class Image {
 //       }
 	
 	
-	Tile _exButton;
+	Tile _tile;
 	JPanel _exPanel;
 	JFrame _exFrame = new JFrame();
 	
 	
-	JButton
+	//JButton
 	
 	public Image(){
-		_exButton = new Tile();
+		_tile = new Tile();
 		_exPanel = new JPanel();
 		_exPanel.setBackground(Color.black);
 		ImageIcon img = new ImageIcon(/*image file address*/);
-		_exButton.setIcon(img);
+		_tile.setIcon(img);
 		
 		
 		_exFrame.setDefaultCloseOperation(0);
 		_exFrame.setSize(400, 400);
 		
-		_exPanel.add(_exButton);
-		_exFrame.add(_exPanel);
-		_exFrame.validate();
+		
+		//figure out how to add Tile class into JPanel.
+		//Tile class would call image.
+//		_exPanel.add(_exButton);
+//		_exFrame.add(_exPanel);
+//		_exFrame.validate();
+		
+		
+		
 		
 	}
+	
+	public boolean addTileChar2Panel(Tile t){
+		char charTile = t.getCharacter();
+		
+		
+		return false;
+	}
+	
+	
 	
 }
