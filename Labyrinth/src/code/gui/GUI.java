@@ -86,7 +86,7 @@ _lm = new LabyrinthModel();
 	@Override
 	public void update() {
 		
-		JButton _TilePanel.getComponent()
+//		JButton _TilePanel.getComponent()
 		// TODO Auto-generated method stub
 		
 		_window.repaint();
