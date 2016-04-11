@@ -77,6 +77,8 @@ public class GUI implements Runnable,Observer {
 			}
 			if(i==4){
 				JButton b1 = new JButton("EXTRA TILE");
+				char c = _lm.returnExtraTileCharacter();
+				b1.setIcon(this.char2Image(_lm.extraTile().getCharacter()));;
 				b1.setPreferredSize(new Dimension(100, 100));
 				p.add(b1);
 			}

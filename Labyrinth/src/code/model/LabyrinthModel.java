@@ -53,7 +53,7 @@ public class LabyrinthModel extends Tile{
 	private ArrayList<Player> _player = new ArrayList<Player>();
 	private ArrayList<String> _list;
 	private Observer _observer;
-	private int _cPlayer = 0;
+	private int _cPlayer = 1;
 	private int _playerNumber;
 	private Player _currentPlayer;
 	private int _priority = 0;
@@ -293,12 +293,17 @@ public class LabyrinthModel extends Tile{
 		else{
 			char c=movetiles.get(0);
 			_temp1.Tiledirection(c);
+			_temp1.setCharacter(c);
 //			s=s+c;
 		}
 //						System.out.println(ss);
 
 
 		return '0';			
+	}
+	
+	public char returnExtraTileCharacter(){
+		return _temp1.getCharacter();
 	}
 	
 	//swap the player and token data between two tile
