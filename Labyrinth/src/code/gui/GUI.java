@@ -111,7 +111,25 @@ _lm = new LabyrinthModel();
 		ImageIcon T = new ImageIcon("");
 		
 		
-		
+		if(c=='!'){
+			return exclamation;
+		}else if(c=='@'){
+			return at;			
+		}else if(c=='#'){
+			return hashtag;
+		}else if(c=='L'){
+			return L;
+		}else if(c=='&'){
+			return and;
+		}else if(c=='I'){
+			return I;
+		}else if(c=='%'){
+			return percentage;
+		}else if(c=='^'){
+			return power;
+		}else if(c=='$'){
+			return dollar;
+		}
 		
 		
 		return null;
