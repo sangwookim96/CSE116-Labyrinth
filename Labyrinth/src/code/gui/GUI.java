@@ -4,8 +4,10 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.io.File;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -48,12 +50,16 @@ _lm = new LabyrinthModel();
 		
 		for(int i=0;i<_lm.ROWS;i++){
 			for(int a=0;a<_lm.COLS;a++){
-				JButton b = new JButton(s+_lm.getTile(i,a).getCharacter());
-				b.(_tm.setIcon(s+_lm.getTile(i,a).getCharacter()));
+				ImageIcon c=new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\L Tile\\Type !.png");
+				JButton b = new JButton(/*s+_lm.getTile(i,a).getCharacter()*//*c*/);
+				//b.(_tm.setIcon(s+_lm.getTile(i,a).getCharacter()));
+				b.setIcon(c);
 				b.setPreferredSize(new Dimension(100, 100));
 				jp.add(b);
 			}
 		}
+		
+		
 		
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout(5,5));
@@ -86,6 +92,31 @@ _lm = new LabyrinthModel();
 		}
 		_window.add(p);
 	}
+	
+	public ImageIcon char2Image(char c){
+		//L Tile
+		ImageIcon exclamation =new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\L Tile\\Type !.png");
+		ImageIcon at = new ImageIcon("");
+		ImageIcon hashtag = new ImageIcon("");
+		ImageIcon L = new ImageIcon("");
+		
+		//I Tile
+		ImageIcon and = new ImageIcon("");
+		ImageIcon I = new ImageIcon("");
+		
+		//T Tile
+		ImageIcon percentage = new ImageIcon("");
+		ImageIcon power = new ImageIcon("");
+		ImageIcon dollar = new ImageIcon("");
+		ImageIcon T = new ImageIcon("");
+		
+		
+		
+		
+		
+		return null;
+	}
+	
 //	
 	@Override
 	public void update() {
