@@ -126,8 +126,8 @@ public class LabyrinthModel extends Tile{
 					_board[r][c]=new Tile();
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
-					_board[r][c].Tiledirection('!');
-					_board[r][c].setCharacter('!');
+					_board[r][c].Tiledirection('#');
+					_board[r][c].setCharacter('#');
 					
 					
 					
@@ -136,8 +136,8 @@ public class LabyrinthModel extends Tile{
 					_board[r][c]=new Tile();
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
-					_board[r][c].Tiledirection('#');
-					_board[r][c].setCharacter('#');
+					_board[r][c].Tiledirection('!');
+					_board[r][c].setCharacter('!');
 				}
 				else if(r==6&&c==0){
 					_board[r][c]=new Tile();
@@ -157,8 +157,8 @@ public class LabyrinthModel extends Tile{
 					_board[r][c]=new Tile();
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
-					_board[r][c].Tiledirection('T');
-					_board[r][c].setCharacter('T');
+					_board[r][c].Tiledirection('%');
+					_board[r][c].setCharacter('%');
 					if(checkPlayer(r,c)){
 						_player.add(new Player(_board[r][c],r,c));
 					}
@@ -177,8 +177,8 @@ public class LabyrinthModel extends Tile{
 					_board[r][c]=new Tile();
 					_board[r][c].setX(r);
 					_board[r][c].setY(c);
-					_board[r][c].Tiledirection('%');
-					_board[r][c].setCharacter('%');
+					_board[r][c].Tiledirection('T');
+					_board[r][c].setCharacter('T');
 					if(checkPlayer(r,c)){
 						_player.add(new Player(_board[r][c],r,c));
 					}
@@ -202,10 +202,11 @@ public class LabyrinthModel extends Tile{
 					_board[r][c].setCharacter(check);
 					if((0 < r && r < 6 )&&(0 < c && c < 6 )&&(!checkPlayer(r,c))){
 						_board[r][c].setTokens();
-//						System.out.println(_board[r][c].getToken());
+						
 					}
 				}
-			} 
+				System.out.println(_board[r][c].getCharacter());
+			} 			
 		}
 		randomCharacter();
 	}
@@ -223,7 +224,7 @@ public class LabyrinthModel extends Tile{
 				characters+=s;
 				s=ss;
 			}
-		}System.out.println(characters);
+		}//System.out.println(characters);
 		
 		return characters;
 	} 
@@ -255,7 +256,7 @@ public class LabyrinthModel extends Tile{
 		for (int x = 0; x < 7; x++){
 			for(int y = 0; y < 7; y++){
 				a.add(getTile(x,y).getCharacter());
-				System.out.print(a);
+				//System.out.print(a);
 			}
 		}
 		return a;
