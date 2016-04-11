@@ -302,9 +302,6 @@ public class LabyrinthModel extends Tile{
 		return '0';			
 	}
 	
-	public char returnExtraTileCharacter(){
-		return _temp1.getCharacter();
-	}
 	
 	//swap the player and token data between two tile
 	//for example,there are token number 25 and two players standing in the tile c.If tile c
