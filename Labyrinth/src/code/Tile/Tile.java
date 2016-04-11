@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import code.Player.Player;
@@ -227,23 +228,23 @@ public  class Tile {
 		}
 	}
 
-	public BufferedImage setIcon(File filename,char ch) {
+	public BufferedImage setIcon(String string) {
 		Graphics g = null;
 		BufferedImage img;
+		String filename;
 		try {
-			img=ImageIO.read(filename);
-			if(ch=='!'){
+			if(string.equals("!")){
+				filename="C:/Users/AdityaKishan/git/team-125/Labyrinth/Labyrinth BufferImages/L Tile/Type !.png";
+				img=ImageIO.read(new File(filename));
 				_img=img;
-				return img;	
+				return _img;	
 			}
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		paint(g,_img);
-		return null;
-		
+		return _img;	
 		// TODO Auto-generated method stub
 		
 	}

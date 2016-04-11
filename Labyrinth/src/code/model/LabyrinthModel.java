@@ -1,5 +1,7 @@
 package code.model;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.lang.reflect.Array;
@@ -14,7 +16,7 @@ import javax.imageio.ImageIO;
 import code.Player.Player;
 import code.Tile.Tile;
 import code.gui.GUI;
-public class LabyrinthModel {
+public class LabyrinthModel extends Tile{
 
 
 	/* This is our main model class that is basically a hub for methods and connections between all other classes
@@ -116,6 +118,8 @@ public class LabyrinthModel {
 	 * @author Aditya Kishan Ankaraboyana
 	 */
 	public void initializeBoard() {
+		Image img;
+		Graphics g=null;
 		for(int r=0;r<7;r++){
 			for(int c=0;c<7;c++){
 				if(r==0&&c==0){
@@ -124,7 +128,8 @@ public class LabyrinthModel {
 					_board[r][c].setY(c);
 					_board[r][c].Tiledirection('!');
 					_board[r][c].setCharacter('!');
-				
+					
+					
 					
 				}
 				else if(r==6&&c==6){

@@ -22,7 +22,7 @@ public class GUI implements Runnable,Observer {
 	private JFrame _window;
 	private LabyrinthModel _lm;
 	private JPanel _TilePanel;
-	
+	private Tile _tm;
 	public GUI(LabyrinthModel lm){
 		_lm = lm;
 		_lm.setObserver(this);
@@ -49,6 +49,7 @@ _lm = new LabyrinthModel();
 		for(int i=0;i<_lm.ROWS;i++){
 			for(int a=0;a<_lm.COLS;a++){
 				JButton b = new JButton(s+_lm.getTile(i,a).getCharacter());
+				b.(_tm.setIcon(s+_lm.getTile(i,a).getCharacter()));
 				b.setPreferredSize(new Dimension(100, 100));
 				jp.add(b);
 			}
