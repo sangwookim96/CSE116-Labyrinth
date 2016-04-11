@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import code.Player.Player;
 import code.Tile.Tile;
@@ -32,9 +33,7 @@ public class GUI implements Runnable,Observer {
 //	
 	@SuppressWarnings("deprecation")
 	@Override public void run() {
-		
-_lm = new LabyrinthModel();
-		
+				
 		_window = new JFrame("Labyrinth");
 		_window.setVisible(true);
 		_window.setLayout(new GridLayout(1,2));
@@ -50,10 +49,13 @@ _lm = new LabyrinthModel();
 		
 		for(int i=0;i<_lm.ROWS;i++){
 			for(int a=0;a<_lm.COLS;a++){
-				ImageIcon c=new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\L Tile\\Type !.png");
+//				ImageIcon c=new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\L Tile\\Type !.png");
 				JButton b = new JButton(/*s+_lm.getTile(i,a).getCharacter()*//*c*/);
 				//b.(_tm.setIcon(s+_lm.getTile(i,a).getCharacter()));
+				b.setText(_lm.getTile(i,a).getToken()+"");
 				b.setIcon(this.char2Image(_lm.getTile(i,a).getCharacter()));
+				b.setVerticalTextPosition(SwingConstants.CENTER);
+			    b.setHorizontalTextPosition(SwingConstants.CENTER);
 				b.setPreferredSize(new Dimension(100, 100));
 				jp.add(b);
 			}
@@ -95,20 +97,20 @@ _lm = new LabyrinthModel();
 	
 	public ImageIcon char2Image(char c){
 		//L Tile
-		ImageIcon exclamation =new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\L Tile\\Type !.png");
-		ImageIcon at = new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\L Tile\\Type @.png");
-		ImageIcon hashtag = new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\L Tile\\Type #.png");
-		ImageIcon L = new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\L Tile\\Type L.png");
+		ImageIcon exclamation =new ImageIcon("Labyrinth BufferImages\\L Tile\\Type !.png");
+		ImageIcon at = new ImageIcon("Labyrinth BufferImages\\L Tile\\Type @.png");
+		ImageIcon hashtag = new ImageIcon("Labyrinth BufferImages\\L Tile\\Type #.png");
+		ImageIcon L = new ImageIcon("Labyrinth BufferImages\\L Tile\\Type L.png");
 		
 		//I Tile
-		ImageIcon and = new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\I Tile\\Type &.png");
-		ImageIcon I = new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\I Tile\\Type I.png");
+		ImageIcon and = new ImageIcon("Labyrinth BufferImages\\I Tile\\Type &.png");
+		ImageIcon I = new ImageIcon("Labyrinth BufferImages\\I Tile\\Type I.png");
 		
 		//T Tile
-		ImageIcon percentage = new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\T Tile\\Type %.png");
-		ImageIcon power = new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\T Tile\\Type ^.png");
-		ImageIcon dollar = new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\T Tile\\Type $.png");
-		ImageIcon T = new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\T Tile\\Type T.png");		
+		ImageIcon percentage = new ImageIcon("Labyrinth BufferImages\\T Tile\\Type %.png");
+		ImageIcon power = new ImageIcon("Labyrinth BufferImages\\T Tile\\Type ^.png");
+		ImageIcon dollar = new ImageIcon("Labyrinth BufferImages\\T Tile\\Type $.png");
+		ImageIcon T = new ImageIcon("Labyrinth BufferImages\\T Tile\\Type T.png");		
 		
 		if(c=='!'){
 			return exclamation;

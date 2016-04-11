@@ -53,6 +53,14 @@ public class LabyrinthModel extends Tile{
 	private ArrayList<Player> _player = new ArrayList<Player>();
 	private ArrayList<String> _list;
 	private Observer _observer;
+	private int _cPlayer = 0;
+	private int _playerNumber;
+	private Player _currentPlayer;
+	private int _priority = 0;
+	private Tile _top = new Tile();
+	private Tile _bottom = new Tile();
+	private Tile _left = new Tile();
+	private Tile _right = new Tile();
 
 	/**
 	 * The following constructor does the job of initializing the Tile array to a 7 by 7 board.
@@ -69,6 +77,7 @@ public class LabyrinthModel extends Tile{
 		initializeBoard();
 		_temp1.setX(9);
 		_temp1.setY(9);
+		_currentPlayer = _player.get(0);
 
 	}
 
@@ -205,7 +214,7 @@ public class LabyrinthModel extends Tile{
 						
 					}
 				}
-				System.out.println(_board[r][c].getCharacter());
+//				System.out.println(_board[r][c].getCharacter());
 			} 			
 		}
 		randomCharacter();
@@ -543,6 +552,102 @@ public class LabyrinthModel extends Tile{
 	
 	public Tile extraTile(){
 		return _temp1;
+	}
+	public void endRound(){
+		resetPriority();
+		if(_cPlayer == _playerNumber ){
+			_cPlayer = 0;
+		}
+		_cPlayer++;
+		_currentPlayer = _player.get(_cPlayer);
+	}
+	
+	public Player getCurrentPlayer(){
+		return _currentPlayer;
+	}
+	
+	public void topTile(){
+		if(_currentPlayer.getX() > 0){
+			_top = getTile((_currentPlayer.getX()-1),_currentPlayer.getY());
+		}
+		else{
+			_top = null;
+		}
+	}
+	public Tile getUpTile(){
+		return _top;
+	}
+	
+	public void bottomTile(){
+		if(_currentPlayer.getX() < 6){
+			_bottom = getTile((_currentPlayer.getX()+1),_currentPlayer.getY());
+
+		}
+		else{
+			_bottom = null;
+		}
+	}
+	
+	public Tile getbottomTile(){
+		return _bottom;
+	}
+	
+	
+	public void leftTile(){
+		if(_currentPlayer.getY() > 0){
+			_left = getTile(_currentPlayer.getX(),(_currentPlayer.getY()-1));
+
+		}
+		else{
+			_left = null;
+		}
+	}
+	
+	public Tile getLeftTile(){
+		return _left;
+	}
+	
+	
+	public void rightTile(){
+		if(_currentPlayer.getY() < 6){
+			_right = getTile(_currentPlayer.getX(), (_currentPlayer.getY()+1));
+
+		}
+		else{
+			_right = null;
+		}
+	}
+	
+	public Tile getRightTile(){
+		return _right;
+	}
+	
+	
+	public void setPlayerNumber(int i){
+		_playerNumber = i; 
+	}
+	
+	public int getPlayerNumber(){
+		return _playerNumber; 
+	}
+	
+	public void magicstick(){
+		if(_currentPlayer.usingMagicStick()==true){
+			_priority =0;
+		}
+		else{
+			System.out.println("You don't have magic stick!");
+		}
+	}
+
+	public void setPriority(){
+		_priority++;
+	}
+	public int getPriority(){
+		return _priority;
+	}
+	public void resetPriority(){
+		_priority = 0;
 	}
 
 	public void setObserver(Observer ob) {

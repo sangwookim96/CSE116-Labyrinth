@@ -15,6 +15,7 @@ public class Player {
 	private int _x;
 	private int _y;
 	private Tile _cTile;
+	private String _name;
 	
 	
 	public Player(Tile p,int x,int y){
@@ -165,6 +166,13 @@ public class Player {
 		} else if(color==3){
 			// set player color to Green
 		}		
+	}
+	public void setName(String name){
+		_name = name;
+	}
+	
+	public String getName(){
+		return _name;
 	}
 	
 	

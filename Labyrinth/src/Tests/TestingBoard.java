@@ -16,10 +16,10 @@ public class TestingBoard {
 	@Test public void boardTest1(){
 		ArrayList<Character> a = new ArrayList<Character>();
 		LabyrinthModel b = new LabyrinthModel();
-		a = b.allTheTile();
-		for(int i = 0; i < a.size(); i++){
-			System.out.print(a.get(i));
-		}
+//		a = b.allTheTile();
+//		for(int i = 0; i < a.size(); i++){
+//			System.out.print(a.get(i));
+//		}
 		boolean expected = true;
 		assertTrue(".......",expected=true);
 	}
@@ -48,10 +48,16 @@ public class TestingBoard {
 		ArrayList<Player> p = new ArrayList<Player>();
 		Tile t = new Tile();
 		p = b.getPlayer();
-		t = b.getTile(3,2);
+		b.bottomTile();
+		t = b.getbottomTile();
+		
+		System.out.println(t.getX());
+		System.out.println(t.getY());
+		System.out.println(t.getToken());
 
 
 		boolean result = p.get(0).position(t);
+		System.out.println(result);
 		
 		b.push(b.Point2Position(3,6));
 		b.push(b.Point2Position(3,6));
@@ -60,8 +66,26 @@ public class TestingBoard {
 		b.push(b.Point2Position(3,6));
 
 		boolean expected = b.getTile(3,0).hasPlayer(p);
+		Tile c = b.getTile(3,0);
+		b.leftTile();
+		System.out.println(c.getToken());
+		System.out.println(b.getLeftTile());
 
 		assertTrue("",expected==result);
+	}
+	@Test public void boardTest5(){
+		ArrayList<Character> a = new ArrayList<Character>();
+		LabyrinthModel b = new LabyrinthModel();
+		Player c = b.getPlayer().get(0);
+		b.topTile();
+//		Tile up = b.getUpTile();
+//		System.out.println(up.getX());
+//		System.out.println(up.getY());
+//		System.out.println(up.getToken());
+
+		
+		boolean expected = true;
+		assertTrue(".......",expected=true);
 	}
 }
 

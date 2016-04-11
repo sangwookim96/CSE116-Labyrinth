@@ -232,18 +232,18 @@ public  class Tile {
 		Graphics g = null;
 		BufferedImage img;
 		String filename;
-		try {
-			if(string.equals("!")){
-				filename="C:/Users/AdityaKishan/git/team-125/Labyrinth/Labyrinth BufferImages/L Tile/Type !.png";
-				img=ImageIO.read(new File(filename));
-				_img=img;
-				return _img;	
-			}
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			if(string.equals("!")){
+//				filename="C:/Users/ziyi/git/team-125/Labyrinth/Labyrinth BufferImages/L Tile/Type !.png";
+//				img=ImageIO.read(new File(filename));
+//				_img=img;
+//				return _img;	
+//			}
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return _img;	
 		// TODO Auto-generated method stub
 		
