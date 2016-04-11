@@ -83,7 +83,7 @@ public  class Tile {
 			return true;
 		}
 
-		if(type=='T'){
+		if(type=='%'){
 			_south=true;
 			_east=true;
 			_west=true;
@@ -95,7 +95,7 @@ public  class Tile {
 			_south=true;
 			return true;
 		}
-		if(type=='%'){
+		if(type=='T'){
 			_west=true;
 			_east=true;
 			_north=true;

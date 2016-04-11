@@ -30,7 +30,7 @@ public class GUI implements Runnable,Observer {
 		_lm = lm;
 		_lm.setObserver(this);
 	}
-//	
+
 	@SuppressWarnings("deprecation")
 	@Override public void run() {
 				
@@ -77,10 +77,12 @@ public class GUI implements Runnable,Observer {
 			}
 			if(i==4){
 				JButton b1 = new JButton("EXTRA TILE");
-				
+				b1.addActionListener(new ExtraTileListener(_lm));
+				System.out.println();
 				b1.setIcon(this.char2Image(_lm.extraTile().getCharacter()));;
 				b1.setPreferredSize(new Dimension(100, 100));
 				p.add(b1);
+				
 			}
 			else if(i==7){
 				JLabel l = new JLabel("TOKEN: ");
