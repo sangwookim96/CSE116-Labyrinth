@@ -3,13 +3,17 @@ package code.gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import org.omg.Messaging.SyncScopeHelper;
+
 import code.model.LabyrinthModel;
 
 public class ExtraTileListener implements ActionListener {
 
+	private GUI _g;
 	private LabyrinthModel _lm = new LabyrinthModel();
-	public ExtraTileListener(LabyrinthModel lm) {
+	public ExtraTileListener(LabyrinthModel lm /*, GUI g*/) {
 		_lm=lm;
+//		_g=g;
 	}
 	
 	@Override
@@ -17,6 +21,7 @@ public class ExtraTileListener implements ActionListener {
 		char c = _lm.extraTile().getCharacter();
 		if(c == 'I'){
 			_lm.extraTile().setCharacter('&');
+//			_g._b.setIcon(_g.char2Image(_lm.extraTile().getCharacter()));
 		}
 		else if(c == '&'){
 			_lm.extraTile().setCharacter('I');
@@ -48,5 +53,6 @@ public class ExtraTileListener implements ActionListener {
 		else{
 			_lm.setCharacter(_lm.getCharacter());
 		}
+		System.out.println(c);
 	}
 }

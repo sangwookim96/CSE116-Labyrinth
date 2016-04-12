@@ -24,7 +24,8 @@ public class GUI implements Runnable,Observer {
 
 	private JFrame _window;
 	private LabyrinthModel _lm;
-	private JPanel _TilePanel;
+	private JPanel _TilePanel, _jp,_p;
+//	JButton _b;
 	private Tile _tm;
 	public GUI(LabyrinthModel lm){
 		_lm = lm;
@@ -35,37 +36,36 @@ public class GUI implements Runnable,Observer {
 	@Override public void run() {
 				
 		_window = new JFrame("Labyrinth");
-		_window.setVisible(true);
 		_window.setLayout(new GridLayout(1,2));
 		_window.setSize(2000, 1000);
 		_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel jp = new JPanel();
-		_window.add(jp);
-		jp.setLayout(new GridLayout(7,7));
-		jp.setFocusable(true);
+		initializegame();
 		
-		String s = "";
+		_window.setVisible(true);
+		_window.add(_jp);
+		_window.add(_p);
+	}
+	
+	public void initializegame() {
+		
+		_jp = new JPanel();
+		_jp.setLayout(new GridLayout(7,7));
+		_jp.setFocusable(true);
+		
+//		String s = "";
 		
 		for(int i=0;i<_lm.ROWS;i++){
-			for(int a=0;a<_lm.COLS;a++){
-//				ImageIcon c=new ImageIcon("C:\\Users\\AdityaKishan\\git\\team-125\\Labyrinth\\Labyrinth BufferImages\\L Tile\\Type !.png");
-				JButton b = new JButton(/*s+_lm.getTile(i,a).getCharacter()*//*c*/);
-				//b.(_tm.setIcon(s+_lm.getTile(i,a).getCharacter()));
-				b.setText(_lm.getTile(i,a).getToken()+"");
-				b.setIcon(this.char2Image(_lm.getTile(i,a).getCharacter()));
-				b.setVerticalTextPosition(SwingConstants.CENTER);
-			    b.setHorizontalTextPosition(SwingConstants.CENTER);
+			for(int a=0;a<_lm.COLS;a++){	
+				JButton b = new JButton();
 				b.setPreferredSize(new Dimension(100, 100));
-				jp.add(b);
+				_jp.add(b);
 			}
 		}
 		
-		
-		
-		JPanel p = new JPanel();
-		p.setLayout(new GridLayout(5,5));
-		p.setFocusable(false);
+		_p = new JPanel();
+		_p.setLayout(new GridLayout(5,5));
+		_p.setFocusable(false);
 		for(int i=0;i<24;i++){
 			if(i<24 && i!=4 && i!=7	&& i!=17){
 				JButton InactiveB = new JButton();
@@ -73,32 +73,71 @@ public class GUI implements Runnable,Observer {
 				InactiveB.setBorderPainted(false);
 				InactiveB.setFocusable(false);
 				InactiveB.disable();
-				p.add(InactiveB);
+				_p.add(InactiveB);
 			}
 			if(i==4){
-				JButton b1 = new JButton("EXTRA TILE");
+				JButton b1 = new JButton();
 				b1.addActionListener(new ExtraTileListener(_lm));
-				System.out.println();
-				b1.setIcon(this.char2Image(_lm.extraTile().getCharacter()));;
 				b1.setPreferredSize(new Dimension(100, 100));
-				p.add(b1);
-				
+				_p.add(b1);
 			}
 			else if(i==7){
 				JLabel l = new JLabel("TOKEN: ");
 				l.setPreferredSize(new Dimension(100, 100));
-				p.add(l);
+				_p.add(l);
 			}
 			else if(i==17){
 				int points = 0;
 				JLabel l1 = new JLabel("POINTS: "+ points);
 				l1.setPreferredSize(new Dimension(100, 100));
-				p.add(l1);
+				_p.add(l1);
 			}
 		}
-		_window.add(p);
+		update();
 	}
 	
+	
+	
+	@Override
+	public void update() {
+		for(int r=0;r<_lm.ROWS;r++){
+			for(int c=0;c<_lm.COLS;c++){
+				JButton b = (JButton) _jp.getComponent(r*LabyrinthModel.ROWS + c);
+				b.setText(_lm.getTile(r,c).getToken()+"");
+				b.setIcon(this.char2Image(_lm.getTile(r,c).getCharacter()));
+				b.setVerticalTextPosition(SwingConstants.CENTER);
+				b.setHorizontalTextPosition(SwingConstants.CENTER);
+			}
+			for(int i=0;i<24;i++){
+				if(i<24 && i!=4 && i!=7	&& i!=17){
+					JButton InactiveB = new JButton();
+					InactiveB.setContentAreaFilled(false);
+					InactiveB.setBorderPainted(false);
+					InactiveB.setFocusable(false);
+					InactiveB.disable();
+				}
+				if(i==4){
+					JButton b = (JButton) _p.getComponent(i);
+					b.setText(_lm.extraTile().getCharacter()+"");
+					b.setIcon(this.char2Image(_lm.extraTile().getCharacter()));
+					b.setText(_lm.extraTile().getToken()+"");
+					b.setVerticalTextPosition(SwingConstants.CENTER);
+					b.setHorizontalTextPosition(SwingConstants.CENTER);
+				}
+				else if(i==7){
+					JLabel l = new JLabel("TOKEN: ");
+					l.setPreferredSize(new Dimension(100, 100));
+				}
+				else if(i==17){
+					int points = 0;
+					JLabel l1 = new JLabel("POINTS: "+ points);
+					l1.setPreferredSize(new Dimension(100, 100));
+				}
+			}
+		}
+		_window.repaint();
+	}
+
 	public ImageIcon char2Image(char c){
 		//L Tile
 		ImageIcon exclamation =new ImageIcon("Labyrinth BufferImages\\L Tile\\Type !.png");
@@ -140,14 +179,4 @@ public class GUI implements Runnable,Observer {
 		return null;
 	}
 	
-//	
-	@Override
-	public void update() {
-		
-//		JButton _TilePanel.getComponent()
-		// TODO Auto-generated method stub
-		
-		_window.repaint();
-	}
-
 }
