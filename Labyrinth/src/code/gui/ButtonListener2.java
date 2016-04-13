@@ -14,8 +14,9 @@ public class ButtonListener2 implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(_board.getPriority()==1){
+		if(_board.getPriority()==1 || _board.getPriority()==2){
 			_board.endRound();
+			_board.gameUpdate();
 		}
 		else{
 			System.out.println("error,you're not finish your round yet");

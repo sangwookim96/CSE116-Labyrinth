@@ -61,6 +61,7 @@ public class LabyrinthModel extends Tile{
 	private Tile _bottom = new Tile();
 	private Tile _left = new Tile();
 	private Tile _right = new Tile();
+	private int _index = 1;
 
 	/**
 	 * The following constructor does the job of initializing the Tile array to a 7 by 7 board.
@@ -80,6 +81,7 @@ public class LabyrinthModel extends Tile{
 		_currentPlayer = _player.get(0);
 
 	}
+	
 
 	public void setupTile(){
 		for(int i=0;i<5;i++){     
@@ -330,6 +332,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int c=6;c>0;c--){
 				_board[1][c]=_board[1][c-1];
+				_board[1][c].setX(1);
+				_board[1][c].setY(c);
 			}
 			_board[1][0]=_temp1;
 			_board[1][0].setX(1);
@@ -344,6 +348,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int c=6;c>0;c--){
 				_board[3][c]=_board[3][c-1];
+				_board[3][c].setX(3);
+				_board[3][c].setY(c);
 			}
 			_board[3][0]=_temp1;
 			_board[3][0].setX(3);
@@ -358,6 +364,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int c=6;c>0;c--){
 				_board[5][c]=_board[5][c-1];
+				_board[5][c].setX(5);
+				_board[5][c].setY(c);
 			}
 			_board[5][0]=_temp1;
 			_board[5][0].setX(5);
@@ -372,6 +380,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int r=6;r>0;r--){
 				_board[r][1]=_board[r-1][1];
+				_board[r][1].setX(r);
+				_board[r][1].setY(1);
 			}
 			_board[0][1]=_temp1;
 			_board[0][1].setX(1);
@@ -386,6 +396,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int r=6;r>0;r--){
 				_board[r][3]=_board[r-1][3];
+				_board[r][3].setX(r);
+				_board[r][3].setY(3);
 			}
 			_board[0][3]=_temp1;
 			_board[0][3].setX(0);
@@ -400,6 +412,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int r=6;r>0;r--){
 				_board[r][5]=_board[r-1][5];
+				_board[r][5].setX(r);
+				_board[r][5].setY(5);
 			}
 			_board[0][5]=_temp1;
 			_board[0][5].setX(0);
@@ -414,6 +428,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int c=0;c<6;c++){
 				_board[1][c]=_board[1][c+1];
+				_board[1][c].setX(1);
+				_board[1][c].setY(c);
 			}
 			_board[1][6]=_temp1;
 			_board[1][6].setX(1);
@@ -428,6 +444,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int c=0;c<6;c++){
 				_board[3][c]=_board[3][c+1];
+				_board[3][c].setX(3);
+				_board[3][c].setY(c);
 			}
 			_board[3][6]=_temp1;
 			_board[3][6].setX(3);
@@ -442,6 +460,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int c=0;c<6;c++){
 				_board[5][c]=_board[5][c+1];
+				_board[5][c].setX(5);
+				_board[5][c].setY(c);
 			}
 			_board[5][6]=_temp1;
 			_board[5][6].setX(5);
@@ -456,6 +476,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int r=0;r<6;r++){
 				_board[r][5]=_board[r+1][5];
+				_board[r][5].setX(r);
+				_board[r][5].setY(5);
 			}
 			_board[6][5]=_temp1;
 			_board[6][5].setX(6);
@@ -470,6 +492,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int r=0;r<6;r++){
 				_board[r][3]=_board[r+1][3];
+				_board[r][3].setX(r);
+				_board[r][3].setY(3);
 			}
 			_board[6][3]=_temp1;
 			_board[6][3].setX(6);
@@ -484,6 +508,8 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int r=0;r<6;r++){
 				_board[r][1]=_board[r+1][1];
+				_board[r][1].setX(r);
+				_board[r][1].setY(1);
 			}
 			_board[6][1]=_temp1;
 			_board[6][1].setX(6);
@@ -654,6 +680,40 @@ public class LabyrinthModel extends Tile{
 	public void resetPriority(){
 		_priority = 0;
 	}
+	
+	public void pickUp(int x, int y){
+		if(getTile(x,y).getToken()==_index){
+			System.out.println("pick up");
+			_currentPlayer.pickUpToken(_index);
+			getTile(x,y).setValueOfToken(0);
+			System.out.println(getTile(x,y).getToken());
+			if(_index == 25){
+				_observer = null;
+			}
+			else if(_index == 20){
+				_index = 25;
+			}
+			else{
+				_index++;
+			}
+		}
+		else{
+			System.out.println("error, you couldn't pick up the token yet");
+		}
+	}
+	
+	private void finishGame() {
+		int a = _player.get(0).TotalScore();
+		int winner = 0;
+		for(int i = 0; i < _playerNumber-1; i ++){
+			if(_player.get(i).TotalScore() < _player.get(i+1).TotalScore()){
+				a = _player.get(i+1).TotalScore();
+				winner = i+1;
+			}
+		}
+		System.out.println("the winner of the game is player " + winner+1);
+	}
+	
 
 	public void setObserver(Observer ob) {
 		// TODO Auto-generated method stub
@@ -664,7 +724,13 @@ public class LabyrinthModel extends Tile{
 		if (_observer != null) {
 			_observer.update();
 		}
+		if (_observer == null){
+			finishGame();
+		}
 	}
+
+
+
 
 
 

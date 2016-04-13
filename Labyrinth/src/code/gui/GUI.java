@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import code.Player.Player;
@@ -76,6 +77,9 @@ public class GUI implements Runnable,Observer {
 		for(int i=0;i<_lm.ROWS;i++){
 			for(int a=0;a<_lm.COLS;a++){	
 				JButton b = new JButton();
+//				b.setFocusable(true);
+				b.addKeyListener(new MoveHandler(_lm,i,a));
+				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*2));
 				b.setPreferredSize(new Dimension(100, 100));
 				if(checkTheBoard(i,a) == true){
 					b.addActionListener(new ButtonListener(_lm,i,a));
@@ -98,18 +102,21 @@ public class GUI implements Runnable,Observer {
 			}
 			if(i==4){
 				JButton b1 = new JButton();
+				b1.setFont(b1.getFont().deriveFont(Font.BOLD, b1.getFont().getSize()*2));
 				b1.addActionListener(new ExtraTileListener(_lm));
 				b1.setPreferredSize(new Dimension(100, 100));
 				_p.add(b1);
 			}
 			else if(i==7){
 				JLabel l = new JLabel("TOKEN: ");
+				l.setFont(l.getFont().deriveFont(Font.BOLD, l.getFont().getSize()*2));
 				l.setPreferredSize(new Dimension(100, 100));
 				_p.add(l);
 			}
+
 			else if(i==17){
-				int points = 0;
-				JLabel l1 = new JLabel("POINTS: "+ points);
+				JLabel l1 = new JLabel("POINTS: 0");
+				l1.setFont(l1.getFont().deriveFont(Font.BOLD, l1.getFont().getSize()*2));
 				l1.setPreferredSize(new Dimension(100, 100));
 				_p.add(l1);
 			}
@@ -121,8 +128,6 @@ public class GUI implements Runnable,Observer {
 	
 	@Override
 	public void update() {
-		int a = 0;
-		System.out.println(a);
 		for(int r=0;r<_lm.ROWS;r++){
 			for(int c=0;c<_lm.COLS;c++){
 				JButton b = (JButton) _jp.getComponent(r*LabyrinthModel.ROWS + c);
@@ -149,12 +154,11 @@ public class GUI implements Runnable,Observer {
 					b.setHorizontalTextPosition(SwingConstants.CENTER);
 				}
 				else if(i==7){
-					JLabel l = new JLabel("TOKEN: ");
+					JLabel l = (JLabel)_p.getComponent(i);
 					l.setPreferredSize(new Dimension(100, 100));
 				}
 				else if(i==17){
-					int points = 0;
-					JLabel l1 = new JLabel("POINTS: "+ points);
+					JLabel l1 = (JLabel)_p.getComponent(i);
 					l1.setPreferredSize(new Dimension(100, 100));
 				}
 			}

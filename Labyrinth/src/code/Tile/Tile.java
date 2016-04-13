@@ -145,15 +145,7 @@ public  class Tile {
 			_token = _points.remove((int)(Math. random() * _points.size()));
 		}
 
-	}
-	/**
-	 * return the current value of token that on the  tile
-	 * @return the value of the token
-	 */
-	public int pickUpToken(){
-		return _token;
-	}
-	
+	}	
 	/**
 	 * check if the tile has a token
 	 * @return true if token value is not equal zero
@@ -167,6 +159,10 @@ public  class Tile {
 		_token = i;
 	}
 	
+	/**
+	 * return the current value of token that on the  tile
+	 * @return the value of the token
+	 */
 	public int getToken(){
 		return _token;
 	}

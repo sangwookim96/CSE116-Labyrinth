@@ -58,19 +58,26 @@ public class Player {
 	 * Picking up the token.
 	 * @param a the point of a token
 	 */
-	public void getToken(int a){
+	public void pickUpToken(int a){
 		_tokens.add(a);
+	}
+	
+	public ArrayList<Integer> showToken(){
+		if(!_tokens.isEmpty()){
+			return _tokens;
+		}
+		return null;
 	}
 	
 	public int TotalScore(){
 		_score = 0;
 		for(int i = 0; i < _tokens.size();i++){
 			_score = _score + _tokens.get(i);
-			if(_magicCard.contains(_tokens.get(i))){
-				_score = _score +20;
-			}
+//			if(_magicCard.contains(_tokens.get(i))){
+//				_score = _score +20;
+//			}
 		}
-		_score = _score + _magicstick * 3;
+//		_score = _score + _magicstick * 3;
 		return _score;
 	}
 	

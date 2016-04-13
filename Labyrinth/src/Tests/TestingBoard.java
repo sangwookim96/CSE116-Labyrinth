@@ -58,35 +58,24 @@ public class TestingBoard {
 
 		boolean result = p.get(0).position(t);
 		System.out.println(result);
-		
-		System.out.println(b.getTile(3, 2).getX());
-		System.out.println(b.getTile(3, 2).getY());
-		System.out.println(b.getTile(3, 2).getEast());
-		System.out.println(b.getTile(3, 2).getNorth());
-		System.out.println(b.getTile(3, 2).getSouth());
-		System.out.println(b.getTile(3, 2).getWest());
 
-		
-		b.push(b.Point2Position(3,6));
-		b.push(b.Point2Position(3,6));
-		b.push(b.Point2Position(3,6));
-		b.push(b.Point2Position(3,6));
-		b.push(b.Point2Position(3,6));
-		b.push(b.Point2Position(3,6));
-
-
-		boolean expected = b.getTile(3,0).hasPlayer(p);
-		Tile c = b.getTile(3,0);
-		b.leftTile();
-		System.out.println(c.getX());
-		System.out.println(c.getY());
-		System.out.println(c.getEast());
-		System.out.println(c.getNorth());
-		System.out.println(c.getSouth());
-		System.out.println(c.getWest());
 //		System.out.println(c.getToken());
 //		System.out.println(b.getLeftTile());
+ 		b.push(b.Point2Position(3,6));
+ 		b.push(b.Point2Position(3,6));
+ 		b.push(b.Point2Position(3,6));
+ 		b.push(b.Point2Position(3,6));
+ 		b.push(b.Point2Position(3,6));
+		
+ 		boolean expected = b.getTile(3,0).hasPlayer(p);
+ 		
+		System.out.println(b.getTile(3,0).hasPlayer(p));
 
+
+ 		Tile c = b.getTile(3,0);
+
+ 		b.leftTile();
+ 		
 		assertTrue("",expected==result);
 	}
 	@Test public void boardTest5(){

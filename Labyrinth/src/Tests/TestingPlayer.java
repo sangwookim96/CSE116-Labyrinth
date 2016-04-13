@@ -16,10 +16,10 @@ public class TestingPlayer {
 		Player t = new Player(new Tile(),1,2);
 		t.usingMagicStick();
 		t.usingMagicStick();
-		t.getToken(20);
-		t.getToken(25);
+		t.pickUpToken(20);
+		t.pickUpToken(25);
 		int result = t.TotalScore();
-		int expected = 48;
+		int expected = 45;
 		assertTrue(" the actual result is " + result, expected == result || result == expected + 20 ||result == expected + 40);
 	}
 	@Test public void playerTest2(){
@@ -34,12 +34,27 @@ public class TestingPlayer {
 //		}
 		assertTrue("Expected result will be " + expected + " but the actual result is " + result, expected == result);
 	}
+	@Test public void playerToken(){
+		LabyrinthModel b = new LabyrinthModel();
+		ArrayList<Player> p = new ArrayList<Player>();
+		p = b.getPlayer();
+		Player a = b.getPlayer().get(0);
+		a.pickUpToken(20);
+		a.pickUpToken(18);
+		a.pickUpToken(19);
+		a.pickUpToken(10);
+//		System.out.print(a.showToken());
+
+		boolean result = true;
+		boolean expected = true;
+		assertTrue("Expected result will be " + expected + " but the actual result is " + result, expected == result);
+	}
 	
 	//Testing Player's location (standing, not where to move)
-	@Test public void playerLocationTest00(){
+	@Test public void playerLocationTest1(){
 		commonLocationTest(0,0);
 	}
-	@Test public void playerLocationTest01(){
+	@Test public void playerLocationTest2(){
 		commonLocationTest(6,6);
 	}
 	
@@ -69,20 +84,7 @@ public class TestingPlayer {
 		boolean expected = true;
 		assertTrue("Expected result will be " + expected + " but the actual result is " + result, expected == result);
 	}
-	
-	
-	public void commonPositionTest(int xCurrent, int yCurrent, int xTo, int yTo, char cCurrent, char cTo){
-		Tile currentTile = new Tile(); Tile toTile = new Tile();
-		currentTile.setX(xCurrent); currentTile.setY(yCurrent);
-		toTile.setX(xTo); toTile.setY(yTo);
-		// requires type of tile (char)
-		// run ...player.position(Tile tTile)
-		
-		boolean expect;
-		boolean actual;
-		
-		assertTrue("",false);
-	}
+
 	
 	
 	

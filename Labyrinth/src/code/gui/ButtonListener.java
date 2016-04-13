@@ -23,8 +23,6 @@ public class ButtonListener implements ActionListener {
 			_board.push(_board.Point2Position(_x, _y));
 			_board.setPriority();
 			_board.gameUpdate();
-
-
 		}
 		else{
 			System.out.println("error,you alreadly shift the tile");

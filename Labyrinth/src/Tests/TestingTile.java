@@ -87,7 +87,7 @@ public class TestingTile {
 		t.createToken();
 		for(int i=0;i<21;i++){
 			t.setTokens();
-			pocket.add(t.pickUpToken());
+			pocket.add(t.getToken());
 		}
 		int expected = 21;
 		assertTrue("Expected result will be " + expected + " but the actual result is " + pocket.size(), expected == pocket.size());
