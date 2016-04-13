@@ -20,9 +20,11 @@ public class ButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(_board.getPriority()==0){
-			_board.Point2Position(_x, _y);
+			_board.push(_board.Point2Position(_x, _y));
 			_board.setPriority();
-			System.out.println("hello");
+			_board.gameUpdate();
+
+
 		}
 		else{
 			System.out.println("error,you alreadly shift the tile");

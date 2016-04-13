@@ -67,7 +67,7 @@ public  class Tile {
 			_east=true;
 			return true;
 		}
-		if(type=='#'){
+		if(type=='!'){
 			_north=true;
 			_west=true;
 			return true;
@@ -77,7 +77,7 @@ public  class Tile {
 			_west=true;
 			return true;
 		}
-		if(type=='!'){
+		if(type=='#'){
 			_south=true;
 			_east=true;
 			return true;

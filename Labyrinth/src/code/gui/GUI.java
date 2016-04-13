@@ -47,6 +47,24 @@ public class GUI implements Runnable,Observer {
 		_window.add(_p);
 	}
 	
+	
+	
+	public boolean checkTheBoard(int x, int y){
+		if(y==0 && (x==1 || x==3 || x==5) ){
+			return true;
+		}
+		if(y==6 && (x==1 || x==3 || x==5) ){
+			return true;
+		}
+		if(x==0 && (y==1 || y==3 || y==5) ){
+			return true;
+		}
+		if(x==6 && (y==1 || y==3 || y==5) ){
+			return true;
+		}
+		return false;
+	}
+	
 	public void initializegame() {
 		
 		_jp = new JPanel();
@@ -59,6 +77,9 @@ public class GUI implements Runnable,Observer {
 			for(int a=0;a<_lm.COLS;a++){	
 				JButton b = new JButton();
 				b.setPreferredSize(new Dimension(100, 100));
+				if(checkTheBoard(i,a) == true){
+					b.addActionListener(new ButtonListener(_lm,i,a));
+				}
 				_jp.add(b);
 			}
 		}
@@ -100,6 +121,8 @@ public class GUI implements Runnable,Observer {
 	
 	@Override
 	public void update() {
+		int a = 0;
+		System.out.println(a);
 		for(int r=0;r<_lm.ROWS;r++){
 			for(int c=0;c<_lm.COLS;c++){
 				JButton b = (JButton) _jp.getComponent(r*LabyrinthModel.ROWS + c);
@@ -108,6 +131,7 @@ public class GUI implements Runnable,Observer {
 				b.setVerticalTextPosition(SwingConstants.CENTER);
 				b.setHorizontalTextPosition(SwingConstants.CENTER);
 			}
+		}
 			for(int i=0;i<24;i++){
 				if(i<24 && i!=4 && i!=7	&& i!=17){
 					JButton InactiveB = new JButton();
@@ -118,9 +142,9 @@ public class GUI implements Runnable,Observer {
 				}
 				if(i==4){
 					JButton b = (JButton) _p.getComponent(i);
-					b.setText(_lm.extraTile().getCharacter()+"");
 					b.setIcon(this.char2Image(_lm.extraTile().getCharacter()));
 					b.setText(_lm.extraTile().getToken()+"");
+//					b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*2));
 					b.setVerticalTextPosition(SwingConstants.CENTER);
 					b.setHorizontalTextPosition(SwingConstants.CENTER);
 				}
@@ -134,9 +158,8 @@ public class GUI implements Runnable,Observer {
 					l1.setPreferredSize(new Dimension(100, 100));
 				}
 			}
+			_window.repaint();
 		}
-		_window.repaint();
-	}
 
 	public ImageIcon char2Image(char c){
 		//L Tile

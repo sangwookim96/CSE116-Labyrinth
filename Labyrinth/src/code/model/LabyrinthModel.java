@@ -69,7 +69,7 @@ public class LabyrinthModel extends Tile{
 	 * @author Aditya Kishan Ankaraboyana
 	 */
 	public LabyrinthModel() {
-		_observer = null;
+//		_observer = null;
 		Tile t = new Tile();
 		t.createToken();		
 		_board=new Tile[7][7];
@@ -265,7 +265,10 @@ public class LabyrinthModel extends Tile{
 		for (int x = 0; x < 7; x++){
 			for(int y = 0; y < 7; y++){
 				a.add(getTile(x,y).getCharacter());
-				//System.out.print(a);
+				if(x ==6 && y ==6){
+//					System.out.println(a);
+				}
+				System.out.print(a);
 			}
 		}
 		return a;
@@ -322,6 +325,7 @@ public class LabyrinthModel extends Tile{
 	public void push (int position ){	
 		switch(position){
 		case 1:{
+			System.out.println("hello");
 			_temp2=_board[1][6];
 			change(_temp2,_temp1);
 			for (int c=6;c>0;c--){
@@ -431,7 +435,6 @@ public class LabyrinthModel extends Tile{
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
-			
 			break;
 		}
 		case 9:{

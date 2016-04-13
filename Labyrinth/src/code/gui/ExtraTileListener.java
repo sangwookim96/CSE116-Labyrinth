@@ -53,6 +53,6 @@ public class ExtraTileListener implements ActionListener {
 		else{
 			_lm.setCharacter(_lm.getCharacter());
 		}
-		System.out.println(c);
+		_lm.gameUpdate();
 	}
 }
