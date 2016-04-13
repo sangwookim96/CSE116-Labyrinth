@@ -131,7 +131,7 @@ public class GUI implements Runnable,Observer {
 		for(int r=0;r<_lm.ROWS;r++){
 			for(int c=0;c<_lm.COLS;c++){
 				JButton b = (JButton) _jp.getComponent(r*LabyrinthModel.ROWS + c);
-				b.setText(_lm.getTile(r,c).getToken()+"");
+				if(_lm.getTile(r, c).getToken()!=0) b.setText(_lm.getTile(r,c).getToken()+"");
 				b.setIcon(this.char2Image(_lm.getTile(r,c).getCharacter()));
 				b.setVerticalTextPosition(SwingConstants.CENTER);
 				b.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -148,7 +148,6 @@ public class GUI implements Runnable,Observer {
 				if(i==4){
 					JButton b = (JButton) _p.getComponent(i);
 					b.setIcon(this.char2Image(_lm.extraTile().getCharacter()));
-					b.setText(_lm.extraTile().getToken()+"");
 //					b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*2));
 					b.setVerticalTextPosition(SwingConstants.CENTER);
 					b.setHorizontalTextPosition(SwingConstants.CENTER);
