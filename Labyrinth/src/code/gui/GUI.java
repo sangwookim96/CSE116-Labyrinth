@@ -109,7 +109,9 @@ public class GUI implements Runnable,Observer {
 			}
 			else if(i==7){
 				JLabel l = new JLabel("TOKEN: ");
+				
 				l.setFont(l.getFont().deriveFont(Font.BOLD, l.getFont().getSize()*2));
+				
 				l.setPreferredSize(new Dimension(100, 100));
 				_p.add(l);
 			}
