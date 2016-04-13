@@ -131,7 +131,15 @@ public class GUI implements Runnable,Observer {
 		for(int r=0;r<_lm.ROWS;r++){
 			for(int c=0;c<_lm.COLS;c++){
 				JButton b = (JButton) _jp.getComponent(r*LabyrinthModel.ROWS + c);
-				if(_lm.getTile(r, c).getToken()!=0) b.setText(_lm.getTile(r,c).getToken()+"");
+				String token = "";
+				if(_lm.getTile(r, c).getToken()!=0) token = Integer.toString(_lm.getTile(r, c).getToken());
+				String player = "";
+				for(Player p: _lm.getPlayer()){
+					if(p.getX() == r && p.getY() == c){
+						player += p.getName();
+					}
+				}
+				b.setText(token+" " + player);
 				b.setIcon(this.char2Image(_lm.getTile(r,c).getCharacter()));
 				b.setVerticalTextPosition(SwingConstants.CENTER);
 				b.setHorizontalTextPosition(SwingConstants.CENTER);
