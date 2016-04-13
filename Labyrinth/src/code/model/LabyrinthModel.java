@@ -682,6 +682,7 @@ public class LabyrinthModel extends Tile{
 	}
 	
 	public void pickUp(int x, int y){
+		System.out.println(_index);
 		if(getTile(x,y).getToken()==_index){
 			System.out.println("pick up");
 			_currentPlayer.pickUpToken(_index);
