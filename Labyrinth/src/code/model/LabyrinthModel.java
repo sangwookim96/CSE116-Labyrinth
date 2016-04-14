@@ -53,7 +53,7 @@ public class LabyrinthModel extends Tile{
 	private ArrayList<Player> _player = new ArrayList<Player>();
 	private ArrayList<String> _list;
 	private Observer _observer;
-	private int _cPlayer = 1;
+	private int _cPlayer = 0;
 	private int _playerNumber;
 	private Player _currentPlayer;
 	private int _priority = 0;
@@ -299,6 +299,8 @@ public class LabyrinthModel extends Tile{
 			char c=movetiles.get(0);
 			_temp1.Tiledirection(c);
 			_temp1.setCharacter(c);
+			_temp1.setX(9);
+			_temp1.setY(9);
 //			s=s+c;
 		}
 //						System.out.println(ss);
@@ -331,13 +333,19 @@ public class LabyrinthModel extends Tile{
 			_temp2=_board[1][6];
 			change(_temp2,_temp1);
 			for (int c=6;c>0;c--){
-				_board[1][c]=_board[1][c-1];
+				_board[1][c]=_board[1][c-1];					
 				_board[1][c].setX(1);
 				_board[1][c].setY(c);
+				if(_board[1][c-1].hasPlayer(_player)){
+					_board[1][c-1].changingPlayerPosition(_player, _board[1][c]);
+				}
+				System.out.println(_board[1][c].getX());
+				System.out.println(_board[1][c].getY());
 			}
 			_board[1][0]=_temp1;
 			_board[1][0].setX(1);
 			_board[1][0].setY(0);
+			change(_temp1,_board[1][0]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -350,10 +358,14 @@ public class LabyrinthModel extends Tile{
 				_board[3][c]=_board[3][c-1];
 				_board[3][c].setX(3);
 				_board[3][c].setY(c);
+				if(_board[3][c-1].hasPlayer(_player)){
+					_board[3][c-1].changingPlayerPosition(_player, _board[3][c]);
+				}
 			}
 			_board[3][0]=_temp1;
 			_board[3][0].setX(3);
 			_board[3][0].setY(0);
+			change(_temp1,_board[3][0]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -366,10 +378,14 @@ public class LabyrinthModel extends Tile{
 				_board[5][c]=_board[5][c-1];
 				_board[5][c].setX(5);
 				_board[5][c].setY(c);
+				if(_board[5][c-1].hasPlayer(_player)){
+					_board[5][c-1].changingPlayerPosition(_player, _board[5][c]);
+				}
 			}
 			_board[5][0]=_temp1;
 			_board[5][0].setX(5);
 			_board[5][0].setY(0);
+			change(_temp1,_board[5][0]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -382,10 +398,14 @@ public class LabyrinthModel extends Tile{
 				_board[r][1]=_board[r-1][1];
 				_board[r][1].setX(r);
 				_board[r][1].setY(1);
+				if(_board[r-1][1].hasPlayer(_player)){
+					_board[r-1][1].changingPlayerPosition(_player, _board[r][1]);
+				}
 			}
 			_board[0][1]=_temp1;
 			_board[0][1].setX(1);
 			_board[0][1].setY(0);
+			change(_temp1,_board[0][1]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -398,10 +418,14 @@ public class LabyrinthModel extends Tile{
 				_board[r][3]=_board[r-1][3];
 				_board[r][3].setX(r);
 				_board[r][3].setY(3);
+				if(_board[r-1][3].hasPlayer(_player)){
+					_board[r-1][3].changingPlayerPosition(_player, _board[r][3]);
+				}
 			}
 			_board[0][3]=_temp1;
 			_board[0][3].setX(0);
 			_board[0][3].setY(3);
+			change(_temp1,_board[0][3]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -414,10 +438,14 @@ public class LabyrinthModel extends Tile{
 				_board[r][5]=_board[r-1][5];
 				_board[r][5].setX(r);
 				_board[r][5].setY(5);
+				if(_board[r-1][5].hasPlayer(_player)){
+					_board[r-1][5].changingPlayerPosition(_player, _board[r][5]);
+				}
 			}
 			_board[0][5]=_temp1;
 			_board[0][5].setX(0);
 			_board[0][5].setY(5);
+			change(_temp1,_board[0][5]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -430,10 +458,14 @@ public class LabyrinthModel extends Tile{
 				_board[1][c]=_board[1][c+1];
 				_board[1][c].setX(1);
 				_board[1][c].setY(c);
+				if(_board[1][c+1].hasPlayer(_player)){
+					_board[1][c+1].changingPlayerPosition(_player, _board[1][c]);
+				}
 			}
 			_board[1][6]=_temp1;
 			_board[1][6].setX(1);
 			_board[1][6].setY(6);
+			change(_temp1,_board[1][6]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -446,10 +478,14 @@ public class LabyrinthModel extends Tile{
 				_board[3][c]=_board[3][c+1];
 				_board[3][c].setX(3);
 				_board[3][c].setY(c);
+				if(_board[3][c+1].hasPlayer(_player)){
+					_board[3][c+1].changingPlayerPosition(_player, _board[3][c]);
+				}
 			}
 			_board[3][6]=_temp1;
 			_board[3][6].setX(3);
 			_board[3][6].setY(6);
+			change(_temp1,_board[3][6]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -462,10 +498,14 @@ public class LabyrinthModel extends Tile{
 				_board[5][c]=_board[5][c+1];
 				_board[5][c].setX(5);
 				_board[5][c].setY(c);
+				if(_board[5][c+1].hasPlayer(_player)){
+					_board[5][c+1].changingPlayerPosition(_player, _board[5][c]);
+				}
 			}
 			_board[5][6]=_temp1;
 			_board[5][6].setX(5);
 			_board[5][6].setY(6);
+			change(_temp1,_board[5][6]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -478,10 +518,14 @@ public class LabyrinthModel extends Tile{
 				_board[r][5]=_board[r+1][5];
 				_board[r][5].setX(r);
 				_board[r][5].setY(5);
+				if(_board[r+1][5].hasPlayer(_player)){
+					_board[r+1][5].changingPlayerPosition(_player, _board[r][5]);
+				}
 			}
 			_board[6][5]=_temp1;
 			_board[6][5].setX(6);
 			_board[6][5].setY(5);
+			change(_temp1,_board[6][5]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -494,10 +538,14 @@ public class LabyrinthModel extends Tile{
 				_board[r][3]=_board[r+1][3];
 				_board[r][3].setX(r);
 				_board[r][3].setY(3);
+				if(_board[r+1][3].hasPlayer(_player)){
+					_board[r+1][3].changingPlayerPosition(_player, _board[r][3]);
+				}
 			}
 			_board[6][3]=_temp1;
 			_board[6][3].setX(6);
 			_board[6][3].setY(3);
+			change(_temp1,_board[6][3]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -510,10 +558,14 @@ public class LabyrinthModel extends Tile{
 				_board[r][1]=_board[r+1][1];
 				_board[r][1].setX(r);
 				_board[r][1].setY(1);
+				if(_board[r+1][1].hasPlayer(_player)){
+					_board[r+1][1].changingPlayerPosition(_player, _board[r][1]);
+				}
 			}
 			_board[6][1]=_temp1;
 			_board[6][1].setX(6);
 			_board[6][1].setY(1);
+			change(_temp1,_board[6][1]);
 			_temp1 = _temp2;
 			_temp1.setX(9);
 			_temp1.setY(9);
@@ -586,10 +638,12 @@ public class LabyrinthModel extends Tile{
 	}
 	public void endRound(){
 		resetPriority();
-		if(_cPlayer == _playerNumber ){
+		if(_cPlayer == (_playerNumber-1) ){
 			_cPlayer = 0;
 		}
+		else{
 		_cPlayer++;
+		}
 		_currentPlayer = _player.get(_cPlayer);
 	}
 	

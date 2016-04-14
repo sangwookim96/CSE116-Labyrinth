@@ -44,8 +44,8 @@ public class MoveHandler implements KeyListener {
 			boolean result = _board.getCurrentPlayer().position(up);
 
 			_board.gameUpdate();
-//			System.out.println(up.getX());
-//			System.out.println(up.getY());
+			System.out.println(up.getX());
+			System.out.println(up.getY());
 //			System.out.println(up.getNorth());
 //			System.out.println(up.getSouth());
 //			System.out.println(up.getWest());
@@ -61,8 +61,8 @@ public class MoveHandler implements KeyListener {
 			Tile down = _board.getbottomTile();
 			boolean result = _board.getCurrentPlayer().position(down);
 			_board.gameUpdate();
-//			System.out.println(down.getX());
-//			System.out.println(down.getY());
+			System.out.println(down.getX());
+			System.out.println(down.getY());
 //			System.out.println(down.getNorth());
 //			System.out.println(down.getSouth());
 //			System.out.println(down.getWest());
@@ -78,8 +78,8 @@ public class MoveHandler implements KeyListener {
 			Tile left = _board.getLeftTile();
 			boolean result = _board.getCurrentPlayer().position(left);
 			_board.gameUpdate();
-//			System.out.println(left.getX());
-//			System.out.println(left.getY());
+			System.out.println(left.getX());
+			System.out.println(left.getY());
 //			System.out.println(left.getNorth());
 //			System.out.println(left.getSouth());
 //			System.out.println(left.getWest());
@@ -95,8 +95,8 @@ public class MoveHandler implements KeyListener {
 			Tile right = _board.getRightTile();
 			boolean result = _board.getCurrentPlayer().position(right);
 			_board.gameUpdate();
-//			System.out.println(right.getX());
-//			System.out.println(right.getY());
+			System.out.println(right.getX());
+			System.out.println(right.getY());
 //			System.out.println(right.getNorth());
 //			System.out.println(right.getSouth());
 //			System.out.println(right.getWest());

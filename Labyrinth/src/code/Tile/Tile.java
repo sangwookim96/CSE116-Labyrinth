@@ -220,6 +220,9 @@ public  class Tile {
 		for(int i = 0; i < player.size(); i++ ){
 			if(player.get(i).getTile().getX()==_x && player.get(i).getTile().getY() == _y){
 				player.get(i).setTile(t);
+				player.get(i).setX(t.getX());
+				player.get(i).setY(t.getY());
+
 			}
 		}
 	}

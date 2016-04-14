@@ -84,6 +84,19 @@ public class TestingPlayer {
 		boolean expected = true;
 		assertTrue("Expected result will be " + expected + " but the actual result is " + result, expected == result);
 	}
+	@Test public void playerPositionTest2(){
+		LabyrinthModel b = new LabyrinthModel();
+		ArrayList<Player> p = new ArrayList<Player>();
+		p = b.getPlayer();
+		Tile t = b.getTile(2, 1);
+		t = b.getTile(1, 2);
+		System.out.println(t.getX());
+		System.out.println(t.getY());
+
+		boolean result = p.get(0).position(t);
+		boolean expected = false;
+		assertTrue("Expected result will be " + expected + " but the actual result is " + result, expected == result);
+	}
 
 	
 	
