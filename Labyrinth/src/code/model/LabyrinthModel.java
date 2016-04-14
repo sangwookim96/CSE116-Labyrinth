@@ -227,6 +227,12 @@ public class LabyrinthModel extends Tile{
 		}
 		randomCharacter();
 	}
+	
+	/**
+	 * Adding strings of characters that represent tile types on the board.
+	 * 
+	 * @return characters String of order of characters on board, (0,0) to (6,6).
+	 */
 	public String Characters() {
 		s = "";
 		String ss= "";
@@ -246,7 +252,12 @@ public class LabyrinthModel extends Tile{
 		return characters;
 	} 
 
-	//check the initial player position
+	/**
+	 * check the initial players' position (i.e. when game begin)
+	 * @param x X value of a player's position
+	 * @param y Y value of a player's position
+	 * @return boolean
+	 */
 	public boolean checkPlayer(int x,int y){
 		if(x==2 && y==2){
 			return true;
@@ -263,11 +274,22 @@ public class LabyrinthModel extends Tile{
 		return false;
 	}
 	
+	/**
+	 * get Tile object on current 7*7 board.
+	 * @param x X value of Tile location on board
+	 * @param y Y value of Tile location on board
+	 * @return Tile at (x,y)
+	 */
 	public Tile getTile(int x, int y){
 		return _board[x][y];
 	}
 
 	//collect all the tile,only use for test
+	/**
+	 * For testing purpose it collects all the characters that represent
+	 * each Tiles on board.
+	 * @return ArrayList<Character> storing all the Tile characters in order.
+	 */
 	public ArrayList<Character> allTheTile(){
 		ArrayList<Character> a = new ArrayList<Character>();
 		for (int x = 0; x < 7; x++){
@@ -282,12 +304,23 @@ public class LabyrinthModel extends Tile{
 		return a;
 	}
 	
+	/**
+	 * ArrayList of order of players.
+	 * @return _player ArrayList<Player> stores player objects.
+	 */
 	public ArrayList<Player> getPlayer(){
 		return _player;
 	}
 
 
-
+	/**
+	 * Randomly generates mobile tiles, which were stored in 
+	 * ArrayList<Character> movetiles, until one char left in the movetiles list.
+	 * 
+	 * The last char represents Extra Tile in the beginning of game.
+	 * 
+	 * @return c char representing mobile Tile Type which were generated on board.
+	 */
 	public char randomCharacter() {			
 		String s = "";
 		Random x=new Random();
