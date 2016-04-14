@@ -49,8 +49,14 @@ public class LabyrinthModel extends Tile{
 	/** a representation of the board (non-graphical)
 	 * 
 	 */
-	private String s;       // 
+	private String s;       
+	/**
+	 * ArrayList of players in order.
+	 */
 	private ArrayList<Player> _player = new ArrayList<Player>();
+	/**
+	 * ArrayList of characters which represent the tile types & direction.
+	 */
 	private ArrayList<String> _list;
 	private Observer _observer;
 	private int _cPlayer = 0;
@@ -121,7 +127,7 @@ public class LabyrinthModel extends Tile{
 
 	/**
 	 * This method has a simple function of initializing the board as the name suggests.
-	 * The first for conditions manually set the corners as L Tiles
+	 * The first four conditions manually set the corners as L Tiles
 	 * The fifth conditional statement assigns T's to the other 12 static tiles.
 	 * The final condition initializes all other mobile tiles by using Random function.
 	 * For purpose of testing this method return an integer that counts all the characters from the tiles.
