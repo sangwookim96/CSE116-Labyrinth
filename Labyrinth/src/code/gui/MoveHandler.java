@@ -9,14 +9,12 @@ import code.model.LabyrinthModel;
 public class MoveHandler implements KeyListener {
 	
 	private LabyrinthModel _board = new LabyrinthModel();
-	private int _x;
-	private int _y;
+
 
 	
-	public MoveHandler(LabyrinthModel b, int x, int y){
+	public MoveHandler(LabyrinthModel b){
 		_board = b;
-		_x = x;
-		_y = y;
+
 	}
 
 	@Override
@@ -33,8 +31,8 @@ public class MoveHandler implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println(_board.getCurrentPlayer().getTile().getX());
-		System.out.println(_board.getCurrentPlayer().getTile().getY());
+//		System.out.println(_board.getCurrentPlayer().getTile().getX());
+//		System.out.println(_board.getCurrentPlayer().getTile().getY());
 		
 
 
@@ -44,17 +42,15 @@ public class MoveHandler implements KeyListener {
 			System.out.println("up");
 			Tile up = _board.getUpTile();
 			boolean result = _board.getCurrentPlayer().position(up);
-			if(result == true){
-				_x--;
-			}
+
 			_board.gameUpdate();
-			System.out.println(up.getX());
-			System.out.println(up.getY());
-			System.out.println(up.getNorth());
-			System.out.println(up.getSouth());
-			System.out.println(up.getWest());
-			System.out.println(up.getEast());
-			System.out.println(up.getToken());
+//			System.out.println(up.getX());
+//			System.out.println(up.getY());
+//			System.out.println(up.getNorth());
+//			System.out.println(up.getSouth());
+//			System.out.println(up.getWest());
+//			System.out.println(up.getEast());
+//			System.out.println(up.getToken());
 
 
 			System.out.println(result);
@@ -64,17 +60,14 @@ public class MoveHandler implements KeyListener {
 			System.out.println("down");
 			Tile down = _board.getbottomTile();
 			boolean result = _board.getCurrentPlayer().position(down);
-			if(result == true){
-				_x++;
-			}
 			_board.gameUpdate();
-			System.out.println(down.getX());
-			System.out.println(down.getY());
-			System.out.println(down.getNorth());
-			System.out.println(down.getSouth());
-			System.out.println(down.getWest());
-			System.out.println(down.getEast());
-			System.out.println(down.getToken());
+//			System.out.println(down.getX());
+//			System.out.println(down.getY());
+//			System.out.println(down.getNorth());
+//			System.out.println(down.getSouth());
+//			System.out.println(down.getWest());
+//			System.out.println(down.getEast());
+//			System.out.println(down.getToken());
 
 			
 			System.out.println(result);
@@ -84,17 +77,14 @@ public class MoveHandler implements KeyListener {
 			System.out.println("left");
 			Tile left = _board.getLeftTile();
 			boolean result = _board.getCurrentPlayer().position(left);
-			if(result == true){
-				_y--;
-			}
 			_board.gameUpdate();
-			System.out.println(left.getX());
-			System.out.println(left.getY());
-			System.out.println(left.getNorth());
-			System.out.println(left.getSouth());
-			System.out.println(left.getWest());
-			System.out.println(left.getEast());
-			System.out.println(left.getToken());
+//			System.out.println(left.getX());
+//			System.out.println(left.getY());
+//			System.out.println(left.getNorth());
+//			System.out.println(left.getSouth());
+//			System.out.println(left.getWest());
+//			System.out.println(left.getEast());
+//			System.out.println(left.getToken());
 
 			
 			System.out.println(result);
@@ -104,24 +94,21 @@ public class MoveHandler implements KeyListener {
 			System.out.println("right");
 			Tile right = _board.getRightTile();
 			boolean result = _board.getCurrentPlayer().position(right);
-			if(result == true){
-				_y++;
-			}
 			_board.gameUpdate();
-			System.out.println(right.getX());
-			System.out.println(right.getY());
-			System.out.println(right.getNorth());
-			System.out.println(right.getSouth());
-			System.out.println(right.getWest());
-			System.out.println(right.getEast());
-			System.out.println(right.getToken());
+//			System.out.println(right.getX());
+//			System.out.println(right.getY());
+//			System.out.println(right.getNorth());
+//			System.out.println(right.getSouth());
+//			System.out.println(right.getWest());
+//			System.out.println(right.getEast());
+//			System.out.println(right.getToken());
 
 			
 			System.out.println(result);
 		}
 		else if('h' == e.getKeyChar()){
 			if(_board.getPriority()==1){
-				_board.pickUp(_x,_y);
+				_board.pickUp(_board.getCurrentPlayer().getX(),_board.getCurrentPlayer().getY());
 				_board.gameUpdate();
 					
 			}
@@ -129,8 +116,8 @@ public class MoveHandler implements KeyListener {
 				System.out.println("You are not allow to pick up more than one token in each turn");
 			}
 		}
-		System.out.println(_board.getCurrentPlayer().getTile().getX());
-		System.out.println(_board.getCurrentPlayer().getTile().getY());
+//		System.out.println(_board.getCurrentPlayer().getTile().getX());
+//		System.out.println(_board.getCurrentPlayer().getTile().getY());
 		
 	}
 

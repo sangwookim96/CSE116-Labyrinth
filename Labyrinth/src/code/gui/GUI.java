@@ -78,7 +78,7 @@ public class GUI implements Runnable,Observer {
 			for(int a=0;a<_lm.COLS;a++){	
 				JButton b = new JButton();
 //				b.setFocusable(true);
-				b.addKeyListener(new MoveHandler(_lm,i,a));
+				b.addKeyListener(new MoveHandler(_lm));
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*2));
 				b.setPreferredSize(new Dimension(100, 100));
 				if(checkTheBoard(i,a) == true){

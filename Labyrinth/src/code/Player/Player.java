@@ -137,14 +137,14 @@ public class Player {
 		}
 		else if( (_cTile.getX()==tTile.getX()) && (_cTile.getY() == (tTile.getY()+1)) ){
 			if(_cTile.getWest()==true && tTile.getEast()==true){
-				_cTile.setY(tTile.getY());
+				_cTile = tTile;
 				this.setY(tTile.getY());
 				return true;
 			}
 		}
 		else if( (_cTile.getX()==tTile.getX()) && (_cTile.getY() == (tTile.getY()-1)) ){
 			if(_cTile.getEast()==true && tTile.getWest()==true){
-				_cTile.setY(tTile.getY());
+				_cTile = tTile;
 				this.setY(tTile.getY());
 				return true;
 			}
@@ -152,14 +152,14 @@ public class Player {
 		else if( (_cTile.getX()==(tTile.getX()+1) ) && (_cTile.getY() == tTile.getY()) ){
 
 			if(_cTile.getNorth()==true && tTile.getSouth()==true){
-				_cTile.setX(tTile.getX());
+				_cTile = tTile;
 				this.setX(tTile.getX());
 				return true;
 			}
 		}		
 		else if( (_cTile.getX()==(tTile.getX()-1)) && (_cTile.getY() == tTile.getY()) ){
 			if(_cTile.getSouth()==true && tTile.getNorth()==true){
-				_cTile.setX(tTile.getX());
+				_cTile = tTile;
 				this.setX(tTile.getX());
 				return true;
 			}
