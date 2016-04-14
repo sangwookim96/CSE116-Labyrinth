@@ -38,16 +38,20 @@ public class LabyrinthModel extends Tile{
 
 	/**This is the temporary variable that after initialization is the tile that is used for the first move.
 	 * 
+	 * a.k.a. current ExtraTile
 	 */
-	Tile _temp1 = new Tile();  		// temp variable for FreeTile
-	Tile _temp2= new Tile();
-
-	/** a representation of the board (non-graphical)
+	Tile _temp1 = new Tile();  		// temp variable for ExtraTile
+	/**The temporary variable that will be used for "pushed out" Tile.
 	 * 
+	 */
+	Tile _temp2= new Tile();		
+
+	/** 
+	 * a representation of the board (non-graphical)
 	 */
 	private Tile[][] _board; 
-	/** a representation of the board (non-graphical)
-	 * 
+	/**
+	 *  a representation of the board (non-graphical)
 	 */
 	private String s;       
 	/**
@@ -373,7 +377,12 @@ public class LabyrinthModel extends Tile{
 	}
 	
 	//This method checks for legal moves  
-	// We need a method that translates Array point to int. 	
+	// We need a method that translates Array point to int. 
+	/**
+	 * According to the position number, each case shift its column/row.
+	 * 
+	 * @param position integer where player can push its extraTile "into" the Board.
+	 */
 	public void push (int position ){	
 		switch(position){
 		case 1:{
@@ -382,7 +391,7 @@ public class LabyrinthModel extends Tile{
 			change(_temp2,_temp1);
 			for (int c=6;c>0;c--){
 				_board[1][c]=_board[1][c-1];					
-				_board[1][c].setX(1);
+				_board[1][c].setX(1);	//'Cause X, and Y values of the tile don't change itself automatically.
 				_board[1][c].setY(c);
 				if(_board[1][c-1].hasPlayer(_player)){
 					_board[1][c-1].changingPlayerPosition(_player, _board[1][c]);
