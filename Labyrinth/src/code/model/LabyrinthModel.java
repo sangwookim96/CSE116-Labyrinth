@@ -349,10 +349,19 @@ public class LabyrinthModel extends Tile{
 	}
 	
 	
-	//swap the player and token data between two tile
-	//for example,there are token number 25 and two players standing in the tile c.If tile c
-	//has been push out off the board,by calling the change method will set the token number 25 and two player
-	//from the tile c to tile t
+	
+	/**
+	 * Swap the player and token data between two tile.
+	 * (For example, there are token number "25" and two players standing in the Tile "c".
+	 * If Tile c has been push out off the board, by calling the change method will set 
+	 * the token number "25" and two "players" from the tile "c" to tile "t".)
+	 * 
+	 * Rule: When a Tile, containing token or player(s) or both, is pushed out,
+	 * 		put it on the Tile on the opposite side of the board.
+	 * 
+	 * @param c the Tile being pushed out.
+	 * @param t the Tile pushing in.
+	 */
 	public void change(Tile c, Tile t){
 		if(c.hasToken()){
 			t.setValueOfToken(c.getToken());
