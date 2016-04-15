@@ -5,20 +5,39 @@ import java.util.ArrayList;
 import code.Tile.Tile;
 
 public class Player {
-	private Character _playerchar;
-	private Tile _playertile;	
+//	private Character _playerchar;
+//	private Tile _playertile;	
+	
 	private int _magicstick =3;
 	boolean turn;
 	private ArrayList<Integer> _magicCard = new ArrayList<Integer>();
-	private ArrayList<Integer> _tokens = new ArrayList<Integer>();
-	private int _score;
-	private int _x;
-	private int _y;
 	
+	/**
+	 * ArrayList of tokens that player collected.
+	 */
+	private ArrayList<Integer> _tokens = new ArrayList<Integer>();
+	
+	/**
+	 * (Current) Total Score of each Player
+	 */
+	private int _score;
+	
+	/**
+	 * X value of _cTile (a.k.a. current Player Tile where it's standing)
+	 */
+	private int _x;
+	/**
+	 * Y value of _cTile (a.k.a. current Player Tile where it's standing)
+	 */
+	private int _y;	
 	/**
 	 * Tile object of "current Tile" where player is standing.
 	 */
 	private Tile _cTile;
+	
+	/**
+	 * Name of the Player.
+	 */
 	private String _name;
 	
 	
