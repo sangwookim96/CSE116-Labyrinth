@@ -30,37 +30,85 @@ character to set that shaped path onto the tile.
 @author Himayet Chowdhury, Aditya Kishan Ankaraboyana
 */
 
-public  class Tile {
-
-	int token;
+public  class Tile {	
+	/**
+	 * For Testing purpose, we store the type of Tile as character
+	 */
 	private Character _char;
+	
+	/**
+	 * East path's open statue
+	 */
 	private boolean _east=false;
+	/**
+	 * North path's open statue
+	 */
 	private boolean _north=false;
+	/**
+	 * South path's open statue
+	 */
 	private boolean _south=false;
+	/**
+	 * West path's open statue
+	 */
 	private boolean _west=false;
+	
+	/**
+	 * Tile's X value on 7*7 board
+	 */
 	private int _x;
+	/**
+	 * Tile's Y value on 7*7 board
+	 */
 	private int _y;
+	
+	/**
+	 * ArrayList of Tokens (TOKENS BRO, TOKENS) that must be on when starting game.
+	 */
 	static ArrayList<Integer>_points=new ArrayList<Integer>();
+	/**
+	 * Value of token that Tile is holding.
+	 */
 	private int _token;
+	/**
+	 * Tile Image (a.k.a. BufferedImage)
+	 */
 	public BufferedImage _img;
 	
 	private code.gui.GUI _gui;
 	
 
-
+	/**
+	 * For the testing purpose each tile has its individual character.
+	 */
 	public Tile() {			
 		_char = ' ';
 		
 	}
 
+	/**
+	 * Get char for testing purpose
+	 * @return _char Tile's testing char.
+	 */
 	public Character getCharacter() {
 		return _char;
 	}
 
+	/**
+	 * Set testing char (_char) to c
+	 * @param c 
+	 */
 	public void setCharacter(char c) {
 		_char=c;
 	}
 
+	/**
+	 * According to TileTypeChart (in the BufferedImage file in this project file),
+	 * Every cases of rotation of 3 tile types has representing char.
+	 * (* 'T' represents upside down T) 
+	 * @param type Input of representation of Tile type as char.
+	 * @return boolean values of Tile's 4 direction.
+	 */
 	public boolean Tiledirection(char type){
 		if(type=='L'){
 			_north=true;
@@ -154,7 +202,11 @@ public  class Tile {
 		return _token!=0;
 	}
 	
-
+	/**
+	 * Set the value of token that the Tile is holding to i.
+	 * Usually, set _token to 0 after Player done pick-up action.
+	 * @param i input of future token value. (usually 0)
+	 */
 	public void setValueOfToken(int i){
 		_token = i;
 	}
@@ -183,29 +235,59 @@ public  class Tile {
 	}
 	
 	
-	
+	/**
+	 * Return boolean value of North path of the Tile
+	 * @return _north
+	 */
 	public boolean getNorth(){
 		return _north;
 	}
+	/**
+	 * Return boolean value of south path of the Tile
+	 * @return _south
+	 */
 	public boolean getSouth(){
 		return _south;
 	}
+	/**
+	 * Return boolean value of west path of the Tile
+	 * @return _west
+	 */
 	public boolean getWest(){
 		return _west;
 	}
+	/**
+	 * Return boolean value of east path of the Tile
+	 * @return _east
+	 */
 	public boolean getEast(){
 		return _east;
 	}
 	
-
+	/**
+	 * Set Tile's X value to x
+	 * Usually use this for switching X values of an ExtraTile, & a Tile on the push-able
+	 * position of the board. 
+	 * @param x Set Tile's X value to x
+	 */
 	public void setX(int x){
 		_x = x;
 	}
-
+	/**
+	 * Set Tile's Y value to y
+	 * Usually use this for switching Y values of an ExtraTile, & a Tile on the push-able
+	 * position of the board. 
+	 * @param y Set Tile's Y value to y
+	 */
 	public void setY(int y){
 		_y = y;
 	}
-	//check if there is player standing on the tile
+	
+	/**
+	 * Check if there is any players standing on the Tile
+	 * @param player ArrayList<Player> that storing all the players in the game.
+	 * @return true if one of element of "ArrayList<Player> player" has same X & Y value as the Tile's X & Y.
+	 */
 	public boolean hasPlayer(ArrayList<Player> player){
 		for(int i = 0; i < player.size(); i++ ){
 			if(player.get(i).getTile().getX()==_x && player.get(i).getTile().getY() == _y){
@@ -215,7 +297,12 @@ public  class Tile {
 		return false;
 	}
 	
-	//change all the players that in current tile to tile t
+	/**
+	 * Edit all X&Y values of the Player objects in CURRENT TILE to Tile t
+	 * Usually use during shifting column or row activity
+	 * @param player	ArrayList<Player> player. Checks if any Player objects are standing on (x,y).
+	 * @param t	Tile object which is destination of Player(s).
+	 */
 	public void changingPlayerPosition(ArrayList<Player> player, Tile t){
 		for(int i = 0; i < player.size(); i++ ){
 			if(player.get(i).getTile().getX()==_x && player.get(i).getTile().getY() == _y){
@@ -227,6 +314,7 @@ public  class Tile {
 		}
 	}
 
+	// We don't need this. new ImageIcon("BufferedImage Name") is the BufferedImage object of "... Name".
 	public BufferedImage setIcon(String string) {
 		Graphics g = null;
 		BufferedImage img;
