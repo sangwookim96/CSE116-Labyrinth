@@ -64,11 +64,12 @@ public class LabyrinthModel extends Tile{
 	private ArrayList<String> _list;
 	private Observer _observer;
 	/**
-	 * Integer indicate which player is currently moving 
+	 * Integer indicate which player is currently moving.
+	 * i.e.) Representing the index of "ArrayList<Player> _player"
 	 */
 	private int _cPlayer = 0;
 	/**
-	 * Amount of players in game (1<=_playerNumber<=4)
+	 * "Amount of players" in the game (1<=_playerNumber<=4)
 	 */
 	private int _playerNumber;
 	/**
@@ -76,7 +77,10 @@ public class LabyrinthModel extends Tile{
 	 */
 	private Player _currentPlayer;
 	/**
-	 * When 0, no action is allowed.
+	 * initial priority is 0. That means no action performed.
+	 * When priority is 1, that means player made a tile movement, and can't make
+	 * another tile movement. 
+	 * When priority is 2, that means player made a token pickUp action.
 	 */
 	private int _priority = 0;
 	
@@ -109,6 +113,9 @@ public class LabyrinthModel extends Tile{
 	}
 	
 
+	/**
+	 * Setting the fixed amount of tiles by types (I, L, T).
+	 */
 	public void setupTile(){
 		for(int i=0;i<5;i++){     
 			movetiles.add('I');
@@ -723,7 +730,7 @@ public class LabyrinthModel extends Tile{
 	} 
 	
 	/**
-	 * 
+	 * Return extra Tile object.
 	 * @return _temp1 Tile ExtraTile
 	 */
 	public Tile extraTile(){
@@ -731,7 +738,10 @@ public class LabyrinthModel extends Tile{
 	}
 	/**
 	 * Reset the Priority to 0 and moving to the next Player. If the next Player is the last player in
-	 * this round, the next player supposed to be the first player in the next round. 
+	 * this round, the next player supposed to be the first player in the next round.
+	 * int _cPlayer: the current player's index of "ArrayList<Player> _player" (i.e. who's turn is it?)
+	 * int _playerNumber: Amount of players in the game.
+	 * Player _currentPlayer: current Player object. 
 	 */
 	public void endRound(){
 		resetPriority();
@@ -745,6 +755,7 @@ public class LabyrinthModel extends Tile{
 	}
 	
 	/** 
+	 * Return current Player object.
 	 * @return _currentPlayer Player object.
 	 */
 	public Player getCurrentPlayer(){
@@ -763,7 +774,7 @@ public class LabyrinthModel extends Tile{
 		}
 	}
 	/**
-	 * 
+	 * Return UpTile object.
 	 * @return _top upper adjacent tile where player made a "up" move.
 	 */
 	public Tile getUpTile(){
@@ -784,7 +795,7 @@ public class LabyrinthModel extends Tile{
 	}
 	
 	/**
-	 * 
+	 * Return DownTile object.
 	 * @return _bottom lower adjacent tile where player made "down" move.
 	 */
 	public Tile getbottomTile(){
@@ -804,7 +815,7 @@ public class LabyrinthModel extends Tile{
 		}
 	}
 	/**
-	 * 
+	 * Return LeftTile object.
 	 * @return _left left adjacent tile where player made "left" move.
 	 */
 	public Tile getLeftTile(){
@@ -825,7 +836,7 @@ public class LabyrinthModel extends Tile{
 	}
 	
 	/**
-	 * 
+	 * Return RightTile object.
 	 * @return _right right adjacent tile where player made "right" move.
 	 */
 	public Tile getRightTile(){
@@ -833,7 +844,7 @@ public class LabyrinthModel extends Tile{
 	}
 	
 	/**
-	 * 
+	 * Set Amount of players in game.
 	 * @param i Amount of players in game (1<=_playerNumber<=4)
 	 */
 	public void setPlayerNumber(int i){
