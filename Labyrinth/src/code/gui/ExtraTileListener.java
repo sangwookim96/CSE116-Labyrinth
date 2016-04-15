@@ -7,6 +7,11 @@ import org.omg.Messaging.SyncScopeHelper;
 
 import code.model.LabyrinthModel;
 
+/**
+ * ActionListener for ExtraTile (rotation) Button
+ * @author Sangwoo
+ *
+ */
 public class ExtraTileListener implements ActionListener {
 
 	private GUI _g;

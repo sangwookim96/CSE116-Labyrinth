@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 import code.model.LabyrinthModel;
 
+/**
+ * Actionlistener for JButtons on the push-able position of 7*7 board
+ * @author Sangwoo, Taki
+ *
+ */
 public class ButtonListener implements ActionListener {
 	
 	private LabyrinthModel _board = new LabyrinthModel();

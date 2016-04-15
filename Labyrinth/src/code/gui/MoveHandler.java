@@ -6,6 +6,13 @@ import java.awt.event.KeyListener;
 import code.Tile.Tile;
 import code.model.LabyrinthModel;
 
+/**
+ * KeyListener for Player movement to an adjacent tile.
+ * Use 'w','a','s','d' to move.
+ * Use 'h' to pick up a token on the board.
+ * @author Sangwoo
+ *
+ */
 public class MoveHandler implements KeyListener {
 
 	private LabyrinthModel _board = new LabyrinthModel();

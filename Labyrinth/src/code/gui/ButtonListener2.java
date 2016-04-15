@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 import code.model.LabyrinthModel;
 
+/**
+ * ActionListener for "End Round" Button.
+ * @author Sangwoo
+ *
+ */
 public class ButtonListener2 implements ActionListener {
 	
 	private LabyrinthModel _board = new LabyrinthModel();
