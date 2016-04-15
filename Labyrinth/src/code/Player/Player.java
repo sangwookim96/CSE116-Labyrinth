@@ -202,14 +202,7 @@ public class Player {
 	}
 	
 	
-	/*
-	 * Methods required:
-	 * Location() --> position(Tile tTile)
-	 * Score()  --> TotalScore()
-	 * Tokens()  --> ArrayList<Int> _token; getToken(int a);
-	 * PawnColor() --> void PlayerColor(int color); // setColor method required on gui.
-	 * 
-	 */
+
 	
 }
 	   
