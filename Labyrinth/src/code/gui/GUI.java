@@ -93,7 +93,7 @@ public class GUI implements Runnable,Observer {
 		_p.setLayout(new GridLayout(5,5));
 		_p.setFocusable(false);
 		for(int i=0;i<25;i++){
-			if(i<25 && i!=4 && i!=9 && i!=17){
+			if(i<25 && i!=11 && i!=13 && i!=12){
 				JButton InactiveB = new JButton();
 				InactiveB.setBackground(Color.DARK_GRAY);
 				InactiveB.setBorderPainted(false);
@@ -101,14 +101,14 @@ public class GUI implements Runnable,Observer {
 				InactiveB.disable();
 				_p.add(InactiveB);
 			}
-			if(i==4){
+			if(i==11){
 				JButton b1 = new JButton();
 				b1.setFont(b1.getFont().deriveFont(Font.BOLD, b1.getFont().getSize()*2));
 				b1.addActionListener(new ExtraTileListener(_lm));
 				b1.setPreferredSize(new Dimension(100, 100));
 				_p.add(b1);
 			}
-			else if(i==9){
+			else if(i==13){
 				JButton b2 = new JButton("End Turn");
 				b2.setFont(b2.getFont().deriveFont(Font.BOLD, b2.getFont().getSize()*2));
 				b2.setBackground(Color.RED);
@@ -117,7 +117,7 @@ public class GUI implements Runnable,Observer {
 				b2.setPreferredSize(new Dimension(100, 100));
 				_p.add(b2);
 			}
-			else if(i==17){
+			else if(i==12){
 				JLabel l1 = new JLabel("POINTS: 0");
 				l1.setFont(l1.getFont().deriveFont(Font.BOLD, l1.getFont().getSize()*2));
 				l1.setPreferredSize(new Dimension(100, 100));
@@ -152,25 +152,25 @@ public class GUI implements Runnable,Observer {
 			}
 		}
 			for(int i=0;i<24;i++){
-				if(i<24 && i!=4 && i!=9	&& i!=17){
+				if(i<24 && i!=11 && i!=13 && i!=12){
 					JButton InactiveB = new JButton();
 					InactiveB.setContentAreaFilled(false);
 					InactiveB.setBorderPainted(false);
 					InactiveB.setFocusable(false);
 					InactiveB.disable();
 				}
-				if(i==4){
+				if(i==11){
 					JButton b = (JButton) _p.getComponent(i);
 					b.setIcon(this.char2Image(_lm.extraTile().getCharacter()));
 					b.setVerticalTextPosition(SwingConstants.CENTER);
 					b.setHorizontalTextPosition(SwingConstants.CENTER);
 				}
-				else if(i==9){
+				else if(i==13){
 					JButton b = (JButton) _p.getComponent(i);
 					b.setVerticalTextPosition(SwingConstants.CENTER);
 					b.setHorizontalTextPosition(SwingConstants.CENTER);
 				}
-				else if(i==17){
+				else if(i==12){
 					JLabel l1 = (JLabel)_p.getComponent(i);
 					if(_lm.getCurrentPlayer().TotalScore()!=0){
 						l1.setText("point: " + _lm.getCurrentPlayer().TotalScore());
