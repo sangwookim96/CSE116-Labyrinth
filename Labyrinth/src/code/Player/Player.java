@@ -271,7 +271,7 @@ public class Player {
 	}
 	
 	/**
-	 * Return the Player
+	 * Return the Player name
 	 * @return _name Player's name
 	 */
 	public String getName(){

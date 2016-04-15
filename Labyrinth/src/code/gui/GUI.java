@@ -27,10 +27,22 @@ import code.model.Observer;
 public class GUI implements Runnable,Observer {
 
 	private JFrame _window,_window1;
+	/**
+	 * LabyrinthModel class
+	 */
 	private LabyrinthModel _lm;
+	/**
+	 * _jg: Main Panel
+	 * _p: Extra Panel
+	 */
 	private JPanel _TilePanel, _jp,_p;
 	private Player _player;
 	private Tile _tm;
+	
+	/**
+	 * GUI associate with Model class.
+	 * @param lm
+	 */
 	public GUI(LabyrinthModel lm){
 		_lm = lm;
 		_lm.setObserver(this);
@@ -39,6 +51,7 @@ public class GUI implements Runnable,Observer {
 	@SuppressWarnings("deprecation")
 	@Override public void run() {
 		
+		// JFrame for Game.
 		_window = new JFrame("Labyrinth");
 		_window.setLayout(new GridLayout(1,2));
 		_window.setSize(2000, 1000);
@@ -50,6 +63,8 @@ public class GUI implements Runnable,Observer {
 		_window.add(_jp);
 		_window.add(_p);
 		
+		
+		// JFrame for Instructions
 		_window1 = new JFrame("Instructions");
 		_window1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_window1.setVisible(true);
@@ -69,6 +84,12 @@ public class GUI implements Runnable,Observer {
 		panel1.add(Instructions);
 	}
 	
+	/**
+	 * check All the click-able (push-able) position on the edges of board
+	 * @param x	X value of the checking tile
+	 * @param y Y value of the checking tile
+	 * @return true if it is click-able (push-able)
+	 */
 	public boolean checkTheBoard(int x, int y){
 		if(y==0 && (x==1 || x==3 || x==5) ){
 			return true;
@@ -85,14 +106,16 @@ public class GUI implements Runnable,Observer {
 		return false;
 	}
 	
+	/**
+	 * Start of Game, creates 2 JPanels: one for 7*7 board, and one for Game Information.
+	 */
 	public void initializegame() {
 		
+		// Board Panel
 		_jp = new JPanel();
 		_jp.setLayout(new GridLayout(7,7));
 		_jp.setFocusable(true);
-		
-//		String s = "";
-		
+				
 		for(int i=0;i<_lm.ROWS;i++){
 			for(int a=0;a<_lm.COLS;a++){	
 				JButton b = new JButton();
@@ -106,10 +129,13 @@ public class GUI implements Runnable,Observer {
 			}
 		}
 		
+		
+		// Extra Panel
 		_p = new JPanel();
 		_p.setLayout(new GridLayout(5,5));
 		_p.setFocusable(false);
 		for(int i=0;i<25;i++){
+			// Background
 			if(i>4 && i<20 && i!=11 && i!=12 && i!=13){
 				JButton InactiveB = new JButton();
 				InactiveB.setBackground(Color.DARK_GRAY);
@@ -118,6 +144,8 @@ public class GUI implements Runnable,Observer {
 				InactiveB.disable();
 				_p.add(InactiveB);
 			}
+			
+			// SEXY TITLE
 			if(i==0){
 				JButton b = new JButton("L");
 				b.setBackground(Color.DARK_GRAY);
@@ -198,6 +226,8 @@ public class GUI implements Runnable,Observer {
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);
 			}
+			
+			// Extra Tile Rotation Button
 			else if(i==11){
 				JButton b1 = new JButton();
 				b1.setFont(b1.getFont().deriveFont(Font.BOLD, b1.getFont().getSize()*2));
@@ -205,6 +235,8 @@ public class GUI implements Runnable,Observer {
 				b1.setPreferredSize(new Dimension(100, 100));
 				_p.add(b1);
 			}
+			
+			// End Turn Button
 			else if(i==13){
 				JButton b2 = new JButton("End Turn");
 				b2.setFont(b2.getFont().deriveFont(Font.BOLD, b2.getFont().getSize()*2));
@@ -214,6 +246,8 @@ public class GUI implements Runnable,Observer {
 				b2.setPreferredSize(new Dimension(100, 100));
 				_p.add(b2);
 			}
+			
+			// A Player's Point Information
 			else if(i==12){
 				JLabel l1 = new JLabel();
 				l1.setFont(l1.getFont().deriveFont(Font.BOLD, l1.getFont().getSize()*2));
@@ -225,13 +259,20 @@ public class GUI implements Runnable,Observer {
 		update();
 	}
 	
+	
+	// Update
 	@Override
 	public void update() {
+		// 7*7 Board update
 		for(int r=0;r<_lm.ROWS;r++){
 			for(int c=0;c<_lm.COLS;c++){
 				JButton b = (JButton) _jp.getComponent(r*LabyrinthModel.ROWS + c);
+				
+				// Visual of Token
 				String token = "";
 				if(_lm.getTile(r, c).getToken()!=0) token = Integer.toString(_lm.getTile(r, c).getToken());
+				
+				// Visual of Player
 				String player = "";
 				for(Player p: _lm.getPlayer()){
 					if(p.getX() == r && p.getY() == c){
@@ -240,12 +281,16 @@ public class GUI implements Runnable,Observer {
 						}
 					}
 				}
+				
+				//set Visual of token and player name(s)
 				b.setText(token+" " + player);
 				b.setIcon(this.char2Image(_lm.getTile(r,c).getCharacter()));
 				b.setVerticalTextPosition(SwingConstants.CENTER);
 				b.setHorizontalTextPosition(SwingConstants.CENTER);
 			}
 		}
+		
+		// Extra Panel update
 			for(int i=0;i<24;i++){
 				if(i<24 && i!=11 && i!=12 && i!=13){
 					JButton InactiveB = new JButton();
@@ -287,6 +332,11 @@ public class GUI implements Runnable,Observer {
 			_window.repaint();
 		}
 
+	/**
+	 * Translate char of Tile type to ImageIcon (BufferedImage)
+	 * @param c 	char Tile type
+	 * @return The ImageIcon depending on Tile type
+	 */
 	public ImageIcon char2Image(char c){
 		//L Tile
 		ImageIcon exclamation =new ImageIcon("Labyrinth BufferImages\\L Tile\\Type !.png");
