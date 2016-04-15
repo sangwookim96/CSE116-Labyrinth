@@ -46,6 +46,10 @@ public class Player {
 		}
 		
 	}
+	
+	public ArrayList<Integer> getMagicCard(){
+		return _magicCard;
+	}
 	public boolean usingMagicStick(){
 		if(_magicstick!=0){
 			_magicstick= _magicstick-1;
@@ -142,10 +146,7 @@ public class Player {
 	 * @return true if the player successfully moves to the adjacent tile.
 	 */
 	public boolean position(Tile tTile){
-		//		System.out.println(_cTile.getX());
-		//		System.out.println(_cTile.getY());
-		//		System.out.println(tTile.getX());
-		//		System.out.println(tTile.getY());
+
 		if(tTile == null || _cTile == null){
 			return false;
 		}

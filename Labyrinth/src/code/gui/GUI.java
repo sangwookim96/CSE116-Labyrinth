@@ -79,7 +79,6 @@ public class GUI implements Runnable,Observer {
 		for(int i=0;i<_lm.ROWS;i++){
 			for(int a=0;a<_lm.COLS;a++){	
 				JButton b = new JButton();
-//				b.setFocusable(true);
 				b.addKeyListener(new MoveHandler(_lm));
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*2));
 				b.setPreferredSize(new Dimension(100, 100));
@@ -94,7 +93,7 @@ public class GUI implements Runnable,Observer {
 		_p.setLayout(new GridLayout(5,5));
 		_p.setFocusable(false);
 		for(int i=0;i<25;i++){
-			if(i<25 && i!=4	&& i!=9 && i!=17){
+			if(i<25 && i!=4 && i!=7	&& i!=9 && i!=17){
 				JButton InactiveB = new JButton();
 				InactiveB.setBackground(Color.DARK_GRAY);
 				InactiveB.setBorderPainted(false);
@@ -109,13 +108,18 @@ public class GUI implements Runnable,Observer {
 				b1.setPreferredSize(new Dimension(100, 100));
 				_p.add(b1);
 			}
-//			else if(i==7){
-//				JLabel l = new JLabel("Token: ");
-//				l.setFont(l.getFont().deriveFont(Font.BOLD, l.getFont().getSize()*2));
-//				l.setBackground(Color.GRAY);
-//				l.setPreferredSize(new Dimension(100, 100));
-//				_p.add(l);
-//			}
+			else if(i==7){
+				JLabel l = new JLabel("Token: ");
+
+				l.setFont(l.getFont().deriveFont(Font.BOLD, l.getFont().getSize()*2));
+
+				l.setBackground(Color.GRAY);
+
+				l.setPreferredSize(new Dimension(100, 100));
+
+				_p.add(l);
+
+			}
 			else if(i==9){
 				JButton b2 = new JButton("End Turn");
 				b2.setFont(b2.getFont().deriveFont(Font.BOLD, b2.getFont().getSize()*2));
@@ -148,7 +152,9 @@ public class GUI implements Runnable,Observer {
 				String player = "";
 				for(Player p: _lm.getPlayer()){
 					if(p.getX() == r && p.getY() == c){
-						player += p.getName();
+						if(p.getName()!=null){
+							player += p.getName();
+						}
 					}
 				}
 				b.setText(token+" " + player);
@@ -158,7 +164,7 @@ public class GUI implements Runnable,Observer {
 			}
 		}
 			for(int i=0;i<24;i++){
-				if(i<24 && i!=4 && i!=9	&& i!=17){
+				if(i<24 && i!=4 && i!=7 && i!=9	&& i!=17){
 					JButton InactiveB = new JButton();
 					InactiveB.setContentAreaFilled(false);
 					InactiveB.setBorderPainted(false);
@@ -171,10 +177,10 @@ public class GUI implements Runnable,Observer {
 					b.setVerticalTextPosition(SwingConstants.CENTER);
 					b.setHorizontalTextPosition(SwingConstants.CENTER);
 				}
-//				else if(i==7){
-//					JLabel l = (JLabel)_p.getComponent(i);
-//					l.setPreferredSize(new Dimension(100, 100));
-//				}
+				else if(i==7){
+					JLabel l = (JLabel)_p.getComponent(i);
+					l.setPreferredSize(new Dimension(100, 100));
+				}
 				else if(i==9){
 					JButton b = (JButton) _p.getComponent(i);
 					b.setVerticalTextPosition(SwingConstants.CENTER);
@@ -182,6 +188,12 @@ public class GUI implements Runnable,Observer {
 				}
 				else if(i==17){
 					JLabel l1 = (JLabel)_p.getComponent(i);
+					if(_lm.getCurrentPlayer().TotalScore()!=0){
+						l1.setText("point: " + _lm.getCurrentPlayer().TotalScore());
+					}
+					else{
+						l1.setText("point: 0");
+					}
 					l1.setPreferredSize(new Dimension(100, 100));
 				}
 			}

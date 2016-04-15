@@ -16,6 +16,7 @@ public class ButtonListener2 implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(_board.getPriority()==1 || _board.getPriority()==2){
 			_board.endRound();
+
 			_board.gameUpdate();
 		}
 		else{

@@ -239,7 +239,6 @@ public class LabyrinthModel extends Tile{
 						
 					}
 				}
-//				System.out.println(_board[r][c].getCharacter());
 			} 			
 		}
 		randomCharacter();
@@ -264,7 +263,7 @@ public class LabyrinthModel extends Tile{
 				characters+=s;
 				s=ss;
 			}
-		}//System.out.println(characters);
+		}
 		
 		return characters;
 	} 
@@ -313,9 +312,7 @@ public class LabyrinthModel extends Tile{
 			for(int y = 0; y < 7; y++){
 				a.add(getTile(x,y).getCharacter());
 				if(x ==6 && y ==6){
-//					System.out.println(a);
 				}
-				System.out.print(a);
 			}
 		}
 		return a;
@@ -357,9 +354,7 @@ public class LabyrinthModel extends Tile{
 			_temp1.setCharacter(c);
 			_temp1.setX(9);
 			_temp1.setY(9);
-//			s=s+c;
 		}
-//						System.out.println(ss);
 
 
 		return '0';			
@@ -399,7 +394,6 @@ public class LabyrinthModel extends Tile{
 	public void push (int position ){	
 		switch(position){
 		case 1:{
-			System.out.println("hello");
 			_temp2=_board[1][6];
 			change(_temp2,_temp1);
 			for (int c=6;c>0;c--){
@@ -477,8 +471,8 @@ public class LabyrinthModel extends Tile{
 				}
 			}
 			_board[0][1]=_temp1;
-			_board[0][1].setX(1);
-			_board[0][1].setY(0);
+			_board[0][1].setX(0);
+			_board[0][1].setY(1);
 			if(_temp1.hasPlayer(_player)){
 				_temp1.changingPlayerPosition(_player, _board[0][1]);
 			}			
@@ -886,15 +880,12 @@ public class LabyrinthModel extends Tile{
 	 * @param x X value of pointed tile.
 	 * @param y Y value of pointed tile.
 	 */
-	public void pickUp(int x, int y){
-		System.out.println(_index);
+	public boolean pickUp(int x, int y){
 		if(getTile(x,y).getToken()==_index){
-			System.out.println("pick up");
 			_currentPlayer.pickUpToken(_index);
 			getTile(x,y).setValueOfToken(0);
-			System.out.println(getTile(x,y).getToken());
 			if(_index == 25){
-				_observer = null;
+				finishGame();
 			}
 			else if(_index == 20){
 				_index = 25;
@@ -902,10 +893,12 @@ public class LabyrinthModel extends Tile{
 			else{
 				_index++;
 			}
+			return true;
 		}
 		else{
 			System.out.println("error, you couldn't pick up the token yet");
 		}
+		return false;
 	}
 	
 	/**
@@ -920,7 +913,8 @@ public class LabyrinthModel extends Tile{
 				winner = i+1;
 			}
 		}
-		System.out.println("the winner of the game is player " + winner+1);
+		System.out.println("the winner of the game is " + _player.get(winner).getName());
+		System.exit(0);
 	}
 	
 
