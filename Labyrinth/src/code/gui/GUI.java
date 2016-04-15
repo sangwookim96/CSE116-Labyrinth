@@ -94,7 +94,7 @@ public class GUI implements Runnable,Observer {
 		_p.setLayout(new GridLayout(5,5));
 		_p.setFocusable(false);
 		for(int i=0;i<25;i++){
-			if(i>9 && i<25 && i!=16 && i!=17 && i!=18){
+			if(i>4 && i<20 && i!=11 && i!=12 && i!=13){
 				JButton InactiveB = new JButton();
 				InactiveB.setBackground(Color.DARK_GRAY);
 				InactiveB.setBorderPainted(false);
@@ -105,7 +105,7 @@ public class GUI implements Runnable,Observer {
 			if(i==0){
 				JButton b = new JButton("L");
 				b.setBackground(Color.DARK_GRAY);
-				b.setForeground(Color.ORANGE);
+				b.setForeground(Color.RED);
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*8));
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);	
@@ -113,7 +113,7 @@ public class GUI implements Runnable,Observer {
 			else if(i==1){
 				JButton b = new JButton("A");
 				b.setBackground(Color.DARK_GRAY);
-				b.setForeground(Color.ORANGE);
+				b.setForeground(Color.RED);
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*8));
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);
@@ -121,7 +121,7 @@ public class GUI implements Runnable,Observer {
 			else if(i==2){
 				JButton b = new JButton("B");
 				b.setBackground(Color.DARK_GRAY);
-				b.setForeground(Color.ORANGE);
+				b.setForeground(Color.RED);
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*8));
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);
@@ -129,7 +129,7 @@ public class GUI implements Runnable,Observer {
 			else if(i==3){
 				JButton b = new JButton("Y");
 				b.setBackground(Color.DARK_GRAY);
-				b.setForeground(Color.ORANGE);
+				b.setForeground(Color.RED);
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*8));
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);
@@ -137,59 +137,59 @@ public class GUI implements Runnable,Observer {
 			else if(i==4){
 				JButton b = new JButton("-");
 				b.setBackground(Color.DARK_GRAY);
-				b.setForeground(Color.ORANGE);
+				b.setForeground(Color.RED);
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*8));
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);
 			}
-			else if(i==5){
+			else if(i==20){
 				JButton b = new JButton("R");
 				b.setBackground(Color.DARK_GRAY);
-				b.setForeground(Color.ORANGE);
+				b.setForeground(Color.RED);
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*8));
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);
 			}
-			else if(i==6){
+			else if(i==21){
 				JButton b = new JButton("I");
 				b.setBackground(Color.DARK_GRAY);
-				b.setForeground(Color.ORANGE);
+				b.setForeground(Color.RED);
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*8));
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);
 			}
-			else if(i==7){
+			else if(i==22){
 				JButton b = new JButton("N");
 				b.setBackground(Color.DARK_GRAY);
-				b.setForeground(Color.ORANGE);
+				b.setForeground(Color.RED);
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*8));
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);
 			}
-			else if(i==8){
+			else if(i==23){
 				JButton b = new JButton("T");
 				b.setBackground(Color.DARK_GRAY);
-				b.setForeground(Color.ORANGE);
+				b.setForeground(Color.RED);
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*8));
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);
 			}
-			else if(i==9){
+			else if(i==24){
 				JButton b = new JButton("H");
 				b.setBackground(Color.DARK_GRAY);
-				b.setForeground(Color.ORANGE);
+				b.setForeground(Color.RED);
 				b.setFont(b.getFont().deriveFont(Font.BOLD, b.getFont().getSize()*8));
 				b.setPreferredSize(new Dimension(100, 100));
 				_p.add(b);
 			}
-			else if(i==16){
+			else if(i==11){
 				JButton b1 = new JButton();
 				b1.setFont(b1.getFont().deriveFont(Font.BOLD, b1.getFont().getSize()*2));
 				b1.addActionListener(new ExtraTileListener(_lm));
 				b1.setPreferredSize(new Dimension(100, 100));
 				_p.add(b1);
 			}
-			else if(i==18){
+			else if(i==13){
 				JButton b2 = new JButton("End Turn");
 				b2.setFont(b2.getFont().deriveFont(Font.BOLD, b2.getFont().getSize()*2));
 				b2.setBackground(Color.RED);
@@ -198,7 +198,7 @@ public class GUI implements Runnable,Observer {
 				b2.setPreferredSize(new Dimension(100, 100));
 				_p.add(b2);
 			}
-			else if(i==17){
+			else if(i==12){
 				JLabel l1 = new JLabel();
 				l1.setFont(l1.getFont().deriveFont(Font.BOLD, l1.getFont().getSize()*2));
 				l1.setPreferredSize(new Dimension(100, 100));
@@ -231,25 +231,25 @@ public class GUI implements Runnable,Observer {
 			}
 		}
 			for(int i=0;i<24;i++){
-				if(i<24 && i!=16 && i!=17 && i!=18){
+				if(i<24 && i!=11 && i!=12 && i!=13){
 					JButton InactiveB = new JButton();
 					InactiveB.setContentAreaFilled(false);
 					InactiveB.setBorderPainted(false);
 					InactiveB.setFocusable(false);
 					InactiveB.disable();
 				}
-				if(i==16){
+				if(i==11){
 					JButton b = (JButton) _p.getComponent(i);
 					b.setIcon(this.char2Image(_lm.extraTile().getCharacter()));
 					b.setVerticalTextPosition(SwingConstants.CENTER);
 					b.setHorizontalTextPosition(SwingConstants.CENTER);
 				}
-				else if(i==18){
+				else if(i==13){
 					JButton b = (JButton) _p.getComponent(i);
 					b.setVerticalTextPosition(SwingConstants.CENTER);
 					b.setHorizontalTextPosition(SwingConstants.CENTER);
 				}
-				else if(i==17){
+				else if(i==12){
 					JLabel l1 = (JLabel)_p.getComponent(i);
 					l1.setVerticalTextPosition(SwingConstants.CENTER);
 					l1.setHorizontalTextPosition(SwingConstants.CENTER);
