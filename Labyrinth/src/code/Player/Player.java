@@ -14,6 +14,10 @@ public class Player {
 	private int _score;
 	private int _x;
 	private int _y;
+	
+	/**
+	 * Tile object of "current Tile" where player is standing.
+	 */
 	private Tile _cTile;
 	private String _name;
 	
@@ -132,24 +136,47 @@ public class Player {
 		return null;
 	}
 	
-	
+	/**
+	 * Set _cTile (aka current Tile) to another tile.
+	 * @param t the Tile _cTile become. 
+	 * @return _cTile updated current Tile.
+	 */
 	public Tile setTile(Tile t){
 		return _cTile = t;
 	}
 
-	
+	/**
+	 * Get X value of the Tile where player is standing.
+	 * @return _x X value of _cTile
+	 */
 	public int getX(){
 		return _x;
 	}
+	/**
+	 * Get Y value of the Tile where player is standing.
+	 * @return _y Y value of _cTile
+	 */
 	public int getY(){
 		return _y;
 	}
+	/**
+	 * Setting _cTile's X value to x
+	 * @param x Update _x to x.
+	 */
 	public void setX(int x){
 		 _x = x;
 	}
+	/**
+	 * Setting _cTile's Y value to y
+	 * @param y Update _y to y.
+	 */
 	public void setY(int y){
 		_y = y;
 	}
+	/**
+	 * Return Current Player Tile where Player is standing.
+	 * @return _cTile a.k.a. current Player Tile
+	 */
 	public Tile getTile(){
 		return _cTile;
 	}
@@ -160,7 +187,10 @@ public class Player {
 	 * (we're not going to set the final destination of player. And ending the player's turn
 	 * by player's choice.)
 	 * 
-	 * @param tTile the adjacent tile where player want to move.
+	 * 	getY() corresponding left and right direction.
+	 * 	getX() corresponding up and down direction.
+	 * 
+	 * @param tTile The adjacent tile where player want to move.
 	 * @return true if the player successfully moves to the adjacent tile.
 	 */
 	public boolean position(Tile tTile){
@@ -211,10 +241,20 @@ public class Player {
 			// set player color to Green
 		}		
 	}
+	
+	/**
+	 * Set the name of the Player.
+	 * Enter name by Command Line in Driver.
+	 * @param name Set _name to name.
+	 */
 	public void setName(String name){
 		_name = name;
 	}
 	
+	/**
+	 * Return the Player
+	 * @return _name Player's name
+	 */
 	public String getName(){
 		return _name;
 	}
