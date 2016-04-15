@@ -669,51 +669,51 @@ public class LabyrinthModel extends Tile{
 	 */
 	public int Point2Position(int x, int y){
 		Tile location = _board[x][y];
-		if(location==_board[1][6]){
+		if(location==_board[1][0]){
 			return 1;
 		}
 		else
-			if(location==_board[3][6]){
+			if(location==_board[3][0]){
 				return 2;		
 			}
 		else
-			if(location==_board[5][6]){
+			if(location==_board[5][0]){
 				return 3;
 			}
 		else
-			if(location==_board[6][1]){
+			if(location==_board[0][1]){
 				return 4;
 			}
 		else
-			if(location==_board[6][3]){
+			if(location==_board[0][3]){
 				return 5;
 			}
 		else
-			if(location==_board[6][5]){
+			if(location==_board[0][5]){
 				return 6;
 			}
 		else
-			if(location==_board[1][0]){
+			if(location==_board[1][6]){
 				return 7;
 			}
 		else
-			if(location==_board[3][0]){
+			if(location==_board[3][6]){
 				return 8;
 			}
 		else
-			if(location==_board[5][0]){
+			if(location==_board[5][6]){
 				return 9;
 			}
 		else
-			if(location==_board[0][5]){
+			if(location==_board[6][5]){
 				return 10;
 			}
 		else
-			if(location==_board[0][3]){
+			if(location==_board[6][3]){
 				return 11;
 			}
 		else
-			if(location==_board[0][1]){
+			if(location==_board[6][1]){
 				return 12;
 			}
 		return 0;
