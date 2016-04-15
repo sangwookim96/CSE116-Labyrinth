@@ -64,13 +64,26 @@ public class LabyrinthModel extends Tile{
 	private ArrayList<String> _list;
 	private Observer _observer;
 	private int _cPlayer = 0;
+	/**
+	 * Amount of players in game (1<=_playerNumber<=4)
+	 */
 	private int _playerNumber;
+	/**
+	 * "Player object" of current player.
+	 */
 	private Player _currentPlayer;
+	/**
+	 * When 0, no action is allowed.
+	 */
 	private int _priority = 0;
+	
 	private Tile _top = new Tile();
 	private Tile _bottom = new Tile();
 	private Tile _left = new Tile();
 	private Tile _right = new Tile();
+	/**
+	 * Current pick-able point of token.
+	 */
 	private int _index = 1;
 
 	/**
@@ -690,9 +703,16 @@ public class LabyrinthModel extends Tile{
 		return 0;
 	} 
 	
+	/**
+	 * 
+	 * @return _temp1 Tile ExtraTile
+	 */
 	public Tile extraTile(){
 		return _temp1;
 	}
+	/**
+	 * 
+	 */
 	public void endRound(){
 		resetPriority();
 		if(_cPlayer == (_playerNumber-1) ){
@@ -704,10 +724,16 @@ public class LabyrinthModel extends Tile{
 		_currentPlayer = _player.get(_cPlayer);
 	}
 	
+	/** 
+	 * @return _currentPlayer Player object.
+	 */
 	public Player getCurrentPlayer(){
 		return _currentPlayer;
 	}
 	
+	/**
+	 * Move _currentPlayer's tile location to upper adjacent tile.
+	 */
 	public void topTile(){
 		if(_currentPlayer.getX() > 0){
 			_top = getTile((_currentPlayer.getX()-1),_currentPlayer.getY());
@@ -716,10 +742,17 @@ public class LabyrinthModel extends Tile{
 			_top = null;
 		}
 	}
+	/**
+	 * 
+	 * @return _top upper adjacent tile where player made a "up" move.
+	 */
 	public Tile getUpTile(){
 		return _top;
 	}
 	
+	/**
+	 * Move _currentPlayer's tile location to lower adjacent tile.
+	 */
 	public void bottomTile(){
 		if(_currentPlayer.getX() < 6){
 			_bottom = getTile((_currentPlayer.getX()+1),_currentPlayer.getY());
@@ -730,11 +763,17 @@ public class LabyrinthModel extends Tile{
 		}
 	}
 	
+	/**
+	 * 
+	 * @return _bottom lower adjacent tile where player made "down" move.
+	 */
 	public Tile getbottomTile(){
 		return _bottom;
 	}
 	
-	
+	/**
+	 * Move _currentPlayer's tile location to left adjacent tile.
+	 */
 	public void leftTile(){
 		if(_currentPlayer.getY() > 0){
 			_left = getTile(_currentPlayer.getX(),(_currentPlayer.getY()-1));
@@ -744,12 +783,17 @@ public class LabyrinthModel extends Tile{
 			_left = null;
 		}
 	}
-	
+	/**
+	 * 
+	 * @return _left left adjacent tile where player made "left" move.
+	 */
 	public Tile getLeftTile(){
 		return _left;
 	}
 	
-	
+	/**
+	 * Move _currentPlayer's tile location to right adjacent tile.
+	 */
 	public void rightTile(){
 		if(_currentPlayer.getY() < 6){
 			_right = getTile(_currentPlayer.getX(), (_currentPlayer.getY()+1));
@@ -760,15 +804,26 @@ public class LabyrinthModel extends Tile{
 		}
 	}
 	
+	/**
+	 * 
+	 * @return _right right adjacent tile where player made "right" move.
+	 */
 	public Tile getRightTile(){
 		return _right;
 	}
 	
-	
+	/**
+	 * 
+	 * @param i Amount of players in game (1<=_playerNumber<=4)
+	 */
 	public void setPlayerNumber(int i){
 		_playerNumber = i; 
 	}
 	
+	/**
+	 * 
+	 * @return _playerNumber Amount of players in game (1<=_playerNumber<=4)
+	 */
 	public int getPlayerNumber(){
 		return _playerNumber; 
 	}
@@ -782,16 +837,33 @@ public class LabyrinthModel extends Tile{
 		}
 	}
 
+	/**
+	 * Provide one action to player.
+	 */
 	public void setPriority(){
 		_priority++;
 	}
+	/**
+	 * 
+	 * @return _priority When 0, no action is allowed.
+	 */
 	public int getPriority(){
 		return _priority;
 	}
+	/**
+	 * When _priority is "0", no action is allowed to the player.
+	 */
 	public void resetPriority(){
 		_priority = 0;
 	}
-	
+	/**
+	 * check the picking up activity is available on pointed tile (x,y).
+	 * If a player pick up the second last token "20", set the last 
+	 * token score as "25"
+	 * 
+	 * @param x X value of pointed tile.
+	 * @param y Y value of pointed tile.
+	 */
 	public void pickUp(int x, int y){
 		System.out.println(_index);
 		if(getTile(x,y).getToken()==_index){
@@ -814,6 +886,9 @@ public class LabyrinthModel extends Tile{
 		}
 	}
 	
+	/**
+	 * Compare all players' total score by binary search.
+	 */
 	private void finishGame() {
 		int a = _player.get(0).TotalScore();
 		int winner = 0;
