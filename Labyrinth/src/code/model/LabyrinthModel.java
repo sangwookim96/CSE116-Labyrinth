@@ -63,6 +63,9 @@ public class LabyrinthModel extends Tile{
 	 */
 	private ArrayList<String> _list;
 	private Observer _observer;
+	/**
+	 * Integer indicate which player is currently moving 
+	 */
 	private int _cPlayer = 0;
 	/**
 	 * Amount of players in game (1<=_playerNumber<=4)
@@ -727,7 +730,8 @@ public class LabyrinthModel extends Tile{
 		return _temp1;
 	}
 	/**
-	 * 
+	 * Reset the Priority to 0 and moving to the next Player. If the next Player is the last player in
+	 * this round, the next player supposed to be the first player in the next round. 
 	 */
 	public void endRound(){
 		resetPriority();
