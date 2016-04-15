@@ -18,6 +18,14 @@ public class Player {
 	private String _name;
 	
 	
+	/**
+	 * Player Constructor associates with the Tile where the player is standing (, or will
+	 * be standing).
+	 * And (x,y) address on the 7*7 board.
+	 * @param p	Tile where Player is standing (may be used for pointed Tile object)
+	 * @param x X value of Tile location
+	 * @param y Y value of Tile location
+	 */
 	public Player(Tile p,int x,int y){
 		magicCard();
 		_x = x;
@@ -60,20 +68,26 @@ public class Player {
 	
 	/**
 	 * Picking up the token.
-	 * @param a the point of a token
+	 * i.e.) Adding token point into "ArrayList<Integer> _token"
+	 * @param a The point of a token
 	 */
 	public void pickUpToken(int a){
 		_tokens.add(a);
 	}
-	public ArrayList<Integer> showToken(){
-		if(!_tokens.isEmpty()){
-			return _tokens;
-		}
-		else {
-			return _tokens;
-		}
-	}
+//	
+//	public ArrayList<Integer> showToken(){
+//		if(!_tokens.isEmpty()){
+//			return _tokens;
+//		}
+//		else {
+//			return _tokens;
+//		}
+//	}
 	
+	/**
+	 * String that shows all the elements in _token list.
+	 * @return s ("" + _token.get(i) ... so on) 
+	 */
 	public String myToken() {
 		String s = "";
 		for(int i=0;i<_tokens.size();i++){
@@ -87,6 +101,10 @@ public class Player {
 		return s;
 	}
 	
+	/**
+	 * summation of player's token
+	 * @return _score (+= _tokens.get(i) ... so on)
+	 */
 	public int TotalScore(){
 		_score = 0;
 		for(int i = 0; i < _tokens.size();i++){

@@ -47,7 +47,7 @@ public class LabyrinthModel extends Tile{
 	Tile _temp2= new Tile();		
 
 	/** 
-	 * a representation of the board (non-graphical)
+	 * a representation of a Tile on the board (non-graphical)
 	 */
 	private Tile[][] _board; 
 	/**
