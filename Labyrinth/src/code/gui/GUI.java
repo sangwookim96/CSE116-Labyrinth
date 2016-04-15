@@ -259,7 +259,7 @@ public class GUI implements Runnable,Observer {
 						l1.setHorizontalTextPosition(SwingConstants.CENTER);
 					}
 					else{
-						l1.setText("POINTS: 0!!!");
+						l1.setText(_lm.getCurrentPlayer().getName()+" POINTS: 0 ");
 						l1.setVerticalTextPosition(SwingConstants.CENTER);
 						l1.setHorizontalTextPosition(SwingConstants.CENTER);
 					}
