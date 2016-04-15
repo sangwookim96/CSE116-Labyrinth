@@ -26,7 +26,7 @@ import code.model.Observer;
 
 public class GUI implements Runnable,Observer {
 
-	private JFrame _window;
+	private JFrame _window,_window1;
 	private LabyrinthModel _lm;
 	private JPanel _TilePanel, _jp,_p;
 	private Player _player;
@@ -38,7 +38,7 @@ public class GUI implements Runnable,Observer {
 
 	@SuppressWarnings("deprecation")
 	@Override public void run() {
-				
+		
 		_window = new JFrame("Labyrinth");
 		_window.setLayout(new GridLayout(1,2));
 		_window.setSize(2000, 1000);
@@ -49,9 +49,25 @@ public class GUI implements Runnable,Observer {
 		_window.setVisible(true);
 		_window.add(_jp);
 		_window.add(_p);
+		
+		_window1 = new JFrame("Instructions");
+		_window1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		_window1.setVisible(true);
+		_window1.setSize(1000,2000);
+		JPanel panel1 = new JPanel();
+		_window1.add(panel1);
+		panel1.setLayout(new GridLayout(1,1));
+		panel1.setFocusable(true);
+		JLabel Instructions = new JLabel("<html>Welcome to Labyrinth the Online Board Game<br>"
+				+ "Labyrinth is the perfect family game,<br>ideal for up to 4 players,<br>The "
+				+ "clever and unique game play ensures an even playing field for players of all "
+				+ "ages;<br>so young children, teenagers, parents and grandparents all have an "
+				+ "equal chance to win.<br>As the walls are constantly moving, no two games are ever "
+				+ "the same,<br> which means it always exciting. <br>Instructions:<br> </html>"
+				,SwingConstants.CENTER);
+		Instructions.setFont(Instructions.getFont().deriveFont(Font.ITALIC,Instructions.getFont().getSize()*3));
+		panel1.add(Instructions);
 	}
-	
-	
 	
 	public boolean checkTheBoard(int x, int y){
 		if(y==0 && (x==1 || x==3 || x==5) ){
