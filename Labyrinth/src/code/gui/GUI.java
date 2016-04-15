@@ -94,7 +94,7 @@ public class GUI implements Runnable,Observer {
 		_p.setLayout(new GridLayout(5,5));
 		_p.setFocusable(false);
 		for(int i=0;i<25;i++){
-			if(i<25 && i!=4 && i!=7	&& i!=9 && i!=17){
+			if(i<25 && i!=4	&& i!=9 && i!=17){
 				JButton InactiveB = new JButton();
 				InactiveB.setBackground(Color.DARK_GRAY);
 				InactiveB.setBorderPainted(false);
@@ -109,18 +109,13 @@ public class GUI implements Runnable,Observer {
 				b1.setPreferredSize(new Dimension(100, 100));
 				_p.add(b1);
 			}
-			else if(i==7){
-				JLabel l = new JLabel("Token: ");
-				try{
-					l.setText("TOKEN: " +_player.myToken());
-				}catch(NullPointerException e){
-					System.out.println("You can't do that!");
-				}
-				l.setFont(l.getFont().deriveFont(Font.BOLD, l.getFont().getSize()*2));
-				l.setBackground(Color.GRAY);
-				l.setPreferredSize(new Dimension(100, 100));
-				_p.add(l);
-			}
+//			else if(i==7){
+//				JLabel l = new JLabel("Token: ");
+//				l.setFont(l.getFont().deriveFont(Font.BOLD, l.getFont().getSize()*2));
+//				l.setBackground(Color.GRAY);
+//				l.setPreferredSize(new Dimension(100, 100));
+//				_p.add(l);
+//			}
 			else if(i==9){
 				JButton b2 = new JButton("End Turn");
 				b2.setFont(b2.getFont().deriveFont(Font.BOLD, b2.getFont().getSize()*2));
@@ -163,7 +158,7 @@ public class GUI implements Runnable,Observer {
 			}
 		}
 			for(int i=0;i<24;i++){
-				if(i<24 && i!=4 && i!=7 && i!=9	&& i!=17){
+				if(i<24 && i!=4 && i!=9	&& i!=17){
 					JButton InactiveB = new JButton();
 					InactiveB.setContentAreaFilled(false);
 					InactiveB.setBorderPainted(false);
@@ -176,10 +171,10 @@ public class GUI implements Runnable,Observer {
 					b.setVerticalTextPosition(SwingConstants.CENTER);
 					b.setHorizontalTextPosition(SwingConstants.CENTER);
 				}
-				else if(i==7){
-					JLabel l = (JLabel)_p.getComponent(i);
-					l.setPreferredSize(new Dimension(100, 100));
-				}
+//				else if(i==7){
+//					JLabel l = (JLabel)_p.getComponent(i);
+//					l.setPreferredSize(new Dimension(100, 100));
+//				}
 				else if(i==9){
 					JButton b = (JButton) _p.getComponent(i);
 					b.setVerticalTextPosition(SwingConstants.CENTER);
