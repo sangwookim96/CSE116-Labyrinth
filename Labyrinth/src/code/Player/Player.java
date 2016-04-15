@@ -61,12 +61,26 @@ public class Player {
 	public void pickUpToken(int a){
 		_tokens.add(a);
 	}
-	
 	public ArrayList<Integer> showToken(){
 		if(!_tokens.isEmpty()){
 			return _tokens;
 		}
-		return null;
+		else {
+			return _tokens;
+		}
+	}
+	
+	public String myToken() {
+		String s = "";
+		for(int i=0;i<_tokens.size();i++){
+			if(i==0){
+				s=s+_tokens.get(i).toString();
+			}
+			else {
+				s=s+", "+_tokens.get(i).toString();
+			}
+		}
+		return s;
 	}
 	
 	public int TotalScore(){

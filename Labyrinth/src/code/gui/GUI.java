@@ -28,7 +28,7 @@ public class GUI implements Runnable,Observer {
 	private JFrame _window;
 	private LabyrinthModel _lm;
 	private JPanel _TilePanel, _jp,_p;
-//	JButton _b;
+	private Player _player;
 	private Tile _tm;
 	public GUI(LabyrinthModel lm){
 		_lm = lm;
@@ -110,7 +110,12 @@ public class GUI implements Runnable,Observer {
 				_p.add(b1);
 			}
 			else if(i==7){
-				JLabel l = new JLabel("TOKEN: ");
+				JLabel l = new JLabel("Token: ");
+				try{
+					l.setText("TOKEN: " +_player.myToken());
+				}catch(NullPointerException e){
+					System.out.println("You can't do that!");
+				}
 				l.setFont(l.getFont().deriveFont(Font.BOLD, l.getFont().getSize()*2));
 				l.setBackground(Color.GRAY);
 				l.setPreferredSize(new Dimension(100, 100));
