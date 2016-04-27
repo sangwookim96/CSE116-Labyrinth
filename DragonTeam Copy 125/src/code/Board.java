@@ -3,8 +3,6 @@ package code;
 import java.util.ArrayList;
 import java.util.Random;
 
-
-//commit test.
 // board class 
 public class Board {
 	
