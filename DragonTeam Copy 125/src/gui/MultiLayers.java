@@ -100,6 +100,9 @@ public class MultiLayers extends JFrame {
 	  //create skip button 7
 	  SkipButton sb = new SkipButton(ButtonSize, FontSize, play, this);
 	  lp.add(sb.getButton(), new Integer(7));
+	  
+	  //create use magic wand button 10
+	  
 
 	  //create tokens 8
 	  initualizeToken();

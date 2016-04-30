@@ -4,10 +4,12 @@ public class Play{
 	private int state;
 	private int player;
 	private int totalPlayer;
+	private boolean magic;
 	public Play(String[] p){
 		state = 1;
 		player = 1;
 		totalPlayer = p.length;
+		magic = false;
 	}
 	
 	public void NextTurn(){
@@ -83,9 +85,20 @@ public class Play{
 			}
 		}
 	}
+	
+	public boolean isMagicWandUsed(){
+		
+		return false;
+	}
 
 	public int getState(){
 		return state;
+	}
+	public void setState(int newState){
+		state = newState;
+	}
+	public void setPlayer(int newPlayer){
+		player = newPlayer;
 	}
 	
 	public int CurrentPlayer(){

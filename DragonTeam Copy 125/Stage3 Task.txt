@@ -1,0 +1,45 @@
+Task:
+1) MagicWandHandlers in the 2 JButtons -- Yes/NoMagicWand -- that make a decision of using
+MagicWand or not (after shifting maze and moving pawn).
+2) In Board class (model) figure out where to put if statement that give a time for magicWand decision.
+3) Create "Shuffle Secret Formula" method that adds ingredients in the ArrayList. (i.e. ArrayList = secret formula.): we can use our own code from stage 2.
+4) Test for shuffle secret formula, if have time.
+5) Store and restore by using scanner.
+
+
+
+-------------------------------------------------------------------------------------
+gui.ScoreTable
+
+line 28:
+
+name.setText(p+"    "+message+ ", magicWand: "+ _board.getMagicWands(playerNO) );
+
+
+_______________________________________________________________________________________
+
+gui.MultipleLayers
+
+//after the "creating pawn 9", add...
+magicWands mw = new magicWands(ButtonSize, FontSize, play, this);
+lp.add(mw.getButton(), new Integer(10) );
+
+--------------------------------------------------------------------------------------
+syntax of JButton.setBounds(...)
+
+==> .setBounds(int x, int y, width, height);
+
+         JButton mw;
+	public magicWands(int ButtonSize, int FontSize, Play _play, MultiLayers m){
+		mw = new JButton();
+		mw.setText("using magicWands");
+		mw.setFont(new Font(mw.getName(), Font.BOLD, FontSize));
+		mw.setBounds(11*ButtonSize, 7*ButtonSize, 2*ButtonSize, ButtonSize);
+		SkipButtonHandler sbh = new SkipButtonHandler(_play, m);
+		skip.addActionListener(sbh);
+	}
+	
+	public JButton getButton(){
+		return skip;
+	}
+		

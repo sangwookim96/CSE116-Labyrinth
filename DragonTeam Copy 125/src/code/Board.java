@@ -992,6 +992,14 @@ public class Board {
 	return -1;
 	}
 	
+	public Integer getPlayerNO(int playerNO){
+		if(playerNO>=1 && playerNO<=4){
+			return playerNO;
+		}else{		
+			return 0;
+		}
+	}
+	
 	
 	
 }
