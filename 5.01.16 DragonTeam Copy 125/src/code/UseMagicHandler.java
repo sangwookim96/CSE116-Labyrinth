@@ -8,20 +8,43 @@ import java.awt.event.MouseListener;
 import gui.MultiLayers;
 import gui.Play;
 
-public class YesMagicWandHandler implements ActionListener, MouseListener {
+public class UseMagicHandler implements ActionListener, MouseListener {
+	
 	Play play;
 	MultiLayers ml;
 	Board board;
-	
-	public YesMagicWandHandler(Play _play, MultiLayers m/*, Board b*/){
-		play = _play;
+	String message;
+	public UseMagicHandler(Play p, MultiLayers m, Board b){
+		play = p;
 		ml = m;
-		//board = b;
+		board = b;
 	}
 
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(play.getState()==3 && play.isMagicUsedThisTurn()==false){
+			if(board.getMagicWands(play.CurrentPlayer())>0){
+				board.useMagicWand(play.CurrentPlayer());
+				play.setMagicState(true);
+				play.setState(1);
+				ml.initualize();
+			}
+			else{
+				message = "You don't have any magic wand.";
+				ml.updateConsole(message);
+			}
+		}
+
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+
 		
+//		play.setState(1);
+//		play.NextTurn();
+//		ml.initualize();
 
 	}
 
@@ -49,10 +72,6 @@ public class YesMagicWandHandler implements ActionListener, MouseListener {
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 }

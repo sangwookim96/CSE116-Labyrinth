@@ -13,7 +13,7 @@ public class SkipButton {
 		skip = new JButton();
 		skip.setText("Skip move!!");
 		skip.setFont(new Font(skip.getName(), Font.BOLD, FontSize));
-		skip.setBounds(11*ButtonSize, 8*ButtonSize, 2*ButtonSize, ButtonSize);
+		skip.setBounds(11*ButtonSize, 9*ButtonSize, 2*ButtonSize, ButtonSize);
 		SkipButtonHandler sbh = new SkipButtonHandler(_play, m);
 		skip.addActionListener(sbh);
 	}

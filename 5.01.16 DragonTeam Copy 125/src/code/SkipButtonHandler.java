@@ -18,7 +18,7 @@ public class SkipButtonHandler implements ActionListener, MouseListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(play.getState() == 2){
+		if(play.getState() == 2 || play.getState()==3){
 			play.NextTurn();
 			ml.initualize();
 		}

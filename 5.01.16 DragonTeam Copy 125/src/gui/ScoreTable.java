@@ -25,7 +25,9 @@ public class ScoreTable {
 		    		message = message.substring(2);
 		    	}
 		    	
-		    	name.setText(p+"     "+message);
+		    	// text of tokens, and magic wand.
+		    	name.setText("<html>"+p+"     "+message+"<br>"+", magicWand: "+ 
+		    			_board.getMagicWands(playerNO)+"</html>");
 		    	name.setFont(new Font(name.getName(), Font.BOLD, FontSize));
 		    	name.setBounds(11*ButtonSize, (playerNO+2)*ButtonSize, 3*ButtonSize, ButtonSize);
 		    	

@@ -100,9 +100,6 @@ public class MultiLayers extends JFrame {
 	  //create skip button 7
 	  SkipButton sb = new SkipButton(ButtonSize, FontSize, play, this);
 	  lp.add(sb.getButton(), new Integer(7));
-	  
-	  //create use magic wand button 10
-	  
 
 	  //create tokens 8
 	  initualizeToken();
@@ -112,6 +109,11 @@ public class MultiLayers extends JFrame {
 		  PawnLayer pl = new PawnLayer(i+1, _board, size, ButtonSize);
 		  lp.add(pl.getLabel(), new Integer(9));
 	  }
+	  
+	  //create use magic wand button 10
+	  MagicWandButton mw = new MagicWandButton(ButtonSize, FontSize, play, this, _board);
+	  lp.add(mw.getButton(), new Integer(10) );
+	  
 	  repaint();
   }
   
