@@ -35,6 +35,7 @@ public class TimeLag implements Runnable{
 			ml.initualizePawn();
 			ml.repaint();
 		}
+		ml.initualizeFormula();
 		ml.initualizeToken();
 		ml.initualizeScoreBoard();
 		ml.initualizeTurnTable();

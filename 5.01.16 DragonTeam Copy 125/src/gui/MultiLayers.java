@@ -114,7 +114,19 @@ public class MultiLayers extends JFrame {
 	  MagicWandButton mw = new MagicWandButton(ButtonSize, FontSize, play, this, _board);
 	  lp.add(mw.getButton(), new Integer(10) );
 	  
+	  //create formula Table 11
+	  initualizeFormula();
 	  repaint();
+  }
+  public void initualizeFormula(){
+	  lp = getLayeredPane();
+	  removeLayer(lp, 11);
+	  
+	  for(int i=0; i<p.length; i++){
+		  FormulaTable ft = new FormulaTable(p[i], _board, i+1, ButtonSize, FontSize);
+		  lp.add(ft.getLabel(), new Integer(11));
+	  }
+
   }
   
   public void initualizeScoreBoard(){

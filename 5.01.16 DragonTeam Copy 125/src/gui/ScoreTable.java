@@ -12,6 +12,7 @@ public class ScoreTable {
 	protected ArrayList<Integer> score = new ArrayList<Integer>();
 	public ScoreTable(String p,Board _board, int playerNO, int ButtonSize, int FontSize){
 		
+
 		    	name = new JLabel();
 		    	score = _board.showScore(playerNO);
 		    	String message = "";

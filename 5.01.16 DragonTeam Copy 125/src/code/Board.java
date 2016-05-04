@@ -101,7 +101,10 @@ public class Board {
 		n3 = 11;
 		addTokenPosition();
 		initialize();
-	
+	    initialFormula(1);
+	    initialFormula(2);
+	    initialFormula(3);
+	    initialFormula(4);
 	}
 	//Constructor for tile type number specified 
 	//if sum != 33, use default 11,11,11
@@ -119,7 +122,10 @@ public class Board {
 		}
 		addTokenPosition();
 		initialize();
-
+	    initialFormula(1);
+	    initialFormula(2);
+	    initialFormula(3);
+	    initialFormula(4);
 	}
 	
 	public Board clone(){
@@ -839,19 +845,41 @@ public class Board {
 			
 				switch(playerNO){
 			case 1:
-				score1.add(curToken);
+				if(formula1.contains(curToken)){
+					score1.add((curToken+20));
+				}
+				else{
+					score1.add(curToken);
+				}
 				curToken++;
 				break;
 			case 2:
-				score2.add(curToken);
+				if(formula2.contains(curToken)){
+					score2.add((curToken+20));
+				}
+				else{
+					score2.add(curToken);
+				}
+				
 				curToken++;
 				break;
 			case 3:
-				score3.add(curToken);
+				if(formula3.contains(curToken)){
+					score3.add((curToken+20));
+				}
+				else{
+					score3.add(curToken);
+				}
+				
 				curToken++;
 				break;
 			case 4:
-				score4.add(curToken);
+				if(formula4.contains(curToken)){
+					score4.add((curToken+20));
+				}
+				else{
+					score4.add(curToken);
+				}
 				curToken++;
 				break;
 			}
@@ -991,7 +1019,88 @@ public class Board {
 		}
 	return -1;
 	}
-	
-	
-	
+	//Randomly roll three different numbers into secret formula card
+	public void initialFormula(int playerNO) {
+		int shuffle = 0;
+		if(playerNO>=1 && playerNO<=4){
+			switch(playerNO){
+			case 1:
+				for(int i = 0; i < 3; i++){
+					shuffle = (int)(Math.random()*21);
+					if(shuffle ==0){
+						shuffle =25;
+					}
+					for(int x = 0; x < formula1.size(); x++){
+						if(formula1.contains(shuffle)){
+							formula1.remove(x);
+							i--;
+						}
+					}
+					formula1.add(shuffle);
+				}
+				break;
+			case 2:
+				for(int i = 0; i < 3; i++){
+					shuffle = (int)(Math.random()*21);
+					if(shuffle ==0){
+						shuffle =25;
+					}
+					for(int x = 0; x < formula2.size(); x++){
+						if(formula2.contains(shuffle)){
+							formula2.remove(x);
+							i--;
+						}
+					}
+					formula2.add(shuffle);
+				}
+				break;
+			case 3:
+				for(int i = 0; i < 3; i++){
+					shuffle = (int)(Math.random()*21);
+					if(shuffle ==0){
+						shuffle =25;
+					}
+					for(int x = 0; x < formula3.size(); x++){
+						if(formula3.contains(shuffle)){
+							formula3.remove(x);
+							i--;
+						}
+					}
+					formula3.add(shuffle);
+				}
+				break;
+			case 4:
+				for(int i = 0; i < 3; i++){
+					shuffle = (int)(Math.random()*21);
+					if(shuffle ==0){
+						shuffle =25;
+					}
+					for(int x = 0; x < formula4.size(); x++){
+						if(formula4.contains(shuffle)){
+							formula4.remove(x);
+							i--;
+						}
+					}
+					formula4.add(shuffle);
+				}
+				break;
+			}
+		}	
+	}
+	//get the secret formula card from the player
+	public ArrayList<Integer> getFormula(int playerNO){
+		if(playerNO>=1 && playerNO<=4){
+			switch(playerNO){
+			case 1:
+				return formula1;
+			case 2:
+				return formula2;
+			case 3:
+				return formula3;
+			case 4:
+				return formula4;
+			}
+		}
+	return null;
+	}
 }
