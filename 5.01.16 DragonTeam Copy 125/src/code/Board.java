@@ -595,6 +595,13 @@ public class Board {
 		}
 		state[row][col] = tile;
 	}
+	
+	public Tile get_Tile(int[] position /*{x,y}*/){
+		int row = position[0];
+		int col = position[1];
+		
+		return state[row][col];
+	}
 		
 	/**
 	 * Check all the corresponding opens. If both open, 

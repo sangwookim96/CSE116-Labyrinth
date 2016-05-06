@@ -124,6 +124,17 @@ public class Tile{
 
 	}
 	
+	public void multipleRotation(Tile tile, int rotation){
+		if(rotation==0){
+			
+		}else{
+			for(int i=1; i<=rotation; i++){
+				tile.rotate();
+			}
+		}
+		
+	}
+	
 	
 }
 
