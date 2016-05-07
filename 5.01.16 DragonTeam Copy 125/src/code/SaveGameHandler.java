@@ -2,11 +2,19 @@ package code;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.Writer;
 
 import gui.MultiLayers;
 import gui.Play;
 
 public class SaveGameHandler implements ActionListener {
+//	Writer saveOutput = null;
+//	File file = new File("Save File.txt");
+//	saveOutput = new BufferWriter(new FileWriter(file));
+	
+	String _saveFileFormat = "";
+	int _amountOfPlayers = Driver.getPlayerLength();
 	String _playerRecord = "";
 	String _tileRecord = "";
 	Play play;
@@ -20,6 +28,8 @@ public class SaveGameHandler implements ActionListener {
 		ml = m;
 		board = b;
 		tile = t;
+		
+		
 	}
 
 	/*
@@ -58,7 +68,7 @@ public class SaveGameHandler implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(isStartOfPlayer()){
-			
+			_saveFileFormat = _saveFileFormat + _playerRecord + "\n" + _tileRecord;
 		}
 
 	}
@@ -71,13 +81,13 @@ public class SaveGameHandler implements ActionListener {
 		return false;
 	}
 	
-	/**
+	/** 
 	 * add player informations in array of _PlayerRecord
 	 * informations need: player name, color of pawn, magic wand remaining, secrete recipe.
-	 * @param NOfPlayers total amount of players
+	 * @param NOfPlayers total amount of players (1~4)
 	 */
 	
-	public void generatePlayerRecord(int NOfPlayers){
+	public void generatePlayerRecord(int NOfPlayers){ // amount of players
 		if(NOfPlayers-1>=0&&NOfPlayers-1<=3){
 			for(int i=0; i<NOfPlayers; i++){
 				if(i>=1){
@@ -95,25 +105,42 @@ public class SaveGameHandler implements ActionListener {
 	 * information need: Type of tile+Rotation, token on it, list of pawns on it(color).
 	 */
 	public void generateTileRecord(){
-		scanTileType();
-		
-		
+	
+		for(int c=0; c<=6; c++){// y
+			for(int r=0; r<=6; r++){// x
+				int[] tileLocation = {r,c};
+				if(c==0&&r==0){
+					_tileRecord = _tileRecord + "[";
+				}else{
+					_tileRecord = _tileRecord+ ", [";
+				}
+				whatTileType(c, r);
+				whatTokenOnTile(tileLocation);
+				whatPlayersOnTile(tileLocation);
+				_tileRecord = _tileRecord+"]";
+			}
+		}		
 	}
 	
-	public String scanTileType(){
-		for(int c=0; c<=6; c++){
-			for(int r=0; r<=6;r++){
-				_tileRecord = _tileRecord + "[";
-				switch(board.get_StateOfBoard()[r][c].type()){
-				case 1:
-					return _tileRecord = _tileRecord + "L";
-				case 2:
-					return _tileRecord = _tileRecord + "I";
-				case 3:
-					return _tileRecord = _tileRecord + "T";
-				}
-			}
+	/**
+	 * Write tile type save file format (i.e. <type of tile><rotation#>
+	 * @param c x value of tile position on board
+	 * @param r y value of tile position on board
+	 * @return String of save tile format (i.e. T0, L3, etc.)
+	 */
+	public String whatTileType(int c, int r){
+		
+		int[] tileLocation = {r,c};
+		_tileRecord = _tileRecord + "[";
+		switch(board.get_StateOfBoard()[r][c].type()){
+		case 1:
+			return _tileRecord = _tileRecord + "L"+howManyTileRotation(tileLocation);
+		case 2:
+			return _tileRecord = _tileRecord + "I"+howManyTileRotation(tileLocation);
+		case 3:
+			return _tileRecord = _tileRecord + "T"+howManyTileRotation(tileLocation);
 		}
+			
 		return null;
 	}
 	public String howManyTileRotation(int[] position){
@@ -126,8 +153,48 @@ public class SaveGameHandler implements ActionListener {
 				
 		}
 		
-		return null;
+		return _tileRecord = _tileRecord +0;
 	}
+	
+	/**
+	 * Write save file format of token on the tile.
+	 * If empty, 0.
+	 * @param position array position of tile
+	 * @return String save file format of token on the tile position.
+	 */
+	public String whatTokenOnTile(int[] position){
+		int row = position[0];
+		int col = position[1];
+		for(int tokenNO=1; tokenNO<=21; tokenNO++){
+			if(position==board.get_tokenPosition(tokenNO)){
+				if(tokenNO==21){
+					return _tileRecord = _tileRecord+ ", 25";
+				}
+				return _tileRecord = _tileRecord+ ", " + tokenNO;
+			}
+		}
+		return _tileRecord = _tileRecord + ", 0";
+	}
+	/**
+	 * Write list of players in bracket
+	 * @param position tile location where to check
+	 * @return String save file format of player on the tile position.
+	 */
+	public String whatPlayersOnTile(int[] position){
+		_tileRecord = _tileRecord+", [";
+		for(int i=1; i<=_amountOfPlayers;i++){
+			if(i>=2){
+				_tileRecord = _tileRecord+", ";
+			}
+			if(position.equals(board.get_pawnPosition(i))){
+				return _tileRecord = _tileRecord+ colorOfPawn(i);
+			}
+		}
+		
+		return _tileRecord = _tileRecord+"]";
+	}
+	
+	// Player informations methods
 	
 	public String tokensCollected(int playerNO){
 		String result = ""+board.showScore(playerNO);

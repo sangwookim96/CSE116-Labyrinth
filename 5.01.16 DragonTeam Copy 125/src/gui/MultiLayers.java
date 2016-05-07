@@ -10,8 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import code.Board;
+import code.Driver;
 import code.MovePawnHandler;
 import code.RotateExtraTileHandler;
+import code.Tile;
 import gui.Console.DeleteConsole;
 
 
@@ -27,9 +29,15 @@ public class MultiLayers extends JFrame {
 	JLayeredPane lp;
 	JPanel a = new JPanel();
 	
+	Driver driver;
+	Tile tile;
+	
 	//constructor
-  public MultiLayers(String[] players) {
+  public MultiLayers(String[] players, Tile t) {
     super("Dragon's Labryinth");
+    
+    driver = new Driver(tile);
+    tile = t;
     
     _board = new Board();
     p = players;
@@ -117,6 +125,10 @@ public class MultiLayers extends JFrame {
 	  //create formula Table 11
 	  initualizeFormula();
 	  repaint();
+	  
+	  // create save button 12
+	  SaveGame sg = new SaveGame(ButtonSize, FontSize, play, this, driver, _board, tile);
+	  lp.add(sg.getButton(), new Integer(12));
   }
   public void initualizeFormula(){
 	  lp = getLayeredPane();

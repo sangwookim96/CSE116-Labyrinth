@@ -3,11 +3,15 @@ package code;
 import gui.MultiLayers;
 
 public class Driver {
+	static Tile tile;
+	public Driver(Tile t){
+		tile = t;
+	}
 	public static String[] _playerName;
 	public static void main(String[]args){	
 		if(args.length>=1&&args.length<=4){
 			_playerName = args;		// static player name which will be stored in SaveGameHandler
-		MultiLayers ml = new MultiLayers(args);
+		MultiLayers ml = new MultiLayers(args, tile);
 		ml.setVisible(true);
 		}
 		else{
@@ -18,5 +22,10 @@ public class Driver {
 	public static String getPlayerName(int playerNO){
 		
 		return _playerName[playerNO];
+	}
+	
+	public static int getPlayerLength(){
+		
+		return _playerName.length;
 	}
 }
